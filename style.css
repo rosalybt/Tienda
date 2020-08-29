@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'alata';
+    background-color: #d5d5d5;
+}
+
+/* HEADER */
+
+header {
+    height: 50vh;
+    border: 1px solid lightcoral;
+    flex-direction: column;
+    display: flex;
+}
+
+.header-up {
+    border: 1px solid purple;
+    justify-content: space-between;
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.cartel {
+    flex: 7 1 auto;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}
+
+/********* CONTENIDO PRINCIPAL ********/
+
+/* ASIDE */
+
+.contenido-principal {
+    display: flex;
+}
+
+.filtros {
+    flex: 1 1 auto;
+    border: 1px solid salmon;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-filtro {
+    flex: 0 1 auto;
+    border: 1px solid salmon;
+    flex-direction: row;
+    justify-content: space-between;
+    display: flex;
+}
+
+.busqueda {
+    flex: 1 1 auto;
+    border: 1px solid salmon;
+}
+
+.categoria {
+    flex: 2 1 auto;
+    border: 1px solid red;
+}
+
+.puntaje {
+    flex: 2 1 auto;
+    border: 1px solid salmon;
+}
+
+/* MAIN */
+
+main {
+    flex: 1 1 auto;
+}
+
+.barra-mostrar-items, .ver-como {
+    justify-content: space-between;
+    display: flex;
+    border: 1px solid salmon;
+}
+
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-producto {
+    flex: 1 1 250px;
+    border: 1px solid red;
+} 
+
+/* FOOTER */
+
+footer {
+    height: 15vh;
+    border: 1px solid salmon;
+}
