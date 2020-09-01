@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADA SHOP</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 </head>
 
 <body>
@@ -14,13 +15,13 @@
         <div class="header-up">
             <div class="nombre-tienda">
                 <!-- <img  class="logo" src=""> -->
-                <p>ADA SHOP</p>
+                <p class="nombre-tienda">ADA SHOP</p>
             </div>
             <div class="boton-carrito"> Carrito (0 items)</div>
         </div>
 
         <div class="cartel">
-            <span>ELECTRÓNICA</span>
+            <p class="nombre-seccion-tienda">ELECTRÓNICA</p>
         </div>
 
     </header>
@@ -28,22 +29,25 @@
     <!-- SECCION PRINCIPAL -->
     <section class="contenido-principal">
         <!-- ASIDE -->
-        <aside class="filtros">
+        <aside class="filtros-busqueda">
             <div class="header-filtro">
-                <p>Filtros</p>
-                <button>Limpiar</button>
+                <p class="negrita">FILTROS</p>
+                <button class="boton limpiar">
+                    <i class="fas fa-trash boton-limpiar"></i>
+                    Limpiar</button>
             </div>
-            <div class="busqueda">
-                <p>Busqueda</p>
+            <div class="busqueda negrita">
+                <p>BÚSQUEDA</p>
+                <input type="text" name="buscar" id="busqueda">
             </div>
-            <div class="categoria">
-                <p>categoria</p>
+            <div class="categoria negrita">
+                <p>CATEGORÍA</p>
             </div>
-            <div class="puntaje">
-                <p>Puntaje</p>
+            <div class="puntaje negrita">
+                <p>PUNTAJE</p>
             </div>
         </aside>
-        
+
         <!-- MAIN -->
 
         <main>
@@ -54,133 +58,242 @@
                 </div>
                 <div class="ver-como">
                     <p>Ver como</p>
-                    <button class="ver-lista"></button>
-                    <button class="ver-grid"></button>
+                    <button class="ver-lista">
+                        <i class="fas fa-list-ul"></i>
+                    </button>
+                    <button class="ver-grid">
+                        <i class="fas fa-th"></i>
+                    </button>
                 </div>
             </div>
 
 
             <div class="contenedor-productos">
-                <div class="card-producto">
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Celular Xiaomi</p>
+                        <p class="precio-producto">$ 22499</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">PlayStation 4</p>
+                        <p class="precio-producto">$ 59999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Cámara Nikon</p>
+                        <p class="precio-producto">$ 54999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Headphones Sony</p>
+                        <p class="precio-producto">$ 24999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Nintendo Switch</p>
+                        <p class="precio-producto">$ 46999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Notebook Asus</p>
+                        <p class="precio-producto">$ 21999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Notebook MSI</p>
+                        <p class="precio-producto">$ 37999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Headphones Philips</p>
+                        <p class="precio-producto">$ 11999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Macbook</p>
+                        <p class="precio-producto">$ 119999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">iPhone</p>
+                        <p class="precio-producto">$ 79999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Xbox One</p>
+                        <p class="precio-producto">$ 69999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
-                <div class="card-producto">
+                </article>
+                <article class="card-producto">
                     <img src="" alt="">
                     <div class="informacion">
-                        <p>nombre</p>
-                        <span>Precio</span>
-                        <img src="" alt="">
-
+                        <p class="nombre-producto negrita">Mouse Gamer</p>
+                        <p class="precio-producto">$ 4999</p>
+                        <p class="descripcion">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                            Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id reprehenderit
+                            earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus</p>
+                    </div>
+                    <div class="puntuacion">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
-                </div>
+                </article>
             </div>
 
         </main>

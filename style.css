@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 * {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    font-family: 'alata';
+    font-family: 'Roboto';
+    font-size: 15px;
     background-color: #d5d5d5;
 }
 
@@ -21,31 +23,38 @@ header {
 .header-up {
     border: 1px solid purple;
     justify-content: space-between;
+    align-items: center;
     flex: 1 1 auto;
     display: flex;
 }
 
 .cartel {
+    display: flex;
     flex: 7 1 auto;
     justify-content: center;
-    align-content: center;
+    align-content: flex-end;
+}
+
+.cartel>p {
     display: flex;
+    align-items: center;
 }
 
 /********* CONTENIDO PRINCIPAL ********/
-
-/* ASIDE */
 
 .contenido-principal {
     display: flex;
 }
 
-.filtros {
-    flex: 1 1 auto;
+/* ASIDE */
+
+.filtros-busqueda {
+    flex-basis: 275px;
     border: 1px solid salmon;
-    height: 400px;
+    height: 600px;
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .header-filtro {
@@ -54,48 +63,89 @@ header {
     flex-direction: row;
     justify-content: space-between;
     display: flex;
+    margin-bottom: 10px;
 }
 
 .busqueda {
     flex: 1 1 auto;
     border: 1px solid salmon;
+    margin-bottom: 10px;
 }
 
 .categoria {
     flex: 2 1 auto;
     border: 1px solid red;
+    margin-bottom: 10px;
 }
 
 .puntaje {
     flex: 2 1 auto;
     border: 1px solid salmon;
+    margin-bottom: 10px;
 }
 
 /* MAIN */
 
 main {
-    flex: 1 1 auto;
+    flex: 1 1;
+    flex-direction: column;
+    padding: 0 10px;
+    border: 3px solid green
+}
+
+.barra-mostrar-items {
+    margin: 0 20px 20px 10px;
 }
 
 .barra-mostrar-items, .ver-como {
     justify-content: space-between;
     display: flex;
     border: 1px solid salmon;
+    height: 75px;
+    align-items: center;
+}
+
+.cantidad-productos, .ver-como {
+    padding: 10px 10px;
+}
+
+.ver-como>button, .header-filtro>button {
+    margin: 10px;
+    border: transparent;
+    background-color: transparent;
+}
+
+.ver-lista>i, .ver-grid>i {
+    font-size: 20px;
 }
 
 .contenedor-productos {
-    display: flex;
+    border: 3px solid black;
     flex-wrap: wrap;
+    display: flex;
 }
 
 .card-producto {
-    flex: 1 1 250px;
-    border: 1px solid red;
-} 
+    flex: 2 1 300px;
+    border: 1px solid blue;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px 20px 15px;
+}
+
+.nombre-producto, .precio-producto, .descripcion{
+  text-align: center;
+}
 
 /* FOOTER */
 
 footer {
+    margin-top: 100px;
     height: 15vh;
     border: 1px solid salmon;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
