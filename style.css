@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -6,9 +6,15 @@
 }
 
 html {
-    font-family: 'Roboto';
-    font-size: 15px;
-    background-color: #d5d5d5;
+    font-family: 'Poppins';
+    font-weight: 100;
+    font-size: 1em;
+    background-color: #f5f5f5;
+}
+
+.negrita {
+    font-weight: bold;
+    align-content: center;
 }
 
 /* HEADER */
@@ -50,38 +56,57 @@ header {
 
 .filtros-busqueda {
     flex-basis: 275px;
-    border: 1px solid salmon;
     height: 600px;
-    display: flex;
-    flex-direction: column;
     padding: 10px;
 }
 
-.header-filtro {
+#busqueda {
+    height: 30px;
+    width: 100%;
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.contenedor-filtro-categoria, .contenedor-filtro-puntaje {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+.formulario-filtro {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-filtro-busqueda {
     flex: 0 1 auto;
-    border: 1px solid salmon;
     flex-direction: row;
     justify-content: space-between;
     display: flex;
+    align-content: center;
     margin-bottom: 10px;
+    padding: 5px;
 }
 
-.busqueda {
-    flex: 1 1 auto;
-    border: 1px solid salmon;
+.contenedor-filtro-busqueda {
     margin-bottom: 10px;
+    padding: 5px;
 }
 
-.categoria {
+.header-filtro-busqueda>p {
+    display: flex;
+    align-items: center;
+}
+
+.contenedor-filtro-puntaje {
     flex: 2 1 auto;
-    border: 1px solid red;
-    margin-bottom: 10px;
 }
 
-.puntaje {
-    flex: 2 1 auto;
-    border: 1px solid salmon;
-    margin-bottom: 10px;
+.fa-star {
+    color: #fbc02d;
 }
 
 /* MAIN */
@@ -109,7 +134,7 @@ main {
     padding: 10px 10px;
 }
 
-.ver-como>button, .header-filtro>button {
+.ver-como>button, .header-filtro-busqueda>button {
     margin: 10px;
     border: transparent;
     background-color: transparent;
@@ -133,10 +158,11 @@ main {
     display: flex;
     flex-direction: column;
     margin: 0 15px 20px 15px;
+    background-color: white;
 }
 
-.nombre-producto, .precio-producto, .descripcion{
-  text-align: center;
+.nombre-producto, .precio-producto, .descripcion {
+    text-align: center;
 }
 
 /* FOOTER */

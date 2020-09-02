@@ -30,22 +30,76 @@
     <section class="contenido-principal">
         <!-- ASIDE -->
         <aside class="filtros-busqueda">
-            <div class="header-filtro">
+            <div class="header-filtro-busqueda">
                 <p class="negrita">FILTROS</p>
                 <button class="boton limpiar">
-                    <i class="fas fa-trash boton-limpiar"></i>
+                    <i class="fas fa-trash"></i>
                     Limpiar</button>
             </div>
-            <div class="busqueda negrita">
-                <p>BÚSQUEDA</p>
-                <input type="text" name="buscar" id="busqueda">
-            </div>
-            <div class="categoria negrita">
-                <p>CATEGORÍA</p>
-            </div>
-            <div class="puntaje negrita">
-                <p>PUNTAJE</p>
-            </div>
+
+            <form action="" method="get" class="formulario-filtro">
+
+                <div class="contenedor-filtro-busqueda">
+                    <p class="nombre-filtro negrita">BÚSQUEDA</p>
+                    <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos">
+                </div>
+                <div class="contenedor-filtro-categoria">
+                    <p class="nombre-filtro negrita">CATEGORÍA</p>
+                    <label for="consola"><input type="checkbox" name="categoria" id="consola"> CONSOLAS</label>
+                    <label for="notebook"> <input type="checkbox" name="categoria" id="notebook"> NOTEBOOKS</label>
+                    <label for="camara"><input type="checkbox" name="categoria" id="camara"> CÁMARAS</label>
+                    <label for="celular"><input type="checkbox" name="categoria" id="celular"> CELULARES</label>
+                    <label for="accesorio"> <input type="checkbox" name="categoria" id="accesorio"> ACCESORIOS</label>
+                </div>
+                <div class="contenedor-filtro-puntaje">
+                    <p class="nombre-filtro negrita">PUNTAJE</p>
+
+                    <label for="cinco-estrellas">
+                        <input type="checkbox" name="puntuacion" id="cinco-estrellas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        (5)</label>
+                    
+                    <label for="cuatro-estrellas">
+                        <input type="checkbox" name="puntuacion" id="cuatro-estrellas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        (4)</label>
+                   
+                    <label for="tres-estrellas">
+                        <input type="checkbox" name="puntuacion" id="tres-estrellas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        (3)</label>
+                    
+                    <label for="dos-estrellas">
+                        <input type="checkbox" name="puntuacion" id="dos-estrellas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        (2)</label>
+                    
+                    <label for="una-estrella">
+                        <input type="checkbox" name="puntuacion" id="una-estrella">
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                        (1)</label>
+                </div>
+            </form>
         </aside>
 
         <!-- MAIN -->
