@@ -13,15 +13,20 @@
     <!-- HEADER -->
     <header>
         <div class="header-up">
-            <div class="nombre-tienda">
-                <!-- <img  class="logo" src=""> -->
+            <div class="logo-tienda">
+                <img  class="logo" src="https://frontend-proyecto-tienda.adaitw.org/images/iso_blanco.svg">
                 <p class="nombre-tienda">ADA SHOP</p>
             </div>
-            <div class="boton-carrito"> Carrito (0 items)</div>
+            <div class="boton-carrito">
+              <button class="boton">
+                <i class="fas fa-shopping-cart icono-size boton"></i>
+                Carrito (0 items)
+              </button>
+                </div>
         </div>
 
         <div class="cartel">
-            <p class="nombre-seccion-tienda">ELECTRÓNICA</p>
+            <h1 class="titulo">ELECTRÓNICA</h1>
         </div>
 
     </header>
@@ -31,7 +36,7 @@
         <!-- ASIDE -->
         <aside class="filtros-busqueda">
             <div class="header-filtro-busqueda">
-                <p class="negrita">FILTROS</p>
+                <h3 class="titulo-aside negrita">FILTROS</h3>
                 <button class="boton limpiar">
                     <i class="fas fa-trash"></i>
                     Limpiar</button>
@@ -40,7 +45,7 @@
             <form action="" method="get" class="formulario-filtro">
 
                 <div class="contenedor-filtro-busqueda">
-                    <p class="nombre-filtro negrita">BÚSQUEDA</p>
+                    <h4 class="nombre-filtro negrita">BÚSQUEDA</h4>
                     <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos">
                 </div>
                 <div class="contenedor-filtro-categoria">
@@ -52,7 +57,7 @@
                     <label for="accesorio"> <input type="checkbox" name="categoria" id="accesorio"> ACCESORIOS</label>
                 </div>
                 <div class="contenedor-filtro-puntaje">
-                    <p class="nombre-filtro negrita">PUNTAJE</p>
+                    <h4 class="nombre-filtro negrita">PUNTAJE</h4>
 
                     <label for="cinco-estrellas">
                         <input type="checkbox" name="puntuacion" id="cinco-estrellas">
@@ -112,11 +117,11 @@
                 </div>
                 <div class="ver-como">
                     <p>Ver como</p>
-                    <button class="ver-lista">
-                        <i class="fas fa-list-ul"></i>
+                    <button class="ver-lista boton">
+                        <i class="fas fa-list-ul icono-size"></i>
                     </button>
-                    <button class="ver-grid">
-                        <i class="fas fa-th"></i>
+                    <button class="ver-grid boton">
+                        <i class="fas fa-th icono-size"></i>
                     </button>
                 </div>
             </div>

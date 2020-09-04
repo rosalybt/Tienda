@@ -21,29 +21,47 @@ html {
 
 header {
     height: 50vh;
-    border: 1px solid lightcoral;
     flex-direction: column;
     display: flex;
 }
 
 .header-up {
-    border: 1px solid purple;
     justify-content: space-between;
     align-items: center;
-    flex: 1 1 auto;
+    /* flex: 1 1 auto; */
     display: flex;
+    padding: 0 10px 0 10px;
+}
+
+.logo-tienda {
+    display: flex;
+}
+
+.logo-tienda>.logo {
+    height: 2em;
+    margin-right: 10px;
+}
+
+.logo-tienda>.nombre-tienda {
+    align-items: center;
+    display: flex;
+}
+
+.boton-carrito>button {
+    font-size: 1em;
 }
 
 .cartel {
     display: flex;
-    flex: 7 1 auto;
+    flex: 5 1 auto;
     justify-content: center;
     align-content: flex-end;
 }
 
-.cartel>p {
+.cartel>.titulo {
     display: flex;
     align-items: center;
+    color: white;
 }
 
 /********* CONTENIDO PRINCIPAL ********/
@@ -75,20 +93,25 @@ header {
     margin-bottom: 10px;
 }
 
+
+.header-filtro-busqueda {
+    /* flex: 0 1 auto; */
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    display: flex;
+}
+.titulo-aside{
+   align-items: center;
+   display: flex;
+}
 .formulario-filtro {
     height: 90%;
     display: flex;
     flex-direction: column;
-}
-
-.header-filtro-busqueda {
-    flex: 0 1 auto;
-    flex-direction: row;
-    justify-content: space-between;
-    display: flex;
-    align-content: center;
-    margin-bottom: 10px;
-    padding: 5px;
 }
 
 .contenedor-filtro-busqueda {
@@ -134,14 +157,14 @@ main {
     padding: 10px 10px;
 }
 
-.ver-como>button, .header-filtro-busqueda>button {
+.boton {
     margin: 10px;
     border: transparent;
     background-color: transparent;
 }
 
-.ver-lista>i, .ver-grid>i {
-    font-size: 20px;
+.icono-size {
+    font-size: 1.25em;
 }
 
 .contenedor-productos {
