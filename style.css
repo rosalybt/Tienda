@@ -93,21 +93,21 @@ header {
     margin-bottom: 10px;
 }
 
-
 .header-filtro-busqueda {
     /* flex: 0 1 auto; */
     flex-direction: row;
     justify-content: space-between;
-
     align-content: center;
     margin-bottom: 10px;
     padding: 5px;
     display: flex;
 }
-.titulo-aside{
-   align-items: center;
-   display: flex;
+
+.titulo-aside {
+    align-items: center;
+    display: flex;
 }
+
 .formulario-filtro {
     height: 90%;
     display: flex;
@@ -137,19 +137,19 @@ header {
 main {
     flex: 1 1;
     flex-direction: column;
-    padding: 0 10px;
-    border: 3px solid green
+    padding: 10px 0px;
 }
 
 .barra-mostrar-items {
-    margin: 0 20px 20px 10px;
+    margin: 0 15px 20px 10px;
+    padding: 10px;
 }
 
 .barra-mostrar-items, .ver-como {
     justify-content: space-between;
     display: flex;
-    border: 1px solid salmon;
-    height: 75px;
+    background-color: white;
+    height: 100px;
     align-items: center;
 }
 
@@ -168,24 +168,27 @@ main {
 }
 
 .contenedor-productos {
-    border: 3px solid black;
     flex-wrap: wrap;
     display: flex;
 }
 
 .card-producto {
     flex: 2 1 300px;
-    border: 1px solid blue;
     align-items: center;
     justify-content: center;
     display: flex;
     flex-direction: column;
-    margin: 0 15px 20px 15px;
+    margin: 0 15px 20px 10px;
     background-color: white;
+    padding: 20px;
 }
 
 .nombre-producto, .precio-producto, .descripcion {
     text-align: center;
+}
+
+.hidden{
+    display: none;
 }
 
 /* FOOTER */
@@ -193,7 +196,7 @@ main {
 footer {
     margin-top: 100px;
     height: 15vh;
-    border: 1px solid salmon;
+  background-color: white;
     justify-content: center;
     align-items: center;
     display: flex;
