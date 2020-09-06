@@ -1,6 +1,9 @@
 const botonLimpiar = document.querySelector("#limpiar")
 const filtroNombre = document.querySelector("#busqueda")
 const checkBoxes = document.querySelectorAll("input[type ='checkbox']")
+const listaCheckBoxPuntaje = document.querySelectorAll("input[type ='checkbox'][name='puntuacion']")
+const listaCheckBoxCategoria = document.querySelectorAll("input[type ='checkbox'][name='categoria']")
+
 
 const tarjetas = document.getElementsByClassName('card-producto')
 
@@ -24,6 +27,46 @@ filtroNombre.oninput = () => {
     }
 };
 
+
+//funcion filtro por puntaje
+for (let checkbox of listaCheckBoxPuntaje) {
+    checkbox.onclick = () => {
+        filtrarTarjetas();
+    };
+
+}
+const hayCheckboxSeleccionado = () => {
+    for (let checkbox of listaCheckBoxPuntaje) {
+        if (checkbox.checked) {
+            return true;
+        }
+    }
+};
+
+const coincidenCheckboxYTarjeta = tarjeta => {
+    const rating = tarjeta.dataset.rating;
+    for (let checkbox of listaCheckBoxPuntaje) {
+        if (checkbox.value === rating && checkbox.checked) {
+            return true;
+        }
+    }
+};
+
+const filtrarTarjetas = () => {
+    for (let tarjeta of tarjetas) {
+        tarjeta.classList.add('hidden');
+        if (hayCheckboxSeleccionado()) {
+            if (coincidenCheckboxYTarjeta(tarjeta)) {
+                tarjeta.classList.remove('hidden');
+            }
+        }
+        else {
+            tarjeta.classList.remove('hidden')
+        }
+    }
+};
+
+//===========Fin funcion por puntaje
 
 
 //funcion limpiar 
