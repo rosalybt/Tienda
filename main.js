@@ -3,6 +3,9 @@ const filtroNombre = document.querySelector("#busqueda")
 const checkBoxes = document.querySelectorAll("input[type ='checkbox']")
 const listaCheckBoxPuntaje = document.querySelectorAll("input[type ='checkbox'][name='puntuacion']")
 const listaCheckBoxCategoria = document.querySelectorAll("input[type ='checkbox'][name='categoria']")
+const cantidadProducto = document.querySelector(".cantidad-productos > p")
+const totalProducto = document.getElementsByClassName("card-producto")
+const productosOcultos = document.getElementsByClassName("card-producto hidden")
 
 
 const tarjetas = document.getElementsByClassName('card-producto')
@@ -25,6 +28,7 @@ filtroNombre.oninput = () => {
             tarjeta.classList.add('hidden');
         }
     }
+    contarProductos(productosOcultos.length);
 };
 
 
@@ -64,10 +68,18 @@ const filtrarTarjetas = () => {
             tarjeta.classList.remove('hidden')
         }
     }
+    contarProductos(productosOcultos.length);
 };
 
 //===========Fin funcion por puntaje
 
+//funcion contador de productos
+const contarProductos = (cantidad) => {
+    
+    cantidad = totalProducto.length - cantidad
+    cantidadProducto.textContent = `Mostrando ${cantidad} producto(s) de ${totalProducto.length}`
+
+}
 
 //funcion limpiar 
 botonLimpiar.onclick = () => {
@@ -79,4 +91,8 @@ botonLimpiar.onclick = () => {
         }
     }
 
+    for (let tarjeta of tarjetas){
+        tarjeta.classList.remove('hidden')
+    }
+    contarProductos(productosOcultos.length);
 };
