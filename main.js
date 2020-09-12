@@ -10,7 +10,9 @@ const tarjetas = document.getElementsByClassName('card-producto')
 const botonVerComoLista = document.querySelector(".show-list")
 const botonVerComoGrid = document.querySelector(".show-grid")
 const contenedorTarjetas = document.querySelector(".contenedor-productos")
-
+const botonAbrirCarrito = document.getElementById("abrir-carrito")
+const botonCerrarCarrito = document.getElementById("cerrar-carrito")
+const menuCarrito = document.querySelector(".menu-carrito")
 // funcion filtrar busqueda por textbox
 filtroNombre.oninput = () => {
 
@@ -108,4 +110,14 @@ botonVerComoLista.onclick = () => {
 
 botonVerComoGrid.onclick = () => {
     contenedorTarjetas.classList.remove('list-view')
+}
+
+// Funcion abrir carrito de compras
+botonAbrirCarrito.onclick = () =>{
+    menuCarrito.classList.remove("hidden")
+
+}
+botonCerrarCarrito.onclick = () =>{
+    menuCarrito.classList.add("hidden")
+
 }

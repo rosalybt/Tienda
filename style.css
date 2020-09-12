@@ -61,7 +61,7 @@ html {
     font-weight: 100;
 }
 
-#boton-carrito {
+#abrir-carrito {
     font-size: 0.9em;
     display: flex;
     align-items: center;
@@ -76,14 +76,16 @@ html {
     right: 0;
     position: absolute;
     padding: 40px 20px 30px 20px;
-    display: flex;
-    flex-direction: column;
+
 }
 
 .header-carrito {
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
+}
+#cerrar-carrito{
+    height: min-content;
 }
 
 .fa-window-close {
@@ -103,7 +105,6 @@ html {
     align-items: center;
     color: white;
     font-size: 2.1em;
-    font-weight: 900;
 }
 
 /********* CONTENIDO PRINCIPAL ********/
