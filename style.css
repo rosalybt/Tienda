@@ -17,12 +17,25 @@ html {
     align-content: center;
 }
 
+.overlay{
+    background-color: rgba(0, 0, 0, 40);
+    width: 100hw;
+    height: 100hv;
+    position: absolute;
+    top: 0;
+}
+
+.hidden {
+    display: none;
+}
+
 /* HEADER */
 
-header {
+.header-container {
     height: 50vh;
     flex-direction: column;
     display: flex;
+    position: relative;
 }
 
 .header-principal {
@@ -44,13 +57,40 @@ header {
 .logo-tienda>.nombre-tienda {
     align-items: center;
     display: flex;
+    font-size: 1.2em;
+    font-weight: 100;
 }
 
-.boton-carrito>button {
-    font-size: 1em;
-    width: 150px;
+#boton-carrito {
+    font-size: 0.9em;
+    display: flex;
+    align-items: center;
 }
 
+/* Menu carrito */
+
+.menu-carrito {
+    height: 100vh;
+    width: 400px;
+    background-color: #ffff;
+    right: 0;
+    position: absolute;
+    padding: 40px 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-carrito {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.fa-window-close {
+    font-size: 2em;
+}
+
+/* BANNER */
 .banner {
     display: flex;
     flex: 5 1 auto;
@@ -62,6 +102,8 @@ header {
     display: flex;
     align-items: center;
     color: white;
+    font-size: 2.1em;
+    font-weight: 900;
 }
 
 /********* CONTENIDO PRINCIPAL ********/
@@ -86,12 +128,13 @@ header {
     border: none;
     border-bottom: 2px solid black;
 }
-.textbox-busqueda{
+
+.textbox-busqueda {
     display: flex;
     position: relative;
 }
 
-.fas.fa-search{
+.fas.fa-search {
     position: relative;
     right: 30px;
     top: 5px;
@@ -169,13 +212,15 @@ main {
 }
 
 button {
-    margin: 10px;
-    border: transparent;
+    border: none;
     background-color: transparent;
 }
 
 .icono-size {
     font-size: 1.50em;
+    margin: 0 5px 0 10px;
+    /* margin-right: 5px;
+    margin-left: 10px; */
 }
 
 .contenedor-productos {
@@ -213,9 +258,7 @@ button {
     margin: 10px;
 }
 
-.hidden {
-    display: none;
-}
+
 
 /* FOOTER */
 
