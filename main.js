@@ -11,7 +11,6 @@ const botonVerComoLista = document.querySelector(".show-list")
 const botonVerComoGrid = document.querySelector(".show-grid")
 const contenedorTarjetas = document.querySelector(".contenedor-productos")
 
-
 // funcion filtrar busqueda por textbox
 filtroNombre.oninput = () => {
 
@@ -75,20 +74,14 @@ const filtrarTarjetas = () => {
 
 //funcion contador de productos
 const contarProductos = (cantidad) => {
-    
+
     cantidad = totalProducto.length - cantidad
     cantidadProducto.textContent = `Mostrando ${cantidad} producto(s) de ${totalProducto.length}`
 
 }
 
 
-botonVerComoLista.onclick = ()=>{
-    contenedorTarjetas.classList.add('list-view')
 
-}
-botonVerComoGrid.onclick = ()=>{
-    contenedorTarjetas.classList.remove('list-view')
-}
 
 //funcion limpiar 
 botonLimpiar.onclick = () => {
@@ -100,8 +93,19 @@ botonLimpiar.onclick = () => {
         }
     }
 
-    for (let tarjeta of tarjetas){
+    for (let tarjeta of tarjetas) {
         tarjeta.classList.remove('hidden')
     }
     contarProductos(productosOcultos.length);
 };
+
+
+// Funcion ver como lista o grilla
+botonVerComoLista.onclick = () => {
+
+    contenedorTarjetas.classList.add('list-view')
+}
+
+botonVerComoGrid.onclick = () => {
+    contenedorTarjetas.classList.remove('list-view')
+}
