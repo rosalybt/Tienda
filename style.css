@@ -28,9 +28,8 @@ header {
 .header-principal {
     justify-content: space-between;
     align-items: center;
-    /* flex: 1 1 auto; */
     display: flex;
-    padding: 10px 30px 10px 30px;
+    padding: 20px 30px 20px 30px;
 }
 
 .logo-tienda {
@@ -86,6 +85,16 @@ header {
     background: none;
     border: none;
     border-bottom: 2px solid black;
+}
+.textbox-busqueda{
+    display: flex;
+    position: relative;
+}
+
+.fas.fa-search{
+    position: relative;
+    right: 30px;
+    top: 5px;
 }
 
 .contenedor-filtro-categoria, .contenedor-filtro-puntaje {
