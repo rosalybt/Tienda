@@ -25,7 +25,7 @@ header {
     display: flex;
 }
 
-.header-up {
+.header-principal {
     justify-content: space-between;
     align-items: center;
     /* flex: 1 1 auto; */
@@ -49,16 +49,17 @@ header {
 
 .boton-carrito>button {
     font-size: 1em;
+    width: 200px;
 }
 
-.cartel {
+.banner {
     display: flex;
     flex: 5 1 auto;
     justify-content: center;
     align-content: flex-end;
 }
 
-.cartel>.titulo {
+.banner>.titulo-principal {
     display: flex;
     align-items: center;
     color: white;
@@ -72,7 +73,7 @@ header {
 
 /* ASIDE */
 
-.filtros-busqueda {
+.filtros-busquedas {
     flex-basis: 275px;
     height: 600px;
     padding: 10px;
@@ -145,7 +146,7 @@ main {
     padding: 10px;
 }
 
-.barra-mostrar-items, .ver-como {
+.barra-mostrar-items, .show-items {
     justify-content: space-between;
     display: flex;
     background-color: white;
@@ -153,7 +154,7 @@ main {
     align-items: center;
 }
 
-.cantidad-productos, .ver-como {
+.cantidad-productos, .show-items {
     padding: 10px 10px;
 }
 
@@ -164,12 +165,16 @@ main {
 }
 
 .icono-size {
-    font-size: 1.25em;
+    font-size: 1.50em;
 }
 
 .contenedor-productos {
     flex-wrap: wrap;
     display: flex;
+}
+
+.list-view {
+    flex-direction: column;
 }
 
 .card-producto {
@@ -188,6 +193,7 @@ main {
     margin-bottom: 5px;
     text-align: center;
 }
+
 .boton-comprar {
     background-color: #f5f5f5;
     border-radius: 5px;

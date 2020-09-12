@@ -1,4 +1,4 @@
-const botonLimpiar = document.querySelector("#limpiar")
+const botonLimpiar = document.querySelector("#boton-limpiar")
 const filtroNombre = document.querySelector("#busqueda")
 const checkBoxes = document.querySelectorAll("input[type ='checkbox']")
 const listaCheckBoxPuntaje = document.querySelectorAll("input[type ='checkbox'][name='puntuacion']")
@@ -6,10 +6,10 @@ const listaCheckBoxCategoria = document.querySelectorAll("input[type ='checkbox'
 const cantidadProducto = document.querySelector(".cantidad-productos > p")
 const totalProducto = document.getElementsByClassName("card-producto")
 const productosOcultos = document.getElementsByClassName("card-producto hidden")
-
-
 const tarjetas = document.getElementsByClassName('card-producto')
-
+const botonVerComoLista = document.querySelector(".show-list")
+const botonVerComoGrid = document.querySelector(".show-grid")
+const contenedorTarjetas = document.querySelector(".contenedor-productos")
 
 
 // funcion filtrar busqueda por textbox
@@ -79,6 +79,15 @@ const contarProductos = (cantidad) => {
     cantidad = totalProducto.length - cantidad
     cantidadProducto.textContent = `Mostrando ${cantidad} producto(s) de ${totalProducto.length}`
 
+}
+
+
+botonVerComoLista.onclick = ()=>{
+    contenedorTarjetas.classList.add('list-view')
+
+}
+botonVerComoGrid.onclick = ()=>{
+    contenedorTarjetas.classList.remove('list-view')
 }
 
 //funcion limpiar 
