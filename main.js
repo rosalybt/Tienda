@@ -13,6 +13,8 @@ const contenedorTarjetas = document.querySelector(".contenedor-productos")
 const botonAbrirCarrito = document.getElementById("abrir-carrito")
 const botonCerrarCarrito = document.getElementById("cerrar-carrito")
 const menuCarrito = document.querySelector(".menu-carrito")
+const overlay = document.getElementById("overlay")
+
 // funcion filtrar busqueda por textbox
 filtroNombre.oninput = () => {
 
@@ -113,11 +115,15 @@ botonVerComoGrid.onclick = () => {
 }
 
 // Funcion abrir carrito de compras
-botonAbrirCarrito.onclick = () =>{
+botonAbrirCarrito.onclick = () => {
+    overlay.classList.remove("hidden")
     menuCarrito.classList.remove("hidden")
+   
 
 }
-botonCerrarCarrito.onclick = () =>{
+botonCerrarCarrito.onclick = () => {
+    overlay.classList.add("hidden")
     menuCarrito.classList.add("hidden")
+   
 
 }

@@ -17,12 +17,13 @@ html {
     align-content: center;
 }
 
-.overlay{
-    background-color: rgba(0, 0, 0, 40);
-    width: 100hw;
-    height: 100hv;
+.overlay {
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100vw;
+    height: 100vh;
     position: absolute;
     top: 0;
+    z-index: 1;
 }
 
 .hidden {
@@ -35,7 +36,7 @@ html {
     height: 50vh;
     flex-direction: column;
     display: flex;
-    position: relative;
+  
 }
 
 .header-principal {
@@ -43,6 +44,8 @@ html {
     align-items: center;
     display: flex;
     padding: 20px 30px 20px 30px;
+   
+ 
 }
 
 .logo-tienda {
@@ -76,7 +79,7 @@ html {
     right: 0;
     position: absolute;
     padding: 40px 20px 30px 20px;
-
+    z-index: 2;
 }
 
 .header-carrito {
@@ -84,7 +87,8 @@ html {
     justify-content: space-between;
     margin-bottom: 10px;
 }
-#cerrar-carrito{
+
+#cerrar-carrito {
     height: min-content;
 }
 
@@ -93,6 +97,7 @@ html {
 }
 
 /* BANNER */
+
 .banner {
     display: flex;
     flex: 5 1 auto;
@@ -136,7 +141,7 @@ html {
 }
 
 .fas.fa-search {
-    position: relative;
+    position: absolute;
     right: 30px;
     top: 5px;
 }
@@ -258,8 +263,6 @@ button {
     height: 50px;
     margin: 10px;
 }
-
-
 
 /* FOOTER */
 
