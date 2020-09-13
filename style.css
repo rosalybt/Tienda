@@ -26,9 +26,7 @@ html {
     z-index: 1;
 }
 
-.hidden {
-    display: none;
-}
+
 
 /* HEADER */
 
@@ -225,8 +223,6 @@ button {
 .icono-size {
     font-size: 1.50em;
     margin: 0 5px 0 10px;
-    /* margin-right: 5px;
-    margin-left: 10px; */
 }
 
 .contenedor-productos {
@@ -242,11 +238,11 @@ button {
     flex: 2 1 300px;
     align-items: center;
     justify-content: center;
-    display: flex;
     flex-direction: column;
     margin: 0 15px 20px 10px;
     background-color: white;
     padding: 20px;
+    display: flex;
 }
 
 .informacion p {
@@ -262,6 +258,11 @@ button {
     width: 250px;
     height: 50px;
     margin: 10px;
+}
+
+.hidden {
+    display: none;
+
 }
 
 /* FOOTER */

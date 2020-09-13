@@ -24,10 +24,8 @@ filtroNombre.oninput = () => {
         const busqueda = filtroNombre.value;
 
         if (titulo.includes(busqueda)) {
-
-            tarjeta.classList.remove('hidden');
+            // tarjeta.classList.remove('hidden');
         } else {
-
             tarjeta.classList.add('hidden');
         }
     }
@@ -83,8 +81,6 @@ const contarProductos = (cantidad) => {
     cantidadProducto.textContent = `Mostrando ${cantidad} producto(s) de ${totalProducto.length}`
 
 }
-
-
 
 
 //funcion limpiar 
