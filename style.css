@@ -23,10 +23,22 @@ html {
     height: 100vh;
     position: absolute;
     top: 0;
+    right: 0;
     z-index: 1;
+    overflow: auto;
 }
 
-
+#modal-container {
+    position: absolute;
+    top: 0;
+    right: 20%;
+    left: 20%;
+    background-color: #ffff;
+    z-index: 4;
+    width: 60%;
+    height: 100vh;
+    padding: 20px 20px 10px 20px;
+}
 
 /* HEADER */
 
@@ -34,7 +46,6 @@ html {
     height: 50vh;
     flex-direction: column;
     display: flex;
-  
 }
 
 .header-principal {
@@ -42,8 +53,6 @@ html {
     align-items: center;
     display: flex;
     padding: 20px 30px 20px 30px;
-   
- 
 }
 
 .logo-tienda {
@@ -93,6 +102,46 @@ html {
 .fa-window-close {
     font-size: 2em;
 }
+
+.productos-seleccionados {
+    width: 100%;
+    height: 65%;
+    border: 2px solid #000;
+}
+
+.opciones-carrito {
+    width: 100%;
+    height: 125px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    display: flex;
+}
+
+#realizar-compra {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#vaciar-carrito {
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #FF0000;
+    border: 1px solid #FF0000;
+}
+
+.boton-principal {
+    background-color: #53a653;
+    color: white;
+    border: none;
+}
+
+/* Modal */
+
+.informacion
 
 /* BANNER */
 
@@ -262,7 +311,6 @@ button {
 
 .hidden {
     display: none;
-
 }
 
 /* FOOTER */
