@@ -14,6 +14,8 @@ const botonAbrirCarrito = document.getElementById("abrir-carrito")
 const botonCerrarCarrito = document.getElementById("cerrar-carrito")
 const menuCarrito = document.querySelector(".menu-carrito")
 const overlay = document.getElementById("overlay")
+const botonRealizarCompra = document.getElementById("realizar-compra")
+const modal = document.getElementById("modal-container")
 
 // funcion filtrar busqueda por textbox
 filtroNombre.oninput = () => {
@@ -24,7 +26,7 @@ filtroNombre.oninput = () => {
         const busqueda = filtroNombre.value;
 
         if (titulo.includes(busqueda)) {
-            // tarjeta.classList.remove('hidden');
+            tarjeta.classList.remove('hidden');
         } else {
             tarjeta.classList.add('hidden');
         }
@@ -114,12 +116,15 @@ botonVerComoGrid.onclick = () => {
 botonAbrirCarrito.onclick = () => {
     overlay.classList.remove("hidden")
     menuCarrito.classList.remove("hidden")
-   
-
 }
+
 botonCerrarCarrito.onclick = () => {
     overlay.classList.add("hidden")
     menuCarrito.classList.add("hidden")
-   
+}
 
+// Funcion abrir modal
+botonRealizarCompra.onclick = () => {
+    overlay.style.zIndex = "3"
+    modal.classList.remove("hidden")
 }
