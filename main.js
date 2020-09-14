@@ -16,7 +16,7 @@ const menuCarrito = document.querySelector(".menu-carrito")
 const overlay = document.getElementById("overlay")
 const botonRealizarCompra = document.getElementById("realizar-compra")
 const modal = document.getElementById("modal-container")
-
+const html = document.querySelector("html")
 // funcion filtrar busqueda por textbox
 filtroNombre.oninput = () => {
 
@@ -116,15 +116,18 @@ botonVerComoGrid.onclick = () => {
 botonAbrirCarrito.onclick = () => {
     overlay.classList.remove("hidden")
     menuCarrito.classList.remove("hidden")
+    html.style.overflowY = "hidden"
 }
 
 botonCerrarCarrito.onclick = () => {
     overlay.classList.add("hidden")
     menuCarrito.classList.add("hidden")
+    html.style.overflowY = "auto"
 }
 
 // Funcion abrir modal
 botonRealizarCompra.onclick = () => {
     overlay.style.zIndex = "3"
     modal.classList.remove("hidden")
+
 }
