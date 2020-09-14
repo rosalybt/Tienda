@@ -15,26 +15,14 @@ const botonCerrarCarrito = document.getElementById("cerrar-carrito")
 const menuCarrito = document.querySelector(".menu-carrito")
 const overlay = document.getElementById("overlay")
 const botonRealizarCompra = document.getElementById("realizar-compra")
+const botonSeguirComprando = document.getElementById("seguir-comprando")
+const botonFinalizarCompra = document.getElementById("finalizar-compra")
 const modal = document.getElementById("modal-container")
 const html = document.querySelector("html")
-// funcion filtrar busqueda por textbox
-filtroNombre.oninput = () => {
-
-    for (let tarjeta of tarjetas) {
-
-        const titulo = tarjeta.dataset.nombre;
-        const busqueda = filtroNombre.value;
-
-        if (titulo.includes(busqueda)) {
-            tarjeta.classList.remove('hidden');
-        } else {
-            tarjeta.classList.add('hidden');
-        }
-    }
-    contarProductos(productosOcultos.length);
-};
 
 
+
+// ======FUNCIONES========//
 //funcion filtro por puntaje
 for (let checkbox of listaCheckBoxPuntaje) {
     checkbox.onclick = () => {
@@ -42,6 +30,8 @@ for (let checkbox of listaCheckBoxPuntaje) {
     };
 
 }
+
+
 const hayCheckboxSeleccionado = () => {
     for (let checkbox of listaCheckBoxPuntaje) {
         if (checkbox.checked) {
@@ -74,8 +64,6 @@ const filtrarTarjetas = () => {
     contarProductos(productosOcultos.length);
 };
 
-//===========Fin funcion por puntaje
-
 //funcion contador de productos
 const contarProductos = (cantidad) => {
 
@@ -84,8 +72,53 @@ const contarProductos = (cantidad) => {
 
 }
 
+const abrirModal = () => {
+    overlay.style.zIndex = "3"
+    modal.style.visibility = "visible"
+    console.log("Compra realizada con exito")
+}
 
-//funcion limpiar 
+const cerrarModal = () => {
+    modal.style.visibility = "hidden"
+    overlay.style.zIndex = "1"
+}
+
+const abrirCarrito = () => {
+    overlay.classList.remove("hidden")
+    menuCarrito.classList.remove("hidden")
+    html.style.overflowY = "hidden"
+}
+
+
+const cerrarCarrito = () => {
+    overlay.classList.add("hidden")
+    menuCarrito.classList.add("hidden")
+    html.style.overflowY = "auto"
+}
+
+
+
+//====Eventos=====//
+
+// filtrar busqueda por textbox
+filtroNombre.oninput = () => {
+
+    for (let tarjeta of tarjetas) {
+
+        const titulo = tarjeta.dataset.nombre;
+        const busqueda = filtroNombre.value;
+
+        if (titulo.includes(busqueda)) {
+            tarjeta.classList.remove('hidden');
+        } else {
+            tarjeta.classList.add('hidden');
+        }
+    }
+    contarProductos(productosOcultos.length);
+};
+
+
+// limpiar 
 botonLimpiar.onclick = () => {
     filtroNombre.value = ""
 
@@ -102,9 +135,8 @@ botonLimpiar.onclick = () => {
 };
 
 
-// Funcion ver como lista o grilla
+//  ver como lista o grilla
 botonVerComoLista.onclick = () => {
-
     contenedorTarjetas.classList.add('list-view')
 }
 
@@ -114,20 +146,25 @@ botonVerComoGrid.onclick = () => {
 
 // Funcion abrir carrito de compras
 botonAbrirCarrito.onclick = () => {
-    overlay.classList.remove("hidden")
-    menuCarrito.classList.remove("hidden")
-    html.style.overflowY = "hidden"
+    abrirCarrito();
 }
 
 botonCerrarCarrito.onclick = () => {
-    overlay.classList.add("hidden")
-    menuCarrito.classList.add("hidden")
-    html.style.overflowY = "auto"
+    cerrarCarrito();
 }
 
 // Funcion abrir modal
 botonRealizarCompra.onclick = () => {
-    overlay.style.zIndex = "3"
-    modal.classList.remove("hidden")
+    abrirModal();
+}
 
+// Funcon seguir Seguir Comprando
+botonSeguirComprando.onclick = () => {
+    cerrarModal();
+    cerrarCarrito();
+}
+
+// Funcion finalizar la compra
+botonFinalizarCompra = () => {
+    cerrarModal();
 }
