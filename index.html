@@ -31,7 +31,7 @@
             <h2 class="titulo-principal">ELECTRÓNICA</h2>
         </div>
         <!-- menu carrito -->
-        <div class="menu-carrito hidden">
+        <div class="menu-carrito">
             <header class="header-carrito">
                 <h2>Carrito</h2>
                 <button id="cerrar-carrito"><i class="far fa-window-close"></i></i></button>
@@ -41,7 +41,7 @@
 
             </section>
 
-            <section class="opciones-carrito">
+            <section class="acciones-carrito">
                 <button id="realizar-compra" class="boton-principal"> COMPRAR</button>
                 <button id="vaciar-carrito">VACIAR</button>
             </section>
@@ -49,45 +49,7 @@
         </div>
 
     </header>
-    <!-- Modal -->
-    <div id="modal-container" class="hidden">
-        <form action="" method="get" id="form-procesoPago">
-            <h3>Datos personales</h3>
-            <label for="">Nombres y apellidos*
-                <input type="text" name="" id="" placeholder="p. ej.:Ada Lovelace">
-            </label>
-            <label for=""> Email*
-                <input type="email" name="" id="" placeholder="p. ej.:Ada.lovelace@gmail.com">
-            </label>
-            <hr>
-
-            <h3>Opciones de pago</h3>
-            <label for="">
-                <input type="radio" name="" id="" value="efectivoDebito">
-                Efectivo/Débito</label>
-
-            <label for="">
-                <input type="radio" name="" id="" value="efectivoDebito">
-                Tarjeta de crédito</label>
-
-            <label for="">
-                <input type="checkbox" name="" id="" value="efectivoDebito">
-                Necesito envío</label>
-
-            <label for="">
-                <input type="checkbox" name="" id="" value="efectivoDebito">
-                Tengo tarjeta de descuento</label>
-            <div class="resumen-total-pagar">
-                <h3>Resumen</h3>
-
-
-            </div>
-            <div></div>
-        </form>
-    </div>
-    <!-- Overlay -->
-    <div class="overlay hidden" id="overlay"></div>
-
+ 
     <!-- SECCION PRINCIPAL -->
     <section class="contenido-principal">
         <!-- ASIDE -->
@@ -105,7 +67,8 @@
                 <div class="contenedor-filtro-busqueda">
                     <h4 class="nombre-filtro negrita">BÚSQUEDA</h4>
                     <div class="textbox-busqueda">
-                        <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos">
+                        <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos"
+                            class="textbox-style">
                         <i class="fas fa-search"></i>
                     </div>
 
@@ -456,6 +419,75 @@
             </div>
 
         </main>
+               <!-- Modal -->
+       <div class="modal-container">
+        <header class="header-modal">
+            <h2 class="tituloPrincipal-modal">Checkout</h2>
+        </header>
+        <section class="seccion-principal">
+            <form action="" method=" get" id="form-procesoPago">
+                <div class="informacion">
+
+                    <h3>Datos personales</h3>
+                    <label for="nombreApellido">Nombres y apellidos*
+                        <input type="text" name="datos" id="nombreApellido" placeholder="p.ej.:Ada Lovelace"
+                            class="textbox-style">
+                    </label>
+                    <label for="email">Email*
+                        <input type="email" name="datos" id="email" placeholder="p.ej.:Ada.lovelace@gmail.com"
+                            class="textbox-style" style="display: block;">
+                    </label>
+
+                    <hr>
+                </div>
+                <div class="opciones-de-pago">
+                    <h3>Opciones de pago</h3>
+                    <label for="efectivoDebito">
+                        <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
+                        Efectivo/Débito</label>
+
+                    <label for="credito">
+                        <input type="radio" name="opcionPago" id="credito" value="credito">
+                        Tarjeta de crédito</label>
+
+                    <label for="envio">
+                        <input type="checkbox" name="opcionPago" id="envio" value="envio">
+                        Necesito envío</label>
+
+                    <label for="descuento">
+                        <input type="checkbox" name="opcionPago" id="descuento" value="descuento">
+                        Tengo tarjeta de descuento</label>
+
+                </div>
+            </form>
+
+
+            <div class="contenedor-resumen-totalPagar">
+
+                <div class="resumen-total-pagar">
+                    <h3>Resumen</h3>
+                    <div>
+                        <p class="subtotal"> subtotal <span>$0</span> </p>
+                        <p class="descuento"> Descuento 10% <span>$0</span> </p>
+                        <p class="envio"> Envio <span>$0</span> </p>
+                        <p class="impuesto">Recargo <span>$0</span> </p>
+                        <p class="total">Toal <span>$0</span> </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="acciones-modal">
+            <button id="seguir-comprando" class="btn-modal-style">
+                SEGUIR COMPRANDO
+            </button>
+
+            <button id="finalizar-compra" class="boton-principal btn-modal-style">
+                FINALIZAR
+            </button>
+        </section>
+
+    </div>
     </section>
 
     <!-- FOOTER -->
@@ -464,6 +496,10 @@
         <p>ADA SHOP - gracias por preferirnos 💚</p>
 
     </footer>
+
+    <!-- Overlay -->
+    <div class="overlay hidden" id="overlay"></div>
+
 
     <script src="main.js"></script>
 </body>
