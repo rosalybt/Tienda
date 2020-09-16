@@ -1,28 +1,32 @@
-const botonLimpiar = document.querySelector("#boton-limpiar")
-const filtroNombre = document.querySelector("#busqueda")
+const botonLimpiar = document.getElementById('boton-limpiar')
+const filtroNombre = document.getElementById('busqueda')
 const checkBoxes = document.querySelectorAll("input[type ='checkbox']")
 const listaCheckBoxPuntaje = document.querySelectorAll("input[type ='checkbox'][name='puntuacion']")
 const listaCheckBoxCategoria = document.querySelectorAll("input[type ='checkbox'][name='categoria']")
-const cantidadProducto = document.querySelector(".cantidad-productos > p")
-const totalProducto = document.getElementsByClassName("card-producto")
-const productosOcultos = document.getElementsByClassName("card-producto hidden")
+const cantidadProducto = document.querySelector('.cantidad-productos > p')
+const totalProducto = document.getElementsByClassName('card-producto')
+const productosOcultos = document.getElementsByClassName('card-producto hidden')
 const tarjetas = document.getElementsByClassName('card-producto')
-const botonVerComoLista = document.querySelector(".show-list")
-const botonVerComoGrid = document.querySelector(".show-grid")
-const contenedorTarjetas = document.querySelector(".contenedor-productos")
-const botonAbrirCarrito = document.getElementById("abrir-carrito")
-const botonCerrarCarrito = document.getElementById("cerrar-carrito")
-const menuCarrito = document.querySelector(".menu-carrito")
-const overlay = document.getElementById("overlay")
-const botonRealizarCompra = document.getElementById("realizar-compra")
-const botonSeguirComprando = document.getElementById("seguir-comprando")
-const botonFinalizarCompra = document.getElementById("finalizar-compra")
-const modal = document.getElementById("modal-container")
-const html = document.querySelector("html")
+const botonVerComoLista = document.querySelector('.show-list')
+const botonVerComoGrid = document.querySelector('.show-grid')
+const contenedorTarjetas = document.querySelector('.contenedor-productos')
+const botonAbrirCarrito = document.getElementById('abrir-carrito')
+const botonCerrarCarrito = document.getElementById('cerrar-carrito')
+const menuCarrito = document.querySelector('.menu-carrito')
+const overlay = document.getElementById('overlay')
+const botonRealizarCompra = document.getElementById('realizar-compra')
+const botonSeguirComprando = document.getElementById('seguir-comprando')
+const botonFinalizarCompra = document.getElementById('finalizar-compra')
+const modal = document.querySelector('.modal-container')
+const body = document.body
 
 
 
-// ======FUNCIONES========//
+// =============================
+//          FUNCIONES
+// ============================
+
+
 //funcion filtro por puntaje
 for (let checkbox of listaCheckBoxPuntaje) {
     checkbox.onclick = () => {
@@ -30,7 +34,6 @@ for (let checkbox of listaCheckBoxPuntaje) {
     };
 
 }
-
 
 const hayCheckboxSeleccionado = () => {
     for (let checkbox of listaCheckBoxPuntaje) {
@@ -64,41 +67,42 @@ const filtrarTarjetas = () => {
     contarProductos(productosOcultos.length);
 };
 
-//funcion contador de productos
+//devuelve el resultado de la cantidad de productos al hacer una busqueda
 const contarProductos = (cantidad) => {
-
     cantidad = totalProducto.length - cantidad
     cantidadProducto.textContent = `Mostrando ${cantidad} producto(s) de ${totalProducto.length}`
-
 }
 
 const abrirModal = () => {
-    overlay.style.zIndex = "3"
-    modal.style.visibility = "visible"
-    console.log("Compra realizada con exito")
+    overlay.style.zIndex = "3";
+    body.classList.add('no-scroll')
+    modal.classList.add('mostrar-modal')
 }
 
 const cerrarModal = () => {
-    modal.style.visibility = "hidden"
+    modal.classList.remove('mostrar-modal')
     overlay.style.zIndex = "1"
+    body.classList.remove('no-scroll')
 }
 
 const abrirCarrito = () => {
-    overlay.classList.remove("hidden")
-    menuCarrito.classList.remove("hidden")
-    html.style.overflowY = "hidden"
+    body.classList.add('no-scroll')
+    overlay.classList.remove('hidden')
+    menuCarrito.classList.add('mostrar-carrito')
+  
 }
-
 
 const cerrarCarrito = () => {
-    overlay.classList.add("hidden")
-    menuCarrito.classList.add("hidden")
-    html.style.overflowY = "auto"
+    overlay.classList.add('hidden')
+    menuCarrito.classList.remove('mostrar-carrito')
+    body.classList.remove('no-scroll')
 }
 
 
 
-//====Eventos=====//
+//============================
+//          Eventos
+//============================
 
 // filtrar busqueda por textbox
 filtroNombre.oninput = () => {
@@ -118,7 +122,6 @@ filtroNombre.oninput = () => {
 };
 
 
-// limpiar 
 botonLimpiar.onclick = () => {
     filtroNombre.value = ""
 
@@ -144,7 +147,6 @@ botonVerComoGrid.onclick = () => {
     contenedorTarjetas.classList.remove('list-view')
 }
 
-// Funcion abrir carrito de compras
 botonAbrirCarrito.onclick = () => {
     abrirCarrito();
 }
@@ -153,18 +155,15 @@ botonCerrarCarrito.onclick = () => {
     cerrarCarrito();
 }
 
-// Funcion abrir modal
 botonRealizarCompra.onclick = () => {
     abrirModal();
 }
 
-// Funcon seguir Seguir Comprando
 botonSeguirComprando.onclick = () => {
     cerrarModal();
     cerrarCarrito();
 }
 
-// Funcion finalizar la compra
-botonFinalizarCompra = () => {
+botonFinalizarCompra.onclick = () => {
     cerrarModal();
 }
