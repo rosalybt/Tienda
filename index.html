@@ -49,7 +49,7 @@
         </div>
 
     </header>
- 
+
     <!-- SECCION PRINCIPAL -->
     <section class="contenido-principal">
         <!-- ASIDE -->
@@ -76,12 +76,11 @@
 
                 <div class="contenedor-filtro-categoria">
                     <p class="nombre-filtro negrita">CATEGORÍA</p>
-                    <label for="consola"><input type="checkbox" name="categoria" id="consola"> CONSOLAS</label>
-                    <label for="notebook"> <input type="checkbox" name="categoria" id="notebook"> NOTEBOOKS</label>
-                    <label for="camara"><input type="checkbox" name="categoria" id="camara"> CÁMARAS</label>
-                    <label for="celular"><input type="checkbox" name="categoria" id="celular"> CELULARES</label>
-                    <label for="accesorio"> <input type="checkbox" name="categoria" id="accesorio">
-                        ACCESORIOS</label>
+                    <label for="consola"><input type="checkbox" name="categoria" value="consolas"> CONSOLAS</label>
+                    <label for="notebook"> <input type="checkbox" name="categoria" value="notebook"> NOTEBOOKS</label>
+                    <label for="camara"><input type="checkbox" name="categoria" value="camara"> CÁMARAS</label>
+                    <label for="celular"><input type="checkbox" name="categoria" value="celular"> CELULARES</label>
+                    <label for="accesorio"> <input type="checkbox" name="categoria" value="accesorio"> ACCESORIOS</label>
                 </div>
                 <div class="contenedor-filtro-puntaje">
                     <h4 class="nombre-filtro negrita">PUNTAJE</h4>
@@ -155,7 +154,7 @@
 
 
             <div class="contenedor-productos">
-                <article class="card-producto" data-nombre="celular xiaomi" data-categoria="celulares"
+                <article class="card-producto" data-nombre="celular xiaomi" data-categoria="celular"
                     data-precio="22499" data-rating="3">
                     <img src="imagenes/img-no-producto.svg" alt="celular xiaomi azul">
                     <div class="informacion">
@@ -198,7 +197,7 @@
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
 
-                <article class="card-producto" data-nombre="camara nikon" data-categoria="camaras" data-precio="54999"
+                <article class="card-producto" data-nombre="camara nikon" data-categoria="camara" data-precio="54999"
                     data-rating="2">
                     <img src="imagenes/img-no-producto.svg" alt="Camara nikon negra">
                     <div class="informacion">
@@ -220,7 +219,7 @@
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
 
-                <article class="card-producto" data-nombre="headphones sony" data-categoria="accesorios"
+                <article class="card-producto" data-nombre="headphones sony" data-categoria="accesorio"
                     data-precio="24999" data-rating="3">
                     <img src="imagenes/img-no-producto.svg" alt="headphones sony negros">
                     <div class="informacion">
@@ -264,7 +263,7 @@
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
 
-                <article class="card-producto" data-nombre="notebook asus" data-categoria="notebooks"
+                <article class="card-producto" data-nombre="notebook asus" data-categoria="notebook"
                     data-precio="21999" data-rating="1">
                     <img src="imagenes/img-no-producto.svg" alt="ordenador asus negro">
                     <div class="informacion">
@@ -286,7 +285,7 @@
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
 
-                <article class="card-producto" data-nombre="notebook msi" data-categoria="notebooks" data-precio="37999"
+                <article class="card-producto" data-nombre="notebook msi" data-categoria="notebook" data-precio="37999"
                     data-rating="3">
                     <img src="imagenes/img-no-producto.svg" alt="ordeneador msi negra detalles rojos">
                     <div class="informacion">
@@ -308,7 +307,7 @@
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
 
-                <article class="card-producto" data-nombre="headphones philips" data-categoria="accesorios"
+                <article class="card-producto" data-nombre="headphones philips" data-categoria="accesorio"
                     data-precio="11999" data-rating="2">
                     <img src="imagenes/img-no-producto.svg" alt="headphones philips negros">
                     <div class="informacion">
@@ -330,7 +329,7 @@
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
 
-                <article class="card-producto" data-nombre="macbook" data-categoria="notebooks" data-precio="119999"
+                <article class="card-producto" data-nombre="macbook" data-categoria="notebook" data-precio="119999"
                     data-rating="4">
                     <img src="imagenes/img-no-producto.svg" alt="macbook  gris">
                     <div class="informacion">
@@ -352,7 +351,7 @@
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
 
-                <article class="card-producto" data-nombre="iphone" data-categoria="celulares" data-precio="79999"
+                <article class="card-producto" data-nombre="iphone" data-categoria="celular" data-precio="79999"
                     data-rating="3">
                     <img src="imagenes/img-no-producto.svg" alt="iphone 6 gris">
                     <div class="informacion">
@@ -395,7 +394,7 @@
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
-                <article class="card-producto" data-nombre="mouse gamer" data-categoria="accesorios" data-precio="4999"
+                <article class="card-producto" data-nombre="mouse gamer" data-categoria="accesorio" data-precio="4999"
                     data-rating="5">
                     <img src="imagenes/img-no-producto.svg" alt="mouse gamer negro - detalles multicolor">
                     <div class="informacion">
@@ -419,75 +418,75 @@
             </div>
 
         </main>
-               <!-- Modal -->
-       <div class="modal-container">
-        <header class="header-modal">
-            <h2 class="tituloPrincipal-modal">Checkout</h2>
-        </header>
-        <section class="seccion-principal">
-            <form action="" method=" get" id="form-procesoPago">
-                <div class="informacion">
+        <!-- Modal -->
+        <div class="modal-container">
+            <header class="header-modal">
+                <h2 class="tituloPrincipal-modal">Checkout</h2>
+            </header>
+            <section class="seccion-principal">
+                <form action="" method=" get" id="form-procesoPago">
+                    <div class="informacion">
 
-                    <h3>Datos personales</h3>
-                    <label for="nombreApellido">Nombres y apellidos*
-                        <input type="text" name="datos" id="nombreApellido" placeholder="p.ej.:Ada Lovelace"
-                            class="textbox-style">
-                    </label>
-                    <label for="email">Email*
-                        <input type="email" name="datos" id="email" placeholder="p.ej.:Ada.lovelace@gmail.com"
-                            class="textbox-style" style="display: block;">
-                    </label>
+                        <h3>Datos personales</h3>
+                        <label for="nombreApellido">Nombres y apellidos*
+                            <input type="text" name="datos" id="nombreApellido" placeholder="p.ej.:Ada Lovelace"
+                                class="textbox-style">
+                        </label>
+                        <label for="email">Email*
+                            <input type="email" name="datos" id="email" placeholder="p.ej.:Ada.lovelace@gmail.com"
+                                class="textbox-style" style="display: block;">
+                        </label>
 
-                    <hr>
-                </div>
-                <div class="opciones-de-pago">
-                    <h3>Opciones de pago</h3>
-                    <label for="efectivoDebito">
-                        <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
-                        Efectivo/Débito</label>
-
-                    <label for="credito">
-                        <input type="radio" name="opcionPago" id="credito" value="credito">
-                        Tarjeta de crédito</label>
-
-                    <label for="envio">
-                        <input type="checkbox" name="opcionPago" id="envio" value="envio">
-                        Necesito envío</label>
-
-                    <label for="descuento">
-                        <input type="checkbox" name="opcionPago" id="descuento" value="descuento">
-                        Tengo tarjeta de descuento</label>
-
-                </div>
-            </form>
-
-
-            <div class="contenedor-resumen-totalPagar">
-
-                <div class="resumen-total-pagar">
-                    <h3>Resumen</h3>
-                    <div>
-                        <p class="subtotal"> subtotal <span>$0</span> </p>
-                        <p class="descuento"> Descuento 10% <span>$0</span> </p>
-                        <p class="envio"> Envio <span>$0</span> </p>
-                        <p class="impuesto">Recargo <span>$0</span> </p>
-                        <p class="total">Toal <span>$0</span> </p>
+                        <hr>
                     </div>
+                    <div class="opciones-de-pago">
+                        <h3>Opciones de pago</h3>
+                        <label for="efectivoDebito">
+                            <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
+                            Efectivo/Débito</label>
+
+                        <label for="credito">
+                            <input type="radio" name="opcionPago" id="credito" value="credito">
+                            Tarjeta de crédito</label>
+
+                        <label for="envio">
+                            <input type="checkbox" name="opcionPago" id="envio" value="envio">
+                            Necesito envío</label>
+
+                        <label for="descuento">
+                            <input type="checkbox" name="opcionPago" id="descuento" value="descuento">
+                            Tengo tarjeta de descuento</label>
+
+                    </div>
+                </form>
+
+
+                <div class="contenedor-resumen-totalPagar">
+
+                    <div class="resumen-total-pagar">
+                        <h3>Resumen</h3>
+                        <div>
+                            <p class="subtotal"> subtotal <span>$0</span> </p>
+                            <p class="descuento"> Descuento 10% <span>$0</span> </p>
+                            <p class="envio"> Envio <span>$0</span> </p>
+                            <p class="impuesto">Recargo <span>$0</span> </p>
+                            <p class="total">Toal <span>$0</span> </p>
+                        </div>
+                    </div>
+
                 </div>
+            </section>
+            <section class="acciones-modal">
+                <button id="seguir-comprando" class="btn-modal-style">
+                    SEGUIR COMPRANDO
+                </button>
 
-            </div>
-        </section>
-        <section class="acciones-modal">
-            <button id="seguir-comprando" class="btn-modal-style">
-                SEGUIR COMPRANDO
-            </button>
+                <button id="finalizar-compra" class="boton-principal btn-modal-style">
+                    FINALIZAR
+                </button>
+            </section>
 
-            <button id="finalizar-compra" class="boton-principal btn-modal-style">
-                FINALIZAR
-            </button>
-        </section>
-
-    </div>
+        </div>
     </section>
 
     <!-- FOOTER -->
