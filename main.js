@@ -6,7 +6,7 @@ const listaCheckBoxCategoria = document.querySelectorAll("input[type ='checkbox'
 const cantidadProducto = document.querySelector('.cantidad-productos > p')
 const totalProducto = document.getElementsByClassName('card-producto')
 const productosOcultos = document.getElementsByClassName('card-producto hidden')
-const tarjetas = document.getElementsByClassName('card-producto')
+const cards = document.getElementsByClassName('card-producto')
 const botonVerComoLista = document.querySelector('.show-list')
 const botonVerComoGrid = document.querySelector('.show-grid')
 const contenedorTarjetas = document.querySelector('.contenedor-productos')
@@ -21,51 +21,115 @@ const modal = document.querySelector('.modal-container')
 const body = document.body
 
 
-
 // =============================
 //          FUNCIONES
 // ============================
 
+const hide = (element) => {
+    return element.classList.add("hidden")
+}
+const show = (element) => {
+    return element.classList.remove("hidden")
+}
 
-//funcion filtro por puntaje
-for (let checkbox of listaCheckBoxPuntaje) {
-    checkbox.onclick = () => {
-        filtrarTarjetas();
+
+const caracteristicaTarjeta = (checkbox, card) => {
+
+    if (checkbox.name === "puntuacion") {
+        return card.dataset.rating;
+    } else {
+        return card.dataset.categoria;
+    }
+}
+
+const hayAlgunCheckBoxChequeado = (filtro) => {
+    for (let checkbox of filtro) {
+        if (checkbox.checked) {
+            return true
+        }
+    }
+    return false
+}
+const hayAlgoEscritoEnElInput = () => {
+    if (filtroNombre.value) {
+        return true
+    }  else {
+        return false
+    }
+}
+
+
+
+const compararInputConTarjeta = (card) => {
+    if (card.dataset.nombre.includes(filtroNombre.value.toLowerCase())) {
+        return true
+    } else {
+        return false
+    }
+}
+
+const compararCheckboxConTarjeta = (card, filtro) => {
+
+
+    for (let checkbox of filtro) {
+        caracteristica = caracteristicaTarjeta(checkbox, card)
+        if (checkbox.checked) {
+            if (checkbox.value === caracteristicaTarjeta(checkbox, card)) {
+                return true
+            }
+        }
+    }
+    return false
+};
+
+
+
+const validarInput = (card) => {
+    if (hayAlgoEscritoEnElInput()) {
+        if (compararInputConTarjeta(card)) {
+            return true
+        }  else {
+            return false
+        }
+    } else {
+        return true
+    }
+}
+
+
+const validarchecks = (card, filtro) => {
+
+    if (hayAlgunCheckBoxChequeado(filtro)) {
+        if (compararCheckboxConTarjeta(card, filtro)) {
+            return true
+        }else {
+            return false
+        }
+    } else {
+        return true
     };
 
 }
+const pasaFiltros = (card) => {
 
-const hayCheckboxSeleccionado = () => {
-    for (let checkbox of listaCheckBoxPuntaje) {
-        if (checkbox.checked) {
-            return true;
-        }
+    if (validarchecks(card, listaCheckBoxCategoria) && validarchecks(card, listaCheckBoxPuntaje) && validarInput(card)) {
+        return true
+    } else {
+        return false
     }
-};
 
-const coincidenCheckboxYTarjeta = tarjeta => {
-    const rating = tarjeta.dataset.rating;
-    for (let checkbox of listaCheckBoxPuntaje) {
-        if (checkbox.value === rating && checkbox.checked) {
-            return true;
-        }
-    }
-};
+}
 
 const filtrarTarjetas = () => {
-    for (let tarjeta of tarjetas) {
-        tarjeta.classList.add('hidden');
-        if (hayCheckboxSeleccionado()) {
-            if (coincidenCheckboxYTarjeta(tarjeta)) {
-                tarjeta.classList.remove('hidden');
-            }
+    for (let card of cards) {
+        if (pasaFiltros(card)) {
+            show(card)
         }
         else {
-            tarjeta.classList.remove('hidden')
+            hide(card)
         }
     }
-    contarProductos(productosOcultos.length);
-};
+}
 
 //devuelve el resultado de la cantidad de productos al hacer una busqueda
 const contarProductos = (cantidad) => {
@@ -87,13 +151,13 @@ const cerrarModal = () => {
 
 const abrirCarrito = () => {
     body.classList.add('no-scroll')
-    overlay.classList.remove('hidden')
+    show(overlay)
     menuCarrito.classList.add('mostrar-carrito')
-  
+
 }
 
 const cerrarCarrito = () => {
-    overlay.classList.add('hidden')
+    hide(overlay)
     menuCarrito.classList.remove('mostrar-carrito')
     body.classList.remove('no-scroll')
 }
@@ -107,20 +171,23 @@ const cerrarCarrito = () => {
 // filtrar busqueda por textbox
 filtroNombre.oninput = () => {
 
-    for (let tarjeta of tarjetas) {
-
-        const titulo = tarjeta.dataset.nombre;
-        const busqueda = filtroNombre.value;
-
-        if (titulo.includes(busqueda)) {
-            tarjeta.classList.remove('hidden');
-        } else {
-            tarjeta.classList.add('hidden');
-        }
-    }
+    filtrarTarjetas()
     contarProductos(productosOcultos.length);
 };
 
+for (let checkbox of listaCheckBoxCategoria) {
+    checkbox.oninput = () => {
+        filtrarTarjetas()
+    }
+
+};
+
+for (let checkbox of listaCheckBoxPuntaje) {
+    checkbox.oninput = () => {
+        filtrarTarjetas()
+    }
+
+};
 
 botonLimpiar.onclick = () => {
     filtroNombre.value = ""
@@ -131,8 +198,8 @@ botonLimpiar.onclick = () => {
         }
     }
 
-    for (let tarjeta of tarjetas) {
-        tarjeta.classList.remove('hidden')
+    for (let card of cards) {
+        show(card)
     }
     contarProductos(productosOcultos.length);
 };
@@ -141,29 +208,29 @@ botonLimpiar.onclick = () => {
 //  ver como lista o grilla
 botonVerComoLista.onclick = () => {
     contenedorTarjetas.classList.add('list-view')
-}
+};
 
 botonVerComoGrid.onclick = () => {
     contenedorTarjetas.classList.remove('list-view')
-}
+};
 
 botonAbrirCarrito.onclick = () => {
     abrirCarrito();
-}
+};
 
 botonCerrarCarrito.onclick = () => {
     cerrarCarrito();
-}
+};
 
 botonRealizarCompra.onclick = () => {
     abrirModal();
-}
+};
 
 botonSeguirComprando.onclick = () => {
     cerrarModal();
     cerrarCarrito();
-}
+};
 
 botonFinalizarCompra.onclick = () => {
     cerrarModal();
-}
+};
