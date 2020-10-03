@@ -5,8 +5,6 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     font-family: 'Poppins';
     font-weight: 100;
@@ -19,13 +17,11 @@ body {
     font-weight: bold;
     align-content: center;
 }
+
 .no-scroll {
     position: fixed;
     overflow: hidden;
- 
 }
-
-
 
 .overlay {
     background-color: rgba(0, 0, 0, 0.3);
@@ -77,6 +73,7 @@ body {
 /* Menu carrito */
 
 .menu-carrito {
+    visibility: hidden;
     height: 100vh;
     width: 400px;
     background-color: #ffff;
@@ -90,7 +87,8 @@ body {
 }
 
 .mostrar-carrito {
-    transform: translate(0)
+    transform: translate(0);
+    visibility: visible;
 }
 
 .header-carrito {
@@ -159,7 +157,6 @@ body {
     display: flex;
     flex-direction: column;
     visibility: hidden;
-
     transform: scale(0.1) translate(50%, 50%);
     transition: all 0.3s ease-in;
 }
@@ -182,6 +179,7 @@ body {
     flex-direction: column;
     display: flex;
     justify-content: space-evenly;
+    margin-top: 1em;
 }
 
 .textbox-style {
@@ -205,24 +203,28 @@ hr {
     opacity: 0.5;
 }
 
-.contenedor-resumen-totalPagar {
+.contenedor-resumen-checkout {
     margin: 0 0 10px 20px;
     width: 40%;
     height: 100%;
+    background-color: #f5f5f5;
+    padding: 30px 20px 30px 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.resumen-total-pagar {
-    background-color: #f5f5f5;
-    height: 100%;
-    border-radius: 5px;
-    padding: 10px;
+.renglones-resumen * {
+    display: flex;
+    justify-content: space-between;
 }
 
 .acciones-modal {
-    height: 100%;
-    align-items: center;
+    margin-top: 20px;
     justify-content: flex-end;
     display: flex;
+  
 }
 
 .btn-modal-style {
@@ -235,6 +237,14 @@ hr {
 
 #seguir-comprando {
     background-color: #f5f5f5;
+}
+
+.style-recargo {
+    color: #FF0000;
+}
+
+.style-descuento {
+    color: #53a653;
 }
 
 /* BANNER */
@@ -257,6 +267,7 @@ hr {
 
 .contenido-principal {
     display: flex;
+    max-width: 1351px;
 }
 
 /* ASIDE */
@@ -374,7 +385,7 @@ button {
 }
 
 .card-producto {
-    flex: 2 1 300px;
+    flex: 1 1 300px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -382,7 +393,17 @@ button {
     background-color: #fff;
     padding: 20px;
     display: flex;
+    /* max-width: 300px; */
+}
 
+.contenedor-imagen-producto img {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.contenedor-imagen-producto {
+    height: 250px;
+    display: flex;
 }
 
 .informacion p {
@@ -395,7 +416,7 @@ button {
     background-color: #f5f5f5;
     border-radius: 5px;
     border: none;
-    width: 250px;
+    width: 90%;
     height: 50px;
     margin: 10px;
 }

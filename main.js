@@ -53,7 +53,7 @@ const hayAlgunCheckBoxChequeado = (filtro) => {
 const hayAlgoEscritoEnElInput = () => {
     if (filtroNombre.value) {
         return true
-    }  else {
+    } else {
         return false
     }
 }
@@ -88,7 +88,7 @@ const validarInput = (card) => {
     if (hayAlgoEscritoEnElInput()) {
         if (compararInputConTarjeta(card)) {
             return true
-        }  else {
+        } else {
             return false
         }
     } else {
@@ -102,7 +102,7 @@ const validarchecks = (card, filtro) => {
     if (hayAlgunCheckBoxChequeado(filtro)) {
         if (compararCheckboxConTarjeta(card, filtro)) {
             return true
-        }else {
+        } else {
             return false
         }
     } else {
@@ -160,6 +160,93 @@ const cerrarCarrito = () => {
     hide(overlay)
     menuCarrito.classList.remove('mostrar-carrito')
     body.classList.remove('no-scroll')
+}
+
+const renglonSubtotal = document.querySelector(".renglon-subtotal")
+const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$',''))
+
+const renglonDescuento = document.querySelector(".renglon-descuento")
+let descuento = document.getElementById("monto-descuento")
+
+const renglonEnvio = document.querySelector(".renglon-envio")
+const envio = document.getElementById("monto-envio")
+console.log(renglonEnvio)
+const renglonRecargo = document.querySelector(".renglon-recargo")
+let recargo = document.getElementById("monto-recargo")
+
+const renglonTotal = document.querySelector(".renglon-total")
+let total = document.getElementById("monto-total")
+
+const opcionesDePago = document.querySelectorAll(".opciones-de-pago")
+
+const efectivo = document.querySelector("#efectivoDebito")
+const credito = document.querySelector("#credito")
+const envioOpcion = document.querySelector("#envio")
+const tarjetaDescuento = document.querySelector("#descuento")
+
+// calcular checkout
+// subtotal.textContent = 5540
+
+for (let opcion of opcionesDePago) {
+    opcion.oninput = () => {
+        calcularTotal()
+    }
+}
+
+let resultadoRecargo
+
+const recargoTarjeta = () => {
+    if (credito.checked) {
+        resultadoRecargo = subtotal * 0.1
+        recargo.textContent = "$" + resultadoRecargo
+        renglonRecargo.classList.remove('hidden')
+    }
+    else {
+        resultadoRecargo = 0
+        renglonRecargo.classList.add('hidden')
+    }
+    return resultadoRecargo
+}
+
+
+let resultadoDescuento
+
+const aplicarDescuento = () => {
+    if (tarjetaDescuento.checked) {
+        resultadoDescuento = - subtotal * 0.1
+        descuento.textContent = "$" + resultadoDescuento
+        renglonDescuento.classList.remove('hidden')
+    }
+    else {
+        resultadoDescuento = 0
+        renglonDescuento.classList.add('hidden')
+    }
+    return resultadoDescuento
+}
+
+
+let resultadoEnvio
+
+const recargoEnvio = () => {
+    if (envioOpcion.checked) {
+        resultadoEnvio = 50
+        envio.textContent = "$" + resultadoEnvio
+        renglonEnvio.classList.remove('hidden')
+
+    }
+    else {
+        resultadoEnvio = 0
+        renglonEnvio.classList.add('hidden')
+    }
+    return resultadoEnvio
+}
+
+
+const calcularTotal = () => {
+    let totalReal = subtotal
+    totalReal = subtotal + recargoEnvio() + aplicarDescuento() + recargoTarjeta()
+    total.textContent = "$" + totalReal
+    return totalReal
 }
 
 
