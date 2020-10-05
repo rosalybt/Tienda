@@ -16,7 +16,7 @@
     <header class="header-container">
         <div class="header-principal">
             <div class="logo-tienda">
-                <img class="logo" src="imagenes/iso_blanco.svg">
+                <img class="logo" src="imagenes/iso_blanco.svg" alt="figura triangular abstracto rosado logo ada shop">
                 <h1 class="nombre-tienda">ADA SHOP</h1>
             </div>
             <div class="contenedor-carrito">
@@ -27,14 +27,16 @@
             </div>
         </div>
 
-        <div class="banner">
+        <div class="banner" aria-describedby="banner principal de la pagina">
             <h2 class="titulo-principal">ELECTRÓNICA</h2>
         </div>
         <!-- menu carrito -->
-        <div class="menu-carrito">
+        <div class="menu-carrito" aria-modal="true" aria-labelledby="titulo-carrito">
             <header class="header-carrito">
-                <h2>Carrito</h2>
-                <button id="cerrar-carrito"><i class="far fa-window-close"></i></i></button>
+                <h2 class="titulo-carrito">Carrito</h2>
+                <button id="cerrar-carrito" aria-label="cerrar carrito de compras">
+                    <i class="far fa-window-close"></i>
+                </button>
             </header>
             <p>No tienes productos en el carrito, ¡agrega algunos!</p>
             <section class="productos-seleccionados">
@@ -42,8 +44,8 @@
             </section>
 
             <section class="acciones-carrito">
-                <button id="realizar-compra" class="boton-principal"> COMPRAR</button>
-                <button id="vaciar-carrito">VACIAR</button>
+                <button id="realizar-compra" class="boton-principal negrita"> COMPRAR</button>
+                <button id="vaciar-carrito" class="negrita" class="vaciarCarrito">VACIAR CARRITO</button>
             </section>
 
         </div>
@@ -67,8 +69,9 @@
                 <div class="contenedor-filtro-busqueda">
                     <h4 class="nombre-filtro negrita">BÚSQUEDA</h4>
                     <div class="textbox-busqueda">
-                        <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos"
-                            class="textbox-style">
+                        <label for="busqueda">
+                            <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos"
+                                class="textbox-style"></label>
                         <i class="fas fa-search"></i>
                     </div>
 
@@ -76,60 +79,86 @@
 
                 <div class="contenedor-filtro-categoria">
                     <p class="nombre-filtro negrita">CATEGORÍA</p>
-                    <label for="consola"><input type="checkbox" name="categoria" value="consolas"> CONSOLAS</label>
-                    <label for="notebook"> <input type="checkbox" name="categoria" value="notebook"> NOTEBOOKS</label>
-                    <label for="camara"><input type="checkbox" name="categoria" value="camara"> CÁMARAS</label>
-                    <label for="celular"><input type="checkbox" name="categoria" value="celular"> CELULARES</label>
-                    <label for="accesorio"> <input type="checkbox" name="categoria" value="accesorio">
-                        ACCESORIOS</label>
+
+                    <fieldset>
+
+                        <label for="consola">
+                            <input type="checkbox" name="categoria" value="consolas" aria-label="filtrar por consolas">
+                            CONSOLAS
+                        </label>
+                        <label for="notebook">
+                            <input type="checkbox" name="categoria" value="notebook" aria-label="filtrar por notebooks">
+                            NOTEBOOKS
+                        </label>
+                        <label for="camara">
+                            <input type="checkbox" name="categoria" value="camara" aria-label="filtrar por camaras">
+                            CÁMARAS
+                        </label>
+                        <label for="celular">
+                            <input type="checkbox" name="categoria" value="celular" aria-label="filtrar por celulares">
+                            CELULARES
+                        </label>
+                        <label for="accesorio">
+                            <input type="checkbox" name="categoria" value="accesorio"
+                                aria-label="filtrar por accesorios"> ACCESORIOS
+                        </label>
+                    </fieldset>
                 </div>
                 <div class="contenedor-filtro-puntaje">
                     <h4 class="nombre-filtro negrita">PUNTAJE</h4>
 
-                    <label for="cinco-estrellas">
-                        <input type="checkbox" name="puntuacion" value="5" id="cinco-estrellas">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        (5)</label>
+                    <fieldset>
+                        <label for="cinco-estrellas">
+                            <input type="checkbox" name="puntuacion" value="5" id="cinco-estrellas"
+                                aria-label="productos con cinco estrellas">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            (5)</label>
 
-                    <label for="cuatro-estrellas">
-                        <input type="checkbox" name="puntuacion" value="4" id="cuatro-estrellas">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        (4)</label>
+                        <label for="cuatro-estrellas">
+                            <input type="checkbox" name="puntuacion" value="4" id="cuatro-estrellas"
+                                aria-label="productos con cuatro estrellas">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            (4)</label>
 
-                    <label for="tres-estrellas">
-                        <input type="checkbox" name="puntuacion" value="3" id="tres-estrellas">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        (3)</label>
+                        <label for="tres-estrellas">
+                            <input type="checkbox" name="puntuacion" value="3" id="tres-estrellas"
+                                aria-label="productos con tres estrellas">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            (3)</label>
 
-                    <label for="dos-estrellas">
-                        <input type="checkbox" name="puntuacion" value="2" id="dos-estrellas">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        (2)</label>
+                        <label for="dos-estrellas">
+                            <input type="checkbox" name="puntuacion" value="2" id="dos-estrellas"
+                                aria-label="productos con dos estrellas">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            (2)</label>
 
-                    <label for="una-estrella">
-                        <input type="checkbox" name="puntuacion" value="1" id="una-estrella">
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        <i class="far fa-star"></i>
-                        (1)</label>
+                        <label for="una-estrella">
+                            <input type="checkbox" name="puntuacion" value="1" id="una-estrella"
+                                aria-label="productos con una estrella">
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            (1)</label>
+
+                    </fieldset>
                 </div>
             </form>
         </aside>
@@ -144,10 +173,10 @@
                 </div>
                 <div class="show-items">
                     <p>Ver como</p>
-                    <button class="show-list">
+                    <button class="show-list" aria-label="mostrar articulos en forma de lista">
                         <i class="fas fa-list-ul icono-size"></i>
                     </button>
-                    <button class="show-grid">
+                    <button class="show-grid" aria-label="mostrar articulos en forma de grilla">
                         <i class="fas fa-th icono-size"></i>
                     </button>
                 </div>
@@ -169,13 +198,17 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion">
+
+                    <div class="puntuacion" >
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
+
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
                 <article class="card-producto" data-nombre="playstation 4" data-categoria="consolas" data-precio="59999"
@@ -193,12 +226,14 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion">
+                    <div class="puntuacion" aria-label="puntuacion cinco estrellas">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -218,12 +253,14 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion">
+                    <div class="puntuacion" >
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">2 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -243,12 +280,14 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion">
+                    <div class="puntuacion" aria-label="puntuacion tres estrellas">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -268,12 +307,14 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion">
+                    <div class="puntuacion" aria-label="puntuacion cinco estrellas">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">5 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -293,12 +334,14 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion">
+                    <div class="puntuacion" aria-label="puntuacion una estrella">
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">1 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -311,7 +354,7 @@
 
                     <div class="informacion">
                         <p class="nombre-producto negrita">Notebook MSI</p>
-                        <p class="precio-producto hidden">$ 37999</p>
+                        <p class="precio-producto">$ 37999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
                             reprehenderit
@@ -324,6 +367,8 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -349,6 +394,8 @@
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">2 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -374,6 +421,8 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">4 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -399,6 +448,8 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -418,12 +469,14 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion">
+                    <div class="puntuacion" >
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">4 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -448,6 +501,8 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
+                        <br>
+                        <p class="puntuacion-escrita">5 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -479,47 +534,51 @@
 
                     <div class="opciones-de-pago">
                         <h3>Opciones de pago</h3>
-                        <label for="efectivoDebito">
-                            <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
-                            Efectivo/Débito</label>
 
-                        <label for="credito">
-                            <input type="radio" name="opcionPago" id="credito" value="credito">
-                            Tarjeta de crédito</label>
+                        <fieldset>
+                            <label for="efectivoDebito">
+                                <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
+                                Efectivo/Débito</label>
 
-                        <label for="envio">
-                            <input type="checkbox" name="opcionPago" id="envio" value="envio">
-                            Necesito envío</label>
+                            <label for="credito">
+                                <input type="radio" name="opcionPago" id="credito" value="credito">
+                                Tarjeta de crédito</label>
 
-                        <label for="descuento">
-                            <input type="checkbox" name="opcionPago" id="descuento" value="descuento">
-                            Tengo tarjeta de descuento</label>
+                            <label for="envio">
+                                <input type="checkbox" name="opcionPago" id="envio" value="envio">
+                                Necesito envío</label>
 
+                            <label for="descuento">
+                                <input type="checkbox" name="opcionPago" id="descuento" value="descuento">
+                                Tengo tarjeta de descuento</label>
+                        </fieldset>
                     </div>
                 </form>
 
 
                 <div class="contenedor-resumen-checkout">
 
-                        <h3 class="titulo-resumen-cuenta">Resumen</h3>
+                    <h3 class="titulo-resumen-cuenta">Resumen</h3>
 
-                        <div class="renglones-resumen">
-                            <p class="renglon-subtotal" data-precio="5540">Subtotal <span id="monto-subtotal">$5540</span> </p>
-                            <p class="renglon-descuento hidden style-descuento">Descuento 10% <span id="monto-descuento">0</span> </p>
-                            <p class="renglon-envio hidden">Envío <span id="monto-envio">0</span> </p>
-                            <p class="renglon-recargo hidden style-recargo">Recargo <span id="monto-recargo">0</span> </p>
-                            <h3 class="renglon-total">Total <span id="monto-total">$0</span> </h3>
-                        </div>
-                
+                    <div class="renglones-resumen">
+                        <p class="renglon-subtotal" data-precio="5540">Subtotal <span id="monto-subtotal">$5540</span>
+                        </p>
+                        <p class="renglon-descuento hidden style-descuento">Descuento 10% <span
+                                id="monto-descuento">0</span> </p>
+                        <p class="renglon-envio hidden">Envío <span id="monto-envio">0</span> </p>
+                        <p class="renglon-recargo hidden style-recargo">Recargo <span id="monto-recargo">0</span> </p>
+                        <h3 class="renglon-total">Total <span id="monto-total">$0</span> </h3>
+                    </div>
+
 
                 </div>
             </section>
             <section class="acciones-modal">
-                <button id="seguir-comprando" class="btn-modal-style">
+                <button id="seguir-comprando" class="btn-modal-style negrita">
                     SEGUIR COMPRANDO
                 </button>
 
-                <button id="finalizar-compra" class="boton-principal btn-modal-style">
+                <button id="finalizar-compra" class="boton-principal btn-modal-style negrita">
                     FINALIZAR
                 </button>
             </section>
@@ -529,13 +588,13 @@
 
     <!-- FOOTER -->
     <footer>
-        <img src="">
+        <img src="imagenes/iso_blanco.svg" alt="figura triangular abstracto rosado logo ada shop">
         <p>ADA SHOP - gracias por preferirnos 💚</p>
 
     </footer>
 
     <!-- Overlay -->
-    <div class="overlay hidden" id="overlay"></div>
+    <div class="overlay hidden" id="overlay" aria-hidden="true"></div>
 
 
     <script src="main.js"></script>
