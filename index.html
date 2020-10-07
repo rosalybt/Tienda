@@ -27,13 +27,13 @@
             </div>
         </div>
 
-        <div class="banner" aria-describedby="banner principal de la pagina">
+        <div class="banner" aria-label="Titulo principal de la pagina">
             <h2 class="titulo-principal">ELECTRÓNICA</h2>
         </div>
         <!-- menu carrito -->
-        <div class="menu-carrito" aria-modal="true" aria-labelledby="titulo-carrito">
+        <div role="dialog" aria-modal="true" aria-labelledby="titulo-carrito" class="menu-carrito" aria-hidden="true">
             <header class="header-carrito">
-                <h2 class="titulo-carrito">Carrito</h2>
+                <h2 id="titulo-carrito">Carrito</h2>
                 <button id="cerrar-carrito" aria-label="cerrar carrito de compras">
                     <i class="far fa-window-close"></i>
                 </button>
@@ -67,9 +67,10 @@
             <form action="" method="get" class="formulario-filtro">
 
                 <div class="contenedor-filtro-busqueda">
-                    <h4 class="nombre-filtro negrita">BÚSQUEDA</h4>
+                   
                     <div class="textbox-busqueda">
-                        <label for="busqueda">
+                        <label for="busqueda"> 
+                            <h4 class="nombre-filtro negrita">BÚSQUEDA</h4>
                             <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos"
                                 class="textbox-style"></label>
                         <i class="fas fa-search"></i>
@@ -78,9 +79,12 @@
                 </div>
 
                 <div class="contenedor-filtro-categoria">
-                    <p class="nombre-filtro negrita">CATEGORÍA</p>
+                   
 
                     <fieldset>
+                        <legend>
+                            <p class="nombre-filtro negrita">CATEGORÍA</p>
+                        </legend>
 
                         <label for="consola">
                             <input type="checkbox" name="categoria" value="consolas" aria-label="filtrar por consolas">
@@ -105,9 +109,9 @@
                     </fieldset>
                 </div>
                 <div class="contenedor-filtro-puntaje">
-                    <h4 class="nombre-filtro negrita">PUNTAJE</h4>
-
+                   
                     <fieldset>
+                        <legend> <h4 class="nombre-filtro negrita">PUNTAJE</h4></legend>
                         <label for="cinco-estrellas">
                             <input type="checkbox" name="puntuacion" value="5" id="cinco-estrellas"
                                 aria-label="productos con cinco estrellas">
@@ -190,7 +194,9 @@
                         <img src="imagenes/xiaomi.jpg" alt="celular xiaomi azul">
                     </div>
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Celular Xiaomi</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 22499</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -205,7 +211,6 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
 
@@ -218,7 +223,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">PlayStation 4</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 59999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -232,8 +239,7 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <br>
-                        <p class="puntuacion-escrita">3 de 5 estrellas</p>
+                        <p class="puntuacion-escrita">5 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
                 </article>
@@ -245,7 +251,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Cámara Nikon</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 54999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -259,7 +267,6 @@
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">2 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -272,7 +279,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Headphones Sony</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 24999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -286,7 +295,6 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -299,7 +307,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Nintendo Switch</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 46999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -313,7 +323,6 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">5 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -326,7 +335,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Notebook Asus</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 21999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -340,7 +351,6 @@
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">1 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -353,7 +363,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Notebook MSI</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 37999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -367,7 +379,6 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -380,7 +391,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Headphones Philips</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 11999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -394,7 +407,6 @@
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">2 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -407,7 +419,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Macbook</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 119999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -421,7 +435,6 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">4 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -434,7 +447,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">iPhone</p>
+                        <span class="offscreen">Precio del producto</span>
                         <p class="precio-producto">$ 79999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -448,7 +463,6 @@
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">3 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -461,7 +475,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Xbox One</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 69999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -475,7 +491,6 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">4 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>
@@ -487,7 +502,9 @@
                     </div>
 
                     <div class="informacion">
+                        <span class="offscreen">Nombre del producto</span>
                         <p class="nombre-producto negrita">Mouse Gamer</p>
+                        <span class="offscreen">precio del producto</span>
                         <p class="precio-producto">$ 4999</p>
                         <p class="descripcion hidden">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                             Eveniet hic consequuntur necessitatibus molestiae quidem, reiciendis atque id
@@ -501,7 +518,6 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
-                        <br>
                         <p class="puntuacion-escrita">5 de 5 estrellas</p>
                     </div>
                     <button class="boton-comprar">COMPRAR</button>

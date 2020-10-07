@@ -21,6 +21,7 @@ const modal = document.querySelector('.modal-container')
 const body = document.body
 
 
+
 // =============================
 //          FUNCIONES
 // ============================
@@ -153,6 +154,7 @@ const abrirCarrito = () => {
     body.classList.add('no-scroll')
     show(overlay)
     menuCarrito.classList.add('mostrar-carrito')
+    menuCarrito.setAttribute("aria-hidden","false")
 
 }
 
@@ -160,6 +162,8 @@ const cerrarCarrito = () => {
     hide(overlay)
     menuCarrito.classList.remove('mostrar-carrito')
     body.classList.remove('no-scroll')
+    menuCarrito.setAttribute("aria-hidden","true")
+
 }
 
 const renglonSubtotal = document.querySelector(".renglon-subtotal")
