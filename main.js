@@ -151,23 +151,34 @@ const cerrarModal = () => {
 }
 
 const abrirCarrito = () => {
+    // botonAbrirCarrito.setAttribute("aria-hidden", "true")
+    menuCarrito.setAttribute("aria-hidden", "false")
+    botonAbrirCarrito.tabIndex = -1
     body.classList.add('no-scroll')
     show(overlay)
+    botonAbrirCarrito.setAttribute("aria-expanded", "true")
+    menuCarrito.tabIndex = 0
+    menuCarrito.focus();
     menuCarrito.classList.add('mostrar-carrito')
-    menuCarrito.setAttribute("aria-hidden","false")
+    
 
 }
 
+
+
 const cerrarCarrito = () => {
+    // botonAbrirCarrito.setAttribute("aria-hidden","true")
+    botonAbrirCarrito.tabIndex = 0
     hide(overlay)
+    botonAbrirCarrito.setAttribute("aria-expanded", "false")
     menuCarrito.classList.remove('mostrar-carrito')
     body.classList.remove('no-scroll')
-    menuCarrito.setAttribute("aria-hidden","true")
+    menuCarrito.setAttribute("aria-hidden", "true")
 
 }
 
 const renglonSubtotal = document.querySelector(".renglon-subtotal")
-const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$',''))
+const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$', ''))
 
 const renglonDescuento = document.querySelector(".renglon-descuento")
 let descuento = document.getElementById("monto-descuento")

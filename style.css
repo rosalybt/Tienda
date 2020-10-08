@@ -82,13 +82,17 @@ fieldset {
     height: 100vh;
     max-width: 400px;
     background-color: #ffff;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     padding: 40px 20px 30px 20px;
     z-index: 2;
     transform: translateX(100%);
     transition: 1s ease;
+}
+
+.menu-carrito:focus {
+    outline: none;
 }
 
 .mostrar-carrito {
@@ -284,7 +288,6 @@ hr {
 }
 
 #busqueda {
-    height: 30px;
     width: 100%;
 }
 
@@ -293,10 +296,14 @@ hr {
     position: relative;
 }
 
+.contenedor-filtro-busqueda .textbox-busqueda>label {
+    width: 90%;
+}
+
 .fas.fa-search {
     position: absolute;
     right: 30px;
-    top: 5px;
+    top: 30px;
 }
 
 .contenedor-filtro-categoria, .contenedor-filtro-puntaje {

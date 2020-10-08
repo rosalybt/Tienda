@@ -20,40 +20,22 @@
                 <h1 class="nombre-tienda">ADA SHOP</h1>
             </div>
             <div class="contenedor-carrito">
-                <button id="abrir-carrito">
+                <button id="abrir-carrito" aria-expanded="false" aria-controls="cart" tabindex="0">
                     <i class="fas fa-shopping-cart icono-size"></i>
                     <p>Carrito (0 items)</p>
                 </button>
             </div>
         </div>
 
-        <div class="banner" aria-label="Titulo principal de la pagina">
+        <div class="banner">
             <h2 class="titulo-principal">ELECTRÓNICA</h2>
-        </div>
-        <!-- menu carrito -->
-        <div role="dialog" aria-modal="true" aria-labelledby="titulo-carrito" class="menu-carrito" aria-hidden="true">
-            <header class="header-carrito">
-                <h2 id="titulo-carrito">Carrito</h2>
-                <button id="cerrar-carrito" aria-label="cerrar carrito de compras">
-                    <i class="far fa-window-close"></i>
-                </button>
-            </header>
-            <p>No tienes productos en el carrito, ¡agrega algunos!</p>
-            <section class="productos-seleccionados">
-
-            </section>
-
-            <section class="acciones-carrito">
-                <button id="realizar-compra" class="boton-principal negrita"> COMPRAR</button>
-                <button id="vaciar-carrito" class="negrita" class="vaciarCarrito">VACIAR CARRITO</button>
-            </section>
-
         </div>
 
     </header>
 
     <!-- SECCION PRINCIPAL -->
     <section class="contenido-principal">
+
         <!-- ASIDE -->
         <aside class="filtros-busquedas">
             <div class="header-filtro-busqueda">
@@ -67,19 +49,20 @@
             <form action="" method="get" class="formulario-filtro">
 
                 <div class="contenedor-filtro-busqueda">
-                   
+
                     <div class="textbox-busqueda">
-                        <label for="busqueda"> 
+                        <label for="busqueda">
                             <h4 class="nombre-filtro negrita">BÚSQUEDA</h4>
                             <input type="text" name="buscar" id="busqueda" placeholder="Buscar productos"
-                                class="textbox-style"></label>
+                                class="textbox-style">
+
+                        </label>
                         <i class="fas fa-search"></i>
                     </div>
 
                 </div>
 
                 <div class="contenedor-filtro-categoria">
-                   
 
                     <fieldset>
                         <legend>
@@ -109,9 +92,11 @@
                     </fieldset>
                 </div>
                 <div class="contenedor-filtro-puntaje">
-                   
+
                     <fieldset>
-                        <legend> <h4 class="nombre-filtro negrita">PUNTAJE</h4></legend>
+                        <legend>
+                            <h4 class="nombre-filtro negrita">PUNTAJE</h4>
+                        </legend>
                         <label for="cinco-estrellas">
                             <input type="checkbox" name="puntuacion" value="5" id="cinco-estrellas"
                                 aria-label="productos con cinco estrellas">
@@ -205,7 +190,7 @@
                         </p>
                     </div>
 
-                    <div class="puntuacion" >
+                    <div class="puntuacion">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -261,7 +246,7 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion" >
+                    <div class="puntuacion">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="far fa-star"></i>
@@ -485,7 +470,7 @@
                             earum odio cupiditate laboriosam? Eum quae odit doloremque quas ducimus maiores natus
                         </p>
                     </div>
-                    <div class="puntuacion" >
+                    <div class="puntuacion">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -525,81 +510,7 @@
             </div>
 
         </main>
-        <!-- Modal -->
-        <div class="modal-container">
-            <header class="header-modal">
-                <h2 class="tituloPrincipal-modal">Checkout</h2>
-            </header>
-            <section class="seccion-principal">
-                <form action="" method=" get" id="form-procesoPago">
-                    <div class="informacion">
 
-                        <h3>Datos personales</h3>
-                        <label for="nombreApellido">Nombres y apellidos*
-                            <input type="text" name="datos" id="nombreApellido" placeholder="p.ej.:Ada Lovelace"
-                                class="textbox-style">
-                        </label>
-                        <label for="email">Email*
-                            <input type="email" name="datos" id="email" placeholder="p.ej.:Ada.lovelace@gmail.com"
-                                class="textbox-style" style="display: block;">
-                        </label>
-
-                        <hr>
-
-                    </div>
-
-                    <div class="opciones-de-pago">
-                        <h3>Opciones de pago</h3>
-
-                        <fieldset>
-                            <label for="efectivoDebito">
-                                <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
-                                Efectivo/Débito</label>
-
-                            <label for="credito">
-                                <input type="radio" name="opcionPago" id="credito" value="credito">
-                                Tarjeta de crédito</label>
-
-                            <label for="envio">
-                                <input type="checkbox" name="opcionPago" id="envio" value="envio">
-                                Necesito envío</label>
-
-                            <label for="descuento">
-                                <input type="checkbox" name="opcionPago" id="descuento" value="descuento">
-                                Tengo tarjeta de descuento</label>
-                        </fieldset>
-                    </div>
-                </form>
-
-
-                <div class="contenedor-resumen-checkout">
-
-                    <h3 class="titulo-resumen-cuenta">Resumen</h3>
-
-                    <div class="renglones-resumen">
-                        <p class="renglon-subtotal" data-precio="5540">Subtotal <span id="monto-subtotal">$5540</span>
-                        </p>
-                        <p class="renglon-descuento hidden style-descuento">Descuento 10% <span
-                                id="monto-descuento">0</span> </p>
-                        <p class="renglon-envio hidden">Envío <span id="monto-envio">0</span> </p>
-                        <p class="renglon-recargo hidden style-recargo">Recargo <span id="monto-recargo">0</span> </p>
-                        <h3 class="renglon-total">Total <span id="monto-total">$0</span> </h3>
-                    </div>
-
-
-                </div>
-            </section>
-            <section class="acciones-modal">
-                <button id="seguir-comprando" class="btn-modal-style negrita">
-                    SEGUIR COMPRANDO
-                </button>
-
-                <button id="finalizar-compra" class="boton-principal btn-modal-style negrita">
-                    FINALIZAR
-                </button>
-            </section>
-
-        </div>
     </section>
 
     <!-- FOOTER -->
@@ -612,6 +523,102 @@
     <!-- Overlay -->
     <div class="overlay hidden" id="overlay" aria-hidden="true"></div>
 
+    <!-- menu carrito -->
+    <section id="cart" aria-role="dialog" aria-modal="true" aria-labelledby="titulo-carrito" class="menu-carrito"
+        aria-hidden="true">
+        <header class="header-carrito">
+            <h2 id="titulo-carrito">Carrito</h2>
+            <button id="cerrar-carrito" aria-label="cerrar carrito de compras" tabindex="0">
+                <i class="far fa-window-close"></i>
+            </button>
+        </header>
+        <p>No tienes productos en el carrito, ¡agrega algunos!</p>
+        <section class="productos-seleccionados">
+
+        </section>
+
+        <section class="acciones-carrito">
+            <button id="realizar-compra" class="boton-principal negrita"> COMPRAR</button>
+            <button id="vaciar-carrito" class="negrita" class="vaciarCarrito">VACIAR CARRITO</button>
+        </section>
+
+    </section>
+
+    <!-- Modal -->
+    <section class="modal-container">
+        <header class="header-modal">
+            <h2 class="tituloPrincipal-modal">Checkout</h2>
+        </header>
+        <section class="seccion-principal">
+            <form action="" method=" get" id="form-procesoPago">
+                <div class="informacion">
+
+                    <h3>Datos personales</h3>
+                    <label for="nombreApellido">Nombres y apellidos*
+                        <input type="text" name="datos" id="nombreApellido" placeholder="p.ej.:Ada Lovelace"
+                            class="textbox-style">
+                    </label>
+                    <label for="email">Email*
+                        <input type="email" name="datos" id="email" placeholder="p.ej.:Ada.lovelace@gmail.com"
+                            class="textbox-style" style="display: block;">
+                    </label>
+
+                    <hr>
+
+                </div>
+
+                <div class="opciones-de-pago">
+                    <h3>Opciones de pago</h3>
+
+                    <fieldset>
+                        <label for="efectivoDebito">
+                            <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
+                            Efectivo/Débito</label>
+
+                        <label for="credito">
+                            <input type="radio" name="opcionPago" id="credito" value="credito">
+                            Tarjeta de crédito</label>
+
+                        <label for="envio">
+                            <input type="checkbox" name="opcionPago" id="envio" value="envio">
+                            Necesito envío</label>
+
+                        <label for="descuento">
+                            <input type="checkbox" name="opcionPago" id="descuento" value="descuento">
+                            Tengo tarjeta de descuento</label>
+                    </fieldset>
+                </div>
+            </form>
+
+
+            <div class="contenedor-resumen-checkout">
+
+                <h3 class="titulo-resumen-cuenta">Resumen</h3>
+
+                <div class="renglones-resumen">
+                    <p class="renglon-subtotal" data-precio="5540">Subtotal <span id="monto-subtotal">$5540</span>
+                    </p>
+                    <p class="renglon-descuento hidden style-descuento">Descuento 10% <span
+                            id="monto-descuento">0</span> </p>
+                    <p class="renglon-envio hidden">Envío <span id="monto-envio">0</span> </p>
+                    <p class="renglon-recargo hidden style-recargo">Recargo <span id="monto-recargo">0</span> </p>
+                    <h3 class="renglon-total">Total <span id="monto-total">$0</span> </h3>
+                </div>
+
+
+            </div>
+        </section>
+        <section class="acciones-modal">
+            <button id="seguir-comprando" class="btn-modal-style negrita">
+                SEGUIR COMPRANDO
+            </button>
+
+            <button id="finalizar-compra" class="boton-principal btn-modal-style negrita">
+                FINALIZAR
+            </button>
+        </section>
+
+    </section>
 
     <script src="main.js"></script>
 </body>
