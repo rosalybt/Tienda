@@ -60,7 +60,7 @@ fieldset {
     display: flex;
 }
 
-.logo-tienda>.logo {
+img.logo {
     height: 2em;
     margin-right: 10px;
 }
