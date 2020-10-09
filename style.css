@@ -185,11 +185,16 @@ img.logo {
     padding: 20px;
 }
 
-.informacion, .opciones-de-pago {
+.informacion {
     flex-direction: column;
     display: flex;
     justify-content: space-evenly;
     margin-top: 1em;
+    width: 100%;
+}
+
+.puntuacion {
+    justify-content: center;
 }
 
 .textbox-style {
@@ -393,9 +398,6 @@ button {
     display: flex;
 }
 
-.list-view {
-    flex-direction: column;
-}
 
 .card-producto {
     flex: 1 1 300px;
@@ -404,38 +406,53 @@ button {
     flex-direction: column;
     margin: 0 15px 20px 10px;
     background-color: #fff;
-    padding: 20px;
+    padding: 20px 10px;
     display: flex;
 }
 
 .contenedor-imagen-producto img {
-    width: 100%;
-    margin: 0 auto;
+    width: 275px;
 }
 
 .contenedor-imagen-producto {
-    height: 250px;
+    margin:15px;
     display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    height: 275px;
 }
 
-.informacion p {
+.contenido-producto {
+    margin-top: 10px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+align-items: center;
+}
+
+.descripcion {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.texto {
     margin-top: 5px;
     margin-bottom: 5px;
     text-align: center;
 }
 
+
+
 .boton-comprar {
     background-color: #f5f5f5;
     border-radius: 5px;
-    border: none;
-    width: 90%;
+
+        width: 280px;
     height: 50px;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
-.hidden {
-    display: none;
-}
+
 
 #vaciar-carrito :hover {
     background-color: #FF0000;
@@ -469,4 +486,23 @@ footer {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+    margin: 10px;
+}
+
+
+.list-view {
+    display: flex;
+    flex-direction: initial;
+    justify-content: flex-start;
+}
+
+.grid-view{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: justify;
+}
+
+.hidden {
+    display: none;
 }

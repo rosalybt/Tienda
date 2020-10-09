@@ -20,6 +20,10 @@ const botonFinalizarCompra = document.getElementById('finalizar-compra')
 const modal = document.querySelector('.modal-container')
 const body = document.body
 
+const textosCards = document.querySelectorAll('.texto')
+const descripcionesProductos = document.querySelectorAll('.descripcion')
+const contenidoProductos = document.querySelectorAll('.contenido-producto')
+
 
 
 // =============================
@@ -31,6 +35,18 @@ const hide = (element) => {
 }
 const show = (element) => {
     return element.classList.remove("hidden")
+}
+
+const AddAClassAnElement = (ListElements, clase) => {
+    for (let element of ListElements) {
+        element.classList.add(clase)
+    }
+}
+
+const removeAClassAnElement = (ListElements, clase) => {
+    for (let element of ListElements) {
+        element.classList.remove(clase)
+    }
 }
 
 
@@ -98,6 +114,12 @@ const validarInput = (card) => {
 }
 
 
+//devuelve el resultado de la cantidad de productos al hacer una busqueda
+const contarProductos = (cantidad) => {
+    cantidad = totalProducto.length - cantidad
+    cantidadProducto.textContent = `Mostrando ${cantidad} producto(s) de ${totalProducto.length}`
+}
+
 const validarchecks = (card, filtro) => {
 
     if (hayAlgunCheckBoxChequeado(filtro)) {
@@ -130,13 +152,9 @@ const filtrarTarjetas = () => {
             hide(card)
         }
     }
+    contarProductos(productosOcultos.length);
 }
 
-//devuelve el resultado de la cantidad de productos al hacer una busqueda
-const contarProductos = (cantidad) => {
-    cantidad = totalProducto.length - cantidad
-    cantidadProducto.textContent = `Mostrando ${cantidad} producto(s) de ${totalProducto.length}`
-}
 
 const abrirModal = () => {
     overlay.style.zIndex = "3";
@@ -160,7 +178,7 @@ const abrirCarrito = () => {
     menuCarrito.tabIndex = 0
     menuCarrito.focus();
     menuCarrito.classList.add('mostrar-carrito')
-    
+
 
 }
 
@@ -274,21 +292,21 @@ const calcularTotal = () => {
 filtroNombre.oninput = () => {
 
     filtrarTarjetas()
-    contarProductos(productosOcultos.length);
+
 };
 
 for (let checkbox of listaCheckBoxCategoria) {
     checkbox.oninput = () => {
         filtrarTarjetas()
     }
-
+ 
 };
 
 for (let checkbox of listaCheckBoxPuntaje) {
     checkbox.oninput = () => {
         filtrarTarjetas()
     }
-
+   
 };
 
 botonLimpiar.onclick = () => {
@@ -310,10 +328,18 @@ botonLimpiar.onclick = () => {
 //  ver como lista o grilla
 botonVerComoLista.onclick = () => {
     contenedorTarjetas.classList.add('list-view')
+    AddAClassAnElement(cards, "list-view");
+    AddAClassAnElement(textosCards, "grid-view")
+    AddAClassAnElement(contenidoProductos, "grid-view")
+    removeAClassAnElement(descripcionesProductos, "hidden")
 };
 
 botonVerComoGrid.onclick = () => {
     contenedorTarjetas.classList.remove('list-view')
+    removeAClassAnElement(cards, "list-view");
+    removeAClassAnElement(textosCards, "grid-view")
+    removeAClassAnElement(contenidoProductos, "grid-view")
+    AddAClassAnElement(descripcionesProductos, "hidden")
 };
 
 botonAbrirCarrito.onclick = () => {
