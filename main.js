@@ -167,6 +167,7 @@ const cerrarModal = () => {
     modal.classList.remove('mostrar-modal')
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
+    hide(modal)
 
 }
 
