@@ -160,17 +160,20 @@ const abrirModal = () => {
     overlay.style.zIndex = "3";
     body.classList.add('no-scroll')
     modal.classList.add('mostrar-modal')
+    show(modal)
 }
 
 const cerrarModal = () => {
     modal.classList.remove('mostrar-modal')
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
+
 }
 
 const abrirCarrito = () => {
     // botonAbrirCarrito.setAttribute("aria-hidden", "true")
     menuCarrito.setAttribute("aria-hidden", "false")
+    show(menuCarrito)
     botonAbrirCarrito.tabIndex = -1
     body.classList.add('no-scroll')
     show(overlay)
@@ -187,6 +190,7 @@ const abrirCarrito = () => {
 const cerrarCarrito = () => {
     // botonAbrirCarrito.setAttribute("aria-hidden","true")
     botonAbrirCarrito.tabIndex = 0
+
     hide(overlay)
     botonAbrirCarrito.setAttribute("aria-expanded", "false")
     menuCarrito.classList.remove('mostrar-carrito')
@@ -299,14 +303,14 @@ for (let checkbox of listaCheckBoxCategoria) {
     checkbox.oninput = () => {
         filtrarTarjetas()
     }
- 
+
 };
 
 for (let checkbox of listaCheckBoxPuntaje) {
     checkbox.oninput = () => {
         filtrarTarjetas()
     }
-   
+
 };
 
 botonLimpiar.onclick = () => {
