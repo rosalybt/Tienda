@@ -25,7 +25,7 @@ body {
 .overlay {
     background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
-    width: 105vw;
+    width: 100vw;
     right: 0;
     left: 0;
     top: 0;
@@ -155,10 +155,6 @@ img.logo {
         Modal 
  ************************/
 
-.visible {
-    visibility: visible;
-}
-
 .modal-container {
     position: absolute;
     top: 50vh;
@@ -170,14 +166,17 @@ img.logo {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    visibility: hidden;
+
     transform: scale(0) translate(50%, 50%);
+    visibility: hidden;
     transition: all 0.3s ease-in;
+ 
 }
 
 .mostrar-modal {
     visibility: visible;
-    transform: scale(1.02) translate(-50%, -50%);
+    transform: scale(1) translate(-50%, -50%);
+   
 }
 
 .seccion-principal {
@@ -269,7 +268,7 @@ hr {
 
 .banner {
     display: flex;
-    flex: 5 1 auto;
+    flex: 2 1 auto;
     justify-content: center;
     align-content: flex-end;
 }
@@ -277,7 +276,7 @@ hr {
 .banner>.titulo-principal {
     display: flex;
     align-items: center;
-    color: white;
+    color: #fff;
     font-size: 2.1em;
 }
 
@@ -297,6 +296,7 @@ hr {
     height: 600px;
     padding: 10px;
     padding-left: 30px;
+    position: static;
 }
 
 #busqueda {
@@ -387,6 +387,26 @@ main {
     margin-right: 5px;
 }
 
+.texto-filtro {
+    display: none;
+}
+
+.show-filtro {
+    display: none;
+}
+
+/* .texto-show{
+    display: flex;
+} */
+
+/* .show-list{
+    display: block;
+}
+
+.show-grid{
+    display: block;
+} */
+
 button {
     border: none;
     background-color: transparent;
@@ -419,14 +439,14 @@ button {
 }
 
 .contenedor-imagen-producto img {
-    width: 275px;
+    width: 250px;
 }
 
 .contenedor-imagen-producto {
     margin: 15px;
     display: flex;
     align-items: center;
-    height: 275px;
+    height: 250px;
     overflow: hidden;
 }
 
@@ -515,6 +535,43 @@ footer {
     justify-content: flex-start;
     align-items: flex-start;
     text-align: justify;
+    width: 50%;
+}
+
+/* respondive */
+
+@media screen and (max-width:576px) {
+    .header-container {
+        height: 20vh;
+    }
+    .filtros-busquedas {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .filtros-busquedas {
+        background-color: #fff;
+        position: absolute;
+        width: 80vw;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        transform: translateX(100%);
+        transition: 1s ease;display: none;
+    }
+    .mostrar-filtro {
+        transform: translateX(0%);
+        display: block;
+    }
+    .texto-show, .show-list, .show-grid {
+        display: none;
+    }
+    .texto-filtro, .show-filtro {
+        display: block;
+    }
+
 }
 
 .hidden {
