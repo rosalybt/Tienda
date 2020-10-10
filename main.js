@@ -13,12 +13,39 @@ const contenedorTarjetas = document.querySelector('.contenedor-productos')
 const botonAbrirCarrito = document.getElementById('abrir-carrito')
 const botonCerrarCarrito = document.getElementById('cerrar-carrito')
 const menuCarrito = document.querySelector('.menu-carrito')
+const botonAbrirFiltro = document.querySelector('.show-filtro')
+const botonCerrarFiltro = document.querySelector('.cerrar-filtro')
+const menuFiltro = document.querySelector('.filtros-busquedas')
 const overlay = document.getElementById('overlay')
 const botonRealizarCompra = document.getElementById('realizar-compra')
 const botonSeguirComprando = document.getElementById('seguir-comprando')
 const botonFinalizarCompra = document.getElementById('finalizar-compra')
 const modal = document.querySelector('.modal-container')
 const body = document.body
+console.log(botonAbrirFiltro)
+
+const renglonSubtotal = document.querySelector(".renglon-subtotal")
+const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$', ''))
+
+const renglonDescuento = document.querySelector(".renglon-descuento")
+let descuento = document.getElementById("monto-descuento")
+
+const renglonEnvio = document.querySelector(".renglon-envio")
+const envio = document.getElementById("monto-envio")
+
+const renglonRecargo = document.querySelector(".renglon-recargo")
+let recargo = document.getElementById("monto-recargo")
+
+const renglonTotal = document.querySelector(".renglon-total")
+let total = document.getElementById("monto-total")
+
+const opcionesDePago = document.querySelectorAll(".opciones-de-pago")
+
+const efectivo = document.querySelector("#efectivoDebito")
+const credito = document.querySelector("#credito")
+const envioOpcion = document.querySelector("#envio")
+const tarjetaDescuento = document.querySelector("#descuento")
+
 
 const textosCards = document.querySelectorAll('.texto')
 const descripcionesProductos = document.querySelectorAll('.descripcion')
@@ -172,7 +199,6 @@ const cerrarModal = () => {
 }
 
 const abrirCarrito = () => {
-    // botonAbrirCarrito.setAttribute("aria-hidden", "true")
     menuCarrito.setAttribute("aria-hidden", "false")
     show(menuCarrito)
     botonAbrirCarrito.tabIndex = -1
@@ -186,12 +212,29 @@ const abrirCarrito = () => {
 
 }
 
+const abrirFiltro = () => {
+    show(menuFiltro)
+    botonAbrirFiltro.tabIndex = -1
+    body.classList.add('no-scroll')
+    show(overlay)
+    menuFiltro.tabIndex = 0
+    menuFiltro.classList.add('mostrar-filtro')
+}
+
+// const abrirFiltro = () => {
+//     show(menuFiltro)
+//     botonAbrirFiltro.tabIndex = -1
+//     body.classList.add('no-scroll')
+//     show(overlay)
+//     menuFiltro.tabIndex = 0
+//     menuFiltro.classList.add('mostrar-filtro')
+// }
+
 
 
 const cerrarCarrito = () => {
-    // botonAbrirCarrito.setAttribute("aria-hidden","true")
-    botonAbrirCarrito.tabIndex = 0
 
+    botonAbrirCarrito.tabIndex = 0
     hide(overlay)
     botonAbrirCarrito.setAttribute("aria-expanded", "false")
     menuCarrito.classList.remove('mostrar-carrito')
@@ -200,27 +243,7 @@ const cerrarCarrito = () => {
 
 }
 
-const renglonSubtotal = document.querySelector(".renglon-subtotal")
-const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$', ''))
 
-const renglonDescuento = document.querySelector(".renglon-descuento")
-let descuento = document.getElementById("monto-descuento")
-
-const renglonEnvio = document.querySelector(".renglon-envio")
-const envio = document.getElementById("monto-envio")
-console.log(renglonEnvio)
-const renglonRecargo = document.querySelector(".renglon-recargo")
-let recargo = document.getElementById("monto-recargo")
-
-const renglonTotal = document.querySelector(".renglon-total")
-let total = document.getElementById("monto-total")
-
-const opcionesDePago = document.querySelectorAll(".opciones-de-pago")
-
-const efectivo = document.querySelector("#efectivoDebito")
-const credito = document.querySelector("#credito")
-const envioOpcion = document.querySelector("#envio")
-const tarjetaDescuento = document.querySelector("#descuento")
 
 // calcular checkout
 // subtotal.textContent = 5540
@@ -346,6 +369,11 @@ botonVerComoGrid.onclick = () => {
     removeAClassAnElement(contenidoProductos, "grid-view")
     AddAClassAnElement(descripcionesProductos, "hidden")
 };
+
+
+botonAbrirFiltro.onclick = () =>{
+    abrirFiltro();
+}
 
 botonAbrirCarrito.onclick = () => {
     abrirCarrito();
