@@ -46,6 +46,7 @@ fieldset {
     flex-direction: column;
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .header-principal {
@@ -166,17 +167,14 @@ img.logo {
     padding: 20px;
     display: flex;
     flex-direction: column;
-
     transform: scale(0) translate(50%, 50%);
     visibility: hidden;
     transition: all 0.3s ease-in;
- 
 }
 
 .mostrar-modal {
     visibility: visible;
     transform: scale(1) translate(-50%, -50%);
-   
 }
 
 .seccion-principal {
@@ -271,13 +269,28 @@ hr {
     flex: 2 1 auto;
     justify-content: center;
     align-content: flex-end;
+    background-image: url(imagenes/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100vw;
+}
+
+.banner::before {
+    content: '';
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
 }
 
 .banner>.titulo-principal {
-    display: flex;
-    align-items: center;
     color: #fff;
     font-size: 2.1em;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    left: 0;
 }
 
 /********* CONTENIDO PRINCIPAL ********/
@@ -559,7 +572,8 @@ footer {
         right: 0;
         z-index: 2;
         transform: translateX(100%);
-        transition: 1s ease;display: none;
+        transition: 1s ease;
+        display: none;
     }
     .mostrar-filtro {
         transform: translateX(0%);
@@ -571,7 +585,6 @@ footer {
     .texto-filtro, .show-filtro {
         display: block;
     }
-
 }
 
 .hidden {
