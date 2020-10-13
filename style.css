@@ -164,7 +164,7 @@ img.logo {
     background-color: #ffff;
     z-index: 4;
     width: 800px;
-    height: 650px;
+    height: auto;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -223,7 +223,6 @@ hr {
 .contenedor-resumen-checkout {
     margin: 0 0 10px 20px;
     width: 40%;
-    /* height: 100%; */
     background-color: #f5f5f5;
     padding: 30px 20px 30px 20px;
     border-radius: 5px;
@@ -333,12 +332,18 @@ hr {
 }
 
 .header-filtro-busqueda {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-content: center;
     margin-bottom: 10px;
     padding: 5px;
     display: flex;
+}
+
+.header-filtro {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
 }
 
 .titulo-aside {
@@ -397,10 +402,6 @@ main {
 }
 
 .texto-filtro {
-    display: none;
-}
-
-.show-filtro {
     display: none;
 }
 
@@ -538,9 +539,6 @@ footer {
 /* respondive */
 
 @media screen and (max-width:576px) {
-    .header-container {
-        height: 20vh;
-    }
     .filtros-busquedas {
         width: 80%;
     }
@@ -549,25 +547,26 @@ footer {
 @media screen and (max-width: 840px) {
     .filtros-busquedas {
         background-color: #fff;
-        position: absolute;
-        width: 80vw;
-        height: 100vh;
+        position: fixed;
         top: 0;
         right: 0;
         z-index: 2;
         transform: translateX(100%);
-        transition: 1s ease;
-        display: none;
+        transition: all 1s ease;
+        padding: 30px;
     }
     .mostrar-filtro {
-        transform: translateX(0%);
-        display: block;
+        transform: translateX(0);
     }
     .texto-show, .show-list, .show-grid {
         display: none;
     }
-    .texto-filtro, .show-filtro {
+    .texto-filtro, #show-filtro {
         display: block;
+    }
+    .menu-carrito {
+        overflow-y: scroll;
+        height: 100vh;
     }
     .modal-container {
         width: fit-content;
@@ -588,6 +587,11 @@ footer {
     }
     .acciones-modal>button {
         margin: 10px;
+    }
+    .header-filtro-busqueda>button {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
     }
 }
 

@@ -13,8 +13,8 @@ const contenedorTarjetas = document.querySelector('.contenedor-productos')
 const botonAbrirCarrito = document.getElementById('abrir-carrito')
 const botonCerrarCarrito = document.getElementById('cerrar-carrito')
 const menuCarrito = document.querySelector('.menu-carrito')
-const botonAbrirFiltro = document.querySelector('.show-filtro')
-const botonCerrarFiltro = document.querySelector('.cerrar-filtro')
+const botonAbrirFiltro = document.getElementById('show-filtro')
+const botonCerrarFiltro = document.getElementById('cerrar-filtro')
 const menuFiltro = document.querySelector('.filtros-busquedas')
 const overlay = document.getElementById('overlay')
 const botonRealizarCompra = document.getElementById('realizar-compra')
@@ -194,48 +194,43 @@ const cerrarModal = () => {
     modal.classList.remove('mostrar-modal')
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
-    hide(modal)
-
 }
 
 const abrirCarrito = () => {
-    menuCarrito.setAttribute("aria-hidden", "false")
     show(menuCarrito)
+    show(overlay)
     botonAbrirCarrito.tabIndex = -1
     body.classList.add('no-scroll')
-    show(overlay)
+    menuCarrito.setAttribute("aria-hidden", "false")
     botonAbrirCarrito.setAttribute("aria-expanded", "true")
     menuCarrito.tabIndex = 0
     menuCarrito.focus();
     menuCarrito.classList.add('mostrar-carrito')
-
-
 }
 
 const abrirFiltro = () => {
     show(menuFiltro)
+    show(overlay)
     botonAbrirFiltro.tabIndex = -1
     body.classList.add('no-scroll')
-    show(overlay)
     menuFiltro.tabIndex = 0
     menuFiltro.classList.add('mostrar-filtro')
 }
 
-// const abrirFiltro = () => {
-//     show(menuFiltro)
-//     botonAbrirFiltro.tabIndex = -1
-//     body.classList.add('no-scroll')
-//     show(overlay)
-//     menuFiltro.tabIndex = 0
-//     menuFiltro.classList.add('mostrar-filtro')
-// }
+
+
+const cerrarFiltro = () => {
+    hide(overlay)
+    menuFiltro.classList.remove('mostrar-filtro')
+    body.classList.remove('no-scroll')
+    menuFiltro.setAttribute("aria-hidden", "true")
+}
 
 
 
 const cerrarCarrito = () => {
-
-    botonAbrirCarrito.tabIndex = 0
     hide(overlay)
+    botonAbrirCarrito.tabIndex = 0
     botonAbrirCarrito.setAttribute("aria-expanded", "false")
     menuCarrito.classList.remove('mostrar-carrito')
     body.classList.remove('no-scroll')
@@ -243,10 +238,6 @@ const cerrarCarrito = () => {
 
 }
 
-
-
-// calcular checkout
-// subtotal.textContent = 5540
 
 for (let opcion of opcionesDePago) {
     opcion.oninput = () => {
@@ -371,8 +362,12 @@ botonVerComoGrid.onclick = () => {
 };
 
 
-botonAbrirFiltro.onclick = () =>{
+botonAbrirFiltro.onclick = () => {
     abrirFiltro();
+}
+
+botonCerrarFiltro.onclick = () => {
+    cerrarFiltro();
 }
 
 botonAbrirCarrito.onclick = () => {

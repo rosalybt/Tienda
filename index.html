@@ -38,13 +38,23 @@
 
         <!-- ASIDE -->
         <aside class="filtros-busquedas">
-            <div class="header-filtro-busqueda">
-                <h3 class="titulo-aside negrita">FILTROS</h3>
+            <header class="header-filtro-busqueda">
 
-                <button id="boton-limpiar">
-                    <i class="fas fa-trash"></i>
-                    Limpiar</button>
-            </div>
+                <button id="cerrar-filtro" aria-hidden="true" aria-label="cerrar filtro de busqueda"  class="hidden">
+                    <i class="far fa-window-close"></i>
+                </button>
+
+
+                <div class="header-filtro">
+                    <h3 class="titulo-aside negrita">FILTROS</h3>
+
+                    <button id="boton-limpiar">
+                        <i class="fas fa-trash"></i>
+                        Limpiar
+                    </button>
+                </div>
+
+            </header>
 
             <form action="" method="get" class="formulario-filtro">
 
@@ -169,7 +179,7 @@
                     <button class="show-grid" aria-label="mostrar articulos en forma de grilla">
                         <i class="fas fa-th icono-size"></i>
                     </button>
-                    <button class="show-filtro" aria-label="mostrar articulos en forma de grilla">
+                    <button id="show-filtro" aria-label="mostrar articulos en forma de grilla" class="hidden">
                         <i class="fas fa-filter icono-size"></i>
                     </button>
                 </div>
