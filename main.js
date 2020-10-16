@@ -21,7 +21,7 @@ const botonRealizarCompra = document.getElementById('realizar-compra')
 const botonSeguirComprando = document.getElementById('seguir-comprando')
 const botonFinalizarCompra = document.getElementById('finalizar-compra')
 const botonVaciarCarrito = document.getElementById('vaciar-carrito')
-const modal = document.querySelector('modal-container')
+const modal = document.querySelector('.modal-container')
 const body = document.body
 
 
@@ -226,26 +226,38 @@ const cerrarModal = () => {
 
 
 
-
 const showItemsInCart = () => {
 
     if (productosAgregados.length == 0) {
         contenidoDelCarrito.innerHTML = `No tienes productos en el carrito, ¡agrega algunos!`
-        vaciarCarrito()
-        // hide(accionesCarrito)
+        limpiarCarrito()
+
     } else {
         contenidoDelCarrito.innerHTML = `hay productos`
 
         for (let producto of productosAgregados) {
-            contenidoDelCarrito.innerHTML += crearCardProducto(producto, producto.dataset.id)
+            contenidoDelCarrito.innerHTML += crearCardProducto(producto)
         }
         show(accionesCarrito)
         contenidoDelCarrito.classList.add('scroll')
     }
 }
 
-const crearCardProducto = (producto, id) => {
-    producto.classList.remove('producto-agregado')
+
+
+const borrarCardProducto = (button, productoId) => {
+    button.parentNode.parentNode.parentNode.remove();
+
+    for (let item of productosAgregados) {
+        if (item.dataset.id == productoId) {
+            item.classList.remove('producto-agregado')
+        }
+    }
+    showItemsInCart()
+}
+
+
+const crearCardProducto = (producto) => {
 
     const card = `
 
@@ -256,7 +268,7 @@ const crearCardProducto = (producto, id) => {
             <div>
             <p class = "offscreen">nombre del producto:</p>
                 <h4> ${producto.dataset.nombre} </h4>
-                <button id="boton-eliminar" onclick="borrarCardProducto(this)";>
+                <button id="boton-eliminar" onclick="borrarCardProducto(this,${producto.dataset.id})";>
                 <i class="far fa-trash-alt icono-size"></i>
             </button>
             </div>
@@ -276,14 +288,6 @@ const crearCardProducto = (producto, id) => {
 }
 
 
-
-const borrarCardProducto = (button) => {
-    button.parentNode.parentNode.parentNode.remove();
-
-
-}
-
-
 const abrirCarrito = () => {
     show(menuCarrito)
     show(overlay)
@@ -296,8 +300,6 @@ const abrirCarrito = () => {
     menuCarrito.classList.add('mostrar-carrito')
 
     showItemsInCart()
-    // botonesEliminar = document.getElementsByClassName('boton-eliminar')
-    // console.log(botonesEliminar)
 
 }
 
