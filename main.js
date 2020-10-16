@@ -20,8 +20,8 @@ const overlay = document.getElementById('overlay')
 const botonRealizarCompra = document.getElementById('realizar-compra')
 const botonSeguirComprando = document.getElementById('seguir-comprando')
 const botonFinalizarCompra = document.getElementById('finalizar-compra')
-const modal = document.querySelector('.modal-container')
-const botonVaciarCarrito = document.querySelector('#vaciar-carrito')
+const botonVaciarCarrito = document.getElementById('vaciar-carrito')
+const modal = document.querySelector('modal-container')
 const body = document.body
 
 
@@ -54,19 +54,23 @@ const contenidoProductos = document.querySelectorAll('.contenido-producto')
 
 const btnAgregarAlCarrito = document.querySelectorAll('.btn-add-to-cart')
 const productoEnCarrito = document.querySelectorAll('.btn-add-to-cart')
+let contenidoDelCarrito = document.querySelector('.contenido-carrito')
 
 
-// console.log(productosAgregados.length)
 const accionesCarrito = document.querySelector('.acciones-carrito')
 const productosAgregados = document.getElementsByClassName('producto-agregado')
-const botonesEliminar = document.getElementsByClassName('boton-eliminar')
 
 
 
-console.log(botonesEliminar)
 // // =============================
 // //          FUNCIONES
 // // ============================
+
+const limpiarCarrito = () => {
+    contenidoDelCarrito.innerHTML = "No tienes productos en el carrito, ¡agrega algunos!"
+    contenidoDelCarrito.classList.remove('scroll')
+    hide(accionesCarrito)
+}
 
 // agregando clase 'producto agregado'
 
@@ -75,20 +79,9 @@ for (let boton of btnAgregarAlCarrito) {
     boton.onclick = (e) => {
         let botonclicked = e.target
         botonclicked.parentElement.parentElement.classList.add('producto-agregado')
-
     }
 }
 
-
-
-// elimando card item del carrito y  clase 'producto agregado'
-for (let boton of botonesEliminar) {
-    boton.onclick = (e) => {
-        let botonclicked = e.currentTtarget
-        botonclicked.parentElement.parentElement.parentElement.remove();
-
-    }
-}
 
 const hide = (element) => {
     return element.classList.add("hidden")
@@ -231,10 +224,29 @@ const cerrarModal = () => {
 
 
 
-let contenidoDelCarrito = document.querySelector('.contenido-carrito')
 
-const crearCardProducto = (producto) => {
-    // console.log(producto.dataset.nombre)
+
+
+const showItemsInCart = () => {
+
+    if (productosAgregados.length == 0) {
+        contenidoDelCarrito.innerHTML = `No tienes productos en el carrito, ¡agrega algunos!`
+        vaciarCarrito()
+        // hide(accionesCarrito)
+    } else {
+        contenidoDelCarrito.innerHTML = `hay productos`
+
+        for (let producto of productosAgregados) {
+            contenidoDelCarrito.innerHTML += crearCardProducto(producto, producto.dataset.id)
+        }
+        show(accionesCarrito)
+        contenidoDelCarrito.classList.add('scroll')
+    }
+}
+
+const crearCardProducto = (producto, id) => {
+    producto.classList.remove('producto-agregado')
+
     const card = `
 
     <article class="card-carrito">
@@ -244,7 +256,7 @@ const crearCardProducto = (producto) => {
             <div>
             <p class = "offscreen">nombre del producto:</p>
                 <h4> ${producto.dataset.nombre} </h4>
-                <button id="boton-eliminar">
+                <button id="boton-eliminar" onclick="borrarCardProducto(this)";>
                 <i class="far fa-trash-alt icono-size"></i>
             </button>
             </div>
@@ -263,25 +275,10 @@ const crearCardProducto = (producto) => {
     return card
 }
 
-const showItemsInCart = () => {
-
-    console.log(productosAgregados.length)
-    if (productosAgregados.length == 0) {
-        contenidoDelCarrito.innerHTML = `No tienes productos en el carrito, ¡agrega algunos!`
-        // hide(accionesCarrito)
-    } else {
-        contenidoDelCarrito.innerHTML = `hay productos`
-
-        for (let producto of productosAgregados) {
-            contenidoDelCarrito.innerHTML += crearCardProducto(producto)
-        }
-        show(accionesCarrito)
-        contenidoDelCarrito.classList.add('scroll')
-    }
-}
 
 
-const eliminarItemsCarrito = (producto) => {
+const borrarCardProducto = (button) => {
+    button.parentNode.parentNode.parentNode.remove();
 
 
 }
@@ -299,7 +296,8 @@ const abrirCarrito = () => {
     menuCarrito.classList.add('mostrar-carrito')
 
     showItemsInCart()
-
+    // botonesEliminar = document.getElementsByClassName('boton-eliminar')
+    // console.log(botonesEliminar)
 
 }
 
@@ -475,9 +473,7 @@ botonCerrarCarrito.onclick = () => {
 };
 
 botonVaciarCarrito.onclick = () => {
-    contenidoDelCarrito.innerHTML = "No tienes productos en el carrito, ¡agrega algunos!"
-    contenidoDelCarrito.classList.remove('scroll')
-    hide(accionesCarrito)
+    limpiarCarrito();
 }
 
 botonRealizarCompra.onclick = () => {
