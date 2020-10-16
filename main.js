@@ -21,8 +21,9 @@ const botonRealizarCompra = document.getElementById('realizar-compra')
 const botonSeguirComprando = document.getElementById('seguir-comprando')
 const botonFinalizarCompra = document.getElementById('finalizar-compra')
 const modal = document.querySelector('.modal-container')
+const botonVaciarCarrito = document.querySelector('#vaciar-carrito')
 const body = document.body
-console.log(botonAbrirFiltro)
+
 
 const renglonSubtotal = document.querySelector(".renglon-subtotal")
 const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$', ''))
@@ -51,11 +52,43 @@ const textosCards = document.querySelectorAll('.texto')
 const descripcionesProductos = document.querySelectorAll('.descripcion')
 const contenidoProductos = document.querySelectorAll('.contenido-producto')
 
+const btnAgregarAlCarrito = document.querySelectorAll('.btn-add-to-cart')
+const productoEnCarrito = document.querySelectorAll('.btn-add-to-cart')
 
 
-// =============================
-//          FUNCIONES
-// ============================
+// console.log(productosAgregados.length)
+const accionesCarrito = document.querySelector('.acciones-carrito')
+const productosAgregados = document.getElementsByClassName('producto-agregado')
+const botonesEliminar = document.getElementsByClassName('boton-eliminar')
+
+
+
+console.log(botonesEliminar)
+// // =============================
+// //          FUNCIONES
+// // ============================
+
+// agregando clase 'producto agregado'
+
+for (let boton of btnAgregarAlCarrito) {
+
+    boton.onclick = (e) => {
+        let botonclicked = e.target
+        botonclicked.parentElement.parentElement.classList.add('producto-agregado')
+
+    }
+}
+
+
+
+// elimando card item del carrito y  clase 'producto agregado'
+for (let boton of botonesEliminar) {
+    boton.onclick = (e) => {
+        let botonclicked = e.currentTtarget
+        botonclicked.parentElement.parentElement.parentElement.remove();
+
+    }
+}
 
 const hide = (element) => {
     return element.classList.add("hidden")
@@ -196,6 +229,64 @@ const cerrarModal = () => {
     body.classList.remove('no-scroll')
 }
 
+
+
+let contenidoDelCarrito = document.querySelector('.contenido-carrito')
+
+const crearCardProducto = (producto) => {
+    // console.log(producto.dataset.nombre)
+    const card = `
+
+    <article class="card-carrito">
+        <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
+      
+        <div class="contenedor-detalles-producto">
+            <div>
+            <p class = "offscreen">nombre del producto:</p>
+                <h4> ${producto.dataset.nombre} </h4>
+                <button id="boton-eliminar">
+                <i class="far fa-trash-alt icono-size"></i>
+            </button>
+            </div>
+
+            <div>
+                <label for="cantidad-items">
+                    <input type="number" name="" id="cantidad-items" min="1" value="1"> unidades
+                </label>
+                <p>x $ ${producto.dataset.precio}</p>
+
+            </div>
+        </div>
+    </article>`
+
+
+    return card
+}
+
+const showItemsInCart = () => {
+
+    console.log(productosAgregados.length)
+    if (productosAgregados.length == 0) {
+        contenidoDelCarrito.innerHTML = `No tienes productos en el carrito, ¡agrega algunos!`
+        // hide(accionesCarrito)
+    } else {
+        contenidoDelCarrito.innerHTML = `hay productos`
+
+        for (let producto of productosAgregados) {
+            contenidoDelCarrito.innerHTML += crearCardProducto(producto)
+        }
+        show(accionesCarrito)
+        contenidoDelCarrito.classList.add('scroll')
+    }
+}
+
+
+const eliminarItemsCarrito = (producto) => {
+
+
+}
+
+
 const abrirCarrito = () => {
     show(menuCarrito)
     show(overlay)
@@ -206,6 +297,10 @@ const abrirCarrito = () => {
     menuCarrito.tabIndex = 0
     menuCarrito.focus();
     menuCarrito.classList.add('mostrar-carrito')
+
+    showItemsInCart()
+
+
 }
 
 const abrirFiltro = () => {
@@ -303,6 +398,7 @@ const calcularTotal = () => {
 
 
 
+
 //============================
 //          Eventos
 //============================
@@ -377,6 +473,12 @@ botonAbrirCarrito.onclick = () => {
 botonCerrarCarrito.onclick = () => {
     cerrarCarrito();
 };
+
+botonVaciarCarrito.onclick = () => {
+    contenidoDelCarrito.innerHTML = "No tienes productos en el carrito, ¡agrega algunos!"
+    contenidoDelCarrito.classList.remove('scroll')
+    hide(accionesCarrito)
+}
 
 botonRealizarCompra.onclick = () => {
     abrirModal();
