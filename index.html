@@ -169,7 +169,7 @@
 
             <div class="barra-mostrar-items">
                 <div class="cantidad-productos">
-                    <p>Mostrando 12 producto(s) de 12</p>
+                    <p aria-live="polite">Mostrando 12 producto(s) de 12</p>
                 </div>
                 <div class="show-items">
                     <p class="texto-filtro">Filtro</p>
@@ -619,7 +619,7 @@
     <footer>
         <img class="logo" src="imagenes/iso_blanco.svg" sizes="100px"
             alt="figura triangular abstracto rosado logo ada shop">
-        <p class="">ADA SHOP gracias por preferirnos 💚 </p>
+        <p>ADA SHOP gracias por preferirnos 💚 </p>
     </footer>
 
     <!-- Overlay -->
@@ -734,7 +734,17 @@
 
     </section>
 
-
+    <!-- Modal advertencia -->
+    <section class="modal-advertencia hidden">
+        <img src="" alt="">
+        <div class="contenido-popup">
+            <h2>Está a punto de vaciar el carrito, ¿está seguro?</h2>
+            <div>
+                <button> SI</button>
+                <button> NO</button>
+            </div>
+        </div>
+    </section>
 
 </body>
 <script src="main.js"></script>

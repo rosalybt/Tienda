@@ -58,7 +58,7 @@ fieldset {
     justify-content: space-between;
     width: 100%;
     display: flex;
-    padding: 20px 30px 20px 30px;
+    padding: 20px 30px;
     max-width: 1400px;
 }
 
@@ -589,6 +589,14 @@ footer {
     .filtros-busquedas {
         width: 80%;
     }
+
+    .header-principal{
+        padding: 20px 10px;
+    }
+
+    footer p{
+        font-size: small;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -646,6 +654,10 @@ footer {
     }
     #form-procesoPago {
         width: 100%;
+    }
+
+    .contenido-principal{
+        padding: 0;
     }
 }
 
