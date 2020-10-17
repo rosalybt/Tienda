@@ -25,8 +25,8 @@ const modal = document.querySelector('.modal-container')
 const body = document.body
 
 
-const renglonSubtotal = document.querySelector(".renglon-subtotal")
-const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$', ''))
+// const renglonSubtotal = document.querySelector(".renglon-subtotal")
+// const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$', ''))
 
 const renglonDescuento = document.querySelector(".renglon-descuento")
 let descuento = document.getElementById("monto-descuento")
@@ -53,12 +53,14 @@ const descripcionesProductos = document.querySelectorAll('.descripcion')
 const contenidoProductos = document.querySelectorAll('.contenido-producto')
 
 const btnAgregarAlCarrito = document.querySelectorAll('.btn-add-to-cart')
+const cantidadItemsCarrito = document.getElementById('cantidad-items-carrito')
 const productoEnCarrito = document.querySelectorAll('.btn-add-to-cart')
 let contenidoDelCarrito = document.querySelector('.contenido-carrito')
 
 
 const accionesCarrito = document.querySelector('.acciones-carrito')
 const productosAgregados = document.getElementsByClassName('producto-agregado')
+
 
 
 
@@ -70,6 +72,7 @@ const limpiarCarrito = () => {
     contenidoDelCarrito.innerHTML = "No tienes productos en el carrito, ¡agrega algunos!"
     contenidoDelCarrito.classList.remove('scroll')
     hide(accionesCarrito)
+    cantidadItemsCarrito.textContent = `Carrito (0 items)`
 }
 
 // agregando clase 'producto agregado'
@@ -79,6 +82,8 @@ for (let boton of btnAgregarAlCarrito) {
     boton.onclick = (e) => {
         let botonclicked = e.target
         botonclicked.parentElement.parentElement.classList.add('producto-agregado')
+        cantidadItemsCarrito.textContent = `Carrito (${productosAgregados.length} items)`
+
     }
 }
 
@@ -166,6 +171,26 @@ const validarInput = (card) => {
     }
 }
 
+const validarTextboxs = () => {
+    const nombreApellido = document.getElementById('nombreApellido')
+    const email = document.getElementById('email').value
+
+    hide(document.querySelector('.fieldNombre'))
+    hide(document.querySelector('.fieldEmail'))
+
+    if (nombreApellido.value == "" || nombreApellido.length == 0) {
+        show(document.querySelector('.fieldNombre'))
+        return false
+    }
+
+    if (!(/^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i).test(email)) {
+        show(document.querySelector('.notice-field.fieldEmail'))
+        return false
+    }
+
+    return true
+}
+
 
 //devuelve el resultado de la cantidad de productos al hacer una busqueda
 const contarProductos = (cantidad) => {
@@ -210,10 +235,13 @@ const filtrarTarjetas = () => {
 
 
 const abrirModal = () => {
+    let subtotalCheckOut = document.getElementById('monto-subtotal')
     overlay.style.zIndex = "3";
     body.classList.add('no-scroll')
     modal.classList.add('mostrar-modal')
     show(modal)
+
+    // subtotalCheckOut.textContent = subtotalCarrito.textContent.replace("Subtotal","")
 }
 
 const cerrarModal = () => {
@@ -224,8 +252,6 @@ const cerrarModal = () => {
 
 
 
-
-
 const showItemsInCart = () => {
 
     if (productosAgregados.length == 0) {
@@ -233,7 +259,8 @@ const showItemsInCart = () => {
         limpiarCarrito()
 
     } else {
-        contenidoDelCarrito.innerHTML = `hay productos`
+
+        contenidoDelCarrito.innerHTML = `${productosAgregados.length} producto(s) agregado(s)`
 
         for (let producto of productosAgregados) {
             contenidoDelCarrito.innerHTML += crearCardProducto(producto)
@@ -261,7 +288,7 @@ const crearCardProducto = (producto) => {
 
     const card = `
 
-    <article class="card-carrito">
+    <article class="card-carrito" data-precio= "${producto.dataset.precio}">
         <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
       
         <div class="contenedor-detalles-producto">
@@ -488,5 +515,15 @@ botonSeguirComprando.onclick = () => {
 };
 
 botonFinalizarCompra.onclick = () => {
-    cerrarModal();
+
+    if (validarTextboxs()) {
+
+        cerrarModal();
+    } else {
+        alert("funciona")
+    }
+
 };
+
+
+

@@ -23,7 +23,7 @@
             <div class="contenedor-carrito">
                 <button id="abrir-carrito" aria-expanded="false" aria-controls="cart" tabindex="0">
                     <i class="fas fa-shopping-cart icono-size"></i>
-                    <p> Carrito (0 items)</p>
+                    <p id="cantidad-items-carrito" aria-live="polite"> Carrito (0 items)</p>
                 </button>
             </div>
         </div>
@@ -173,7 +173,7 @@
                 </div>
                 <div class="show-items">
                     <p class="texto-filtro">Filtro</p>
-                    <p class="texto-show">Ver como </p>
+                    <p class="texto-show">Ver como</p>
                     <button class="show-list" aria-label="mostrar articulos en forma de lista">
                         <i class="fas fa-list-ul icono-size"></i>
                     </button>
@@ -635,7 +635,7 @@
         <section class="contenido-carrito">
 
         </section>
-        <p class="subtotal-carrito"></p>
+        <p id="subtotal-carrito"></p>
 
         <section class="acciones-carrito hidden">
             <button id="realizar-compra" class="boton-principal negrita"> COMPRAR</button>
@@ -645,7 +645,7 @@
     </section>
 
     <!-- Modal -->
-    <section class="modal-container">
+    <section class="modal-container scroll">
         <header class="header-modal">
             <h2 class="tituloPrincipal-modal">Checkout</h2>
         </header>
@@ -657,11 +657,22 @@
                     <label for="nombreApellido">Nombres y apellidos*
                         <input type="text" name="datos" id="nombreApellido" placeholder="p.ej.:Ada Lovelace"
                             class="textbox-style">
+                        
                     </label>
+
+                    <div class="notice-field fieldNombre hidden">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Por favor complete el campo</span>
+                    </div>
+                    
                     <label for="email">Email*
                         <input type="email" name="datos" id="email" placeholder="p.ej.:Ada.lovelace@gmail.com"
                             class="textbox-style" style="display: block;">
                     </label>
+                    <div class="notice-field fieldEmail hidden">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>Por favor complete el campo</span>
+                    </div>
 
                     <hr>
 
@@ -696,7 +707,7 @@
                 <h3 class="titulo-resumen-cuenta">Resumen</h3>
 
                 <div class="renglones-resumen">
-                    <p class="renglon-subtotal" data-precio="5540">Subtotal <span id="monto-subtotal">$5540</span>
+                    <p class="renglon-subtotal" data-precio="5540">Subtotal <span id="monto-subtotal"></span>
                     </p>
                     <p class="renglon-descuento hidden style-descuento">Descuento 10% <span
                             id="monto-descuento">0</span> </p>

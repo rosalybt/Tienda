@@ -239,6 +239,12 @@ margin-bottom: 20px;
 .puntuacion {
     justify-content: center;
 }
+.notice-field{
+    color: #FF0000;
+    font-weight: 100;
+    margin-top: 5px;
+
+}
 
 .textbox-style {
     height: 30px;
@@ -635,6 +641,9 @@ footer {
         display: flex;
         justify-content: flex-end;
         margin-bottom: 20px;
+    }
+    #form-procesoPago {
+        width: 100%;
     }
 }
 
