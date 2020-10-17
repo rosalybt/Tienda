@@ -60,7 +60,8 @@ let contenidoDelCarrito = document.querySelector('.contenido-carrito')
 
 const accionesCarrito = document.querySelector('.acciones-carrito')
 const productosAgregados = document.getElementsByClassName('producto-agregado')
-
+const subtotalCarrito = document.getElementById('subtotal-carrito')
+const subtotal = subtotalCarrito.textContent.replace('$', '')
 
 
 
@@ -249,8 +250,17 @@ const cerrarModal = () => {
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
 }
+const calcularSubtotalCarrito = () => {
+    let subtotal = 0
+    const cardCarrito = document.getElementsByClassName('card-carrito')
+    for (let card of cardCarrito) {
 
+        subtotal += Number(card.dataset.precio)
 
+    }
+
+    subtotalCarrito.textContent = `Subtotal $${subtotal}`
+}
 
 const showItemsInCart = () => {
 
@@ -266,6 +276,7 @@ const showItemsInCart = () => {
             contenidoDelCarrito.innerHTML += crearCardProducto(producto)
         }
         show(accionesCarrito)
+        calcularSubtotalCarrito()
         contenidoDelCarrito.classList.add('scroll')
     }
 }
