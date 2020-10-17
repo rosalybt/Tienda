@@ -74,15 +74,29 @@ const limpiarCarrito = () => {
     contenidoDelCarrito.classList.remove('scroll')
     hide(accionesCarrito)
     cantidadItemsCarrito.textContent = `Carrito (0 items)`
+    subtotalCarrito.textContent = ""
 }
+
+const cantidadItems = () => {
+    let total = 0
+    for (let producto of productosAgregados) {
+        total += Number( producto.dataset.cantidad)
+    }
+    return total
+}
+
 
 // agregando clase 'producto agregado'
 for (let boton of btnAgregarAlCarrito) {
-
+    // let items = 0
     boton.onclick = (e) => {
+        let card
         let botonclicked = e.target
-        botonclicked.parentElement.parentElement.classList.add('producto-agregado')
-        cantidadItemsCarrito.textContent = `Carrito (${productosAgregados.length} items)`
+        card = botonclicked.parentElement.parentElement
+        card.classList.add('producto-agregado')
+        card.dataset.cantidad = Number(card.dataset.cantidad) + 1
+        // items = items + card.dataset.cantidad
+        cantidadItemsCarrito.textContent = `Carrito (${cantidadItems()} items)`
 
     }
 }
@@ -241,7 +255,6 @@ const abrirModal = () => {
     modal.classList.add('mostrar-modal')
     show(modal)
 
-    // subtotalCheckOut.textContent = subtotalCarrito.textContent.replace("Subtotal","")
 }
 
 const cerrarModal = () => {
@@ -249,34 +262,33 @@ const cerrarModal = () => {
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
 }
-
+let totalItems = 0
 const calcularSubtotalCarrito = () => {
     let subtotalCheckOut = document.getElementById('monto-subtotal')
     let subtotal = 0
     const cardCarrito = document.getElementsByClassName('card-carrito')
     for (let card of cardCarrito) {
 
-        subtotal += Number(card.dataset.precio)
+        subtotal += (Number(card.dataset.precio) * Number(card.dataset.cantidad))
 
     }
     subtotalCheckOut.textContent = `$${subtotal}`
-    // console.log("subtotal enviado", subtotal)
-    // console.log("subtotal recibido", subtotalCheckOut.textContent)
     subtotalCarrito.textContent = `Subtotal $${subtotal}`
 }
 
 const showItemsInCart = () => {
-
+    let items = 0
     if (productosAgregados.length == 0) {
         contenidoDelCarrito.innerHTML = `No tienes productos en el carrito, ¡agrega algunos!`
         limpiarCarrito()
 
     } else {
 
-        contenidoDelCarrito.innerHTML = `${productosAgregados.length} producto(s) agregado(s)`
+        contenidoDelCarrito.innerHTML = `${cantidadItems()} producto(s) agregado(s)`
 
         for (let producto of productosAgregados) {
             contenidoDelCarrito.innerHTML += crearCardProducto(producto)
+            items += Number(producto.dataset.cantidad)
         }
         show(accionesCarrito)
         calcularSubtotalCarrito()
@@ -292,31 +304,46 @@ const borrarCardProducto = (button, productoId) => {
     for (let item of productosAgregados) {
         if (item.dataset.id == productoId) {
             item.classList.remove('producto-agregado')
+            item.dataset.cantidad = 0
+
         }
     }
     showItemsInCart()
 }
 
+const actualizarCantidadesProductos = (input, productoId) => {
+
+    let card = input.parentNode.parentNode.parentNode.parentNode
+    card.dataset.cantidad = Number(input.value);
+    calcularSubtotalCarrito()
+    for (let item of productosAgregados) {
+        if (item.dataset.id == productoId) {
+            item.dataset.cantidad = Number(input.value);
+        }
+    }
+
+}
+
 
 const crearCardProducto = (producto) => {
-
+    console.log(producto.dataset.cantidad)
     const card = `
 
-    <article class="card-carrito" data-precio= "${producto.dataset.precio}">
+    <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad= "${producto.dataset.cantidad}">
         <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
       
         <div class="contenedor-detalles-producto">
             <div>
-            <p class = "offscreen">nombre del producto:</p>
+                <p class = "offscreen">nombre del producto:</p>
                 <h4> ${producto.dataset.nombre} </h4>
                 <button id="boton-eliminar" onclick="borrarCardProducto(this,${producto.dataset.id})";>
-                <i class="far fa-trash-alt icono-size"></i>
-            </button>
+                    <i class="far fa-trash-alt icono-size"></i>
+                </button>
             </div>
 
             <div>
                 <label for="cantidad-items">
-                    <input type="number" name="" id="cantidad-items" min="1" value="1"> unidades
+                    <input type="number" name="" id="cantidad-items" min="1" step="1" value="${producto.dataset.cantidad}" onchange="actualizarCantidadesProductos(this,${producto.dataset.id})";> unidades
                 </label>
                 <p>x $ ${producto.dataset.precio}</p>
 
@@ -453,9 +480,7 @@ const calcularTotal = () => {
 
 // filtrar busqueda por textbox
 filtroNombre.oninput = () => {
-
     filtrarTarjetas()
-
 };
 
 for (let checkbox of listaCheckBoxCategoria) {
@@ -543,6 +568,11 @@ botonFinalizarCompra.onclick = () => {
     }
 
 };
+
+
+overlay.onclick = () => {
+    cerrarCarrito();
+}
 
 
 

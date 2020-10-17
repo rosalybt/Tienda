@@ -591,7 +591,7 @@ footer {
     }
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 768px) {
     .filtros-busquedas {
         background-color: #fff;
         position: fixed;
@@ -618,9 +618,10 @@ footer {
         height: 100vh;
     }
     .modal-container {
-        width: fit-content;
-        height: fit-content;
+        /* width: fit-content;
+        height: fit-content; */
         /* overflow-y: scroll; */
+        width: 100vw;
         height: 100vh;
     }
     .seccion-principal {
@@ -636,6 +637,7 @@ footer {
     }
     .acciones-modal>button {
         margin: 10px;
+        width: 50%;
     }
     .header-filtro-busqueda>button {
         display: flex;
