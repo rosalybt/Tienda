@@ -61,7 +61,7 @@ let contenidoDelCarrito = document.querySelector('.contenido-carrito')
 const accionesCarrito = document.querySelector('.acciones-carrito')
 const productosAgregados = document.getElementsByClassName('producto-agregado')
 const subtotalCarrito = document.getElementById('subtotal-carrito')
-const subtotal = subtotalCarrito.textContent.replace('$', '')
+
 
 
 
@@ -77,7 +77,6 @@ const limpiarCarrito = () => {
 }
 
 // agregando clase 'producto agregado'
-
 for (let boton of btnAgregarAlCarrito) {
 
     boton.onclick = (e) => {
@@ -236,7 +235,7 @@ const filtrarTarjetas = () => {
 
 
 const abrirModal = () => {
-    let subtotalCheckOut = document.getElementById('monto-subtotal')
+
     overlay.style.zIndex = "3";
     body.classList.add('no-scroll')
     modal.classList.add('mostrar-modal')
@@ -250,7 +249,9 @@ const cerrarModal = () => {
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
 }
+
 const calcularSubtotalCarrito = () => {
+    let subtotalCheckOut = document.getElementById('monto-subtotal')
     let subtotal = 0
     const cardCarrito = document.getElementsByClassName('card-carrito')
     for (let card of cardCarrito) {
@@ -258,7 +259,9 @@ const calcularSubtotalCarrito = () => {
         subtotal += Number(card.dataset.precio)
 
     }
-
+    subtotalCheckOut.textContent = `$${subtotal}`
+    // console.log("subtotal enviado", subtotal)
+    // console.log("subtotal recibido", subtotalCheckOut.textContent)
     subtotalCarrito.textContent = `Subtotal $${subtotal}`
 }
 
@@ -371,6 +374,10 @@ const cerrarCarrito = () => {
 
 }
 
+const subtotal = () => {
+    return Number(document.getElementById('monto-subtotal').textContent.replace('$', ''))
+}
+
 
 for (let opcion of opcionesDePago) {
     opcion.oninput = () => {
@@ -381,8 +388,9 @@ for (let opcion of opcionesDePago) {
 let resultadoRecargo
 
 const recargoTarjeta = () => {
+
     if (credito.checked) {
-        resultadoRecargo = subtotal * 0.1
+        resultadoRecargo = subtotal() * 0.1
         recargo.textContent = "$" + resultadoRecargo
         renglonRecargo.classList.remove('hidden')
     }
@@ -397,8 +405,9 @@ const recargoTarjeta = () => {
 let resultadoDescuento
 
 const aplicarDescuento = () => {
+
     if (tarjetaDescuento.checked) {
-        resultadoDescuento = - subtotal * 0.1
+        resultadoDescuento = - subtotal() * 0.1
         descuento.textContent = "$" + resultadoDescuento
         renglonDescuento.classList.remove('hidden')
     }
@@ -428,8 +437,9 @@ const recargoEnvio = () => {
 
 
 const calcularTotal = () => {
-    let totalReal = subtotal
-    totalReal = subtotal + recargoEnvio() + aplicarDescuento() + recargoTarjeta()
+
+    let totalReal = subtotal()
+    totalReal = subtotal() + recargoEnvio() + aplicarDescuento() + recargoTarjeta()
     total.textContent = "$" + totalReal
     return totalReal
 }
@@ -518,6 +528,7 @@ botonVaciarCarrito.onclick = () => {
 
 botonRealizarCompra.onclick = () => {
     abrirModal();
+    calcularTotal();
 };
 
 botonSeguirComprando.onclick = () => {
@@ -528,10 +539,7 @@ botonSeguirComprando.onclick = () => {
 botonFinalizarCompra.onclick = () => {
 
     if (validarTextboxs()) {
-
         cerrarModal();
-    } else {
-        alert("funciona")
     }
 
 };
