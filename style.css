@@ -165,10 +165,23 @@ img.logo {
 .card-carrito {
     display: flex;
     margin-top: 20px;
+    margin-bottom: 20px;
     padding-bottom: 20px;
     align-content: space-between;
     justify-content: center;
     border-bottom: 1px solid #f5f5f5;
+    height: 150px;
+    overflow: hidden;
+}
+
+.contenedor-imagen-producto-carrito{
+     /* margin: 10px; */
+     margin-right: 10px;
+     display: flex;
+     align-items: center;
+     height: 130px;
+     width: 190px;
+     overflow: hidden;
 }
 
 .contenedor-detalles-producto {
@@ -188,10 +201,10 @@ img.logo {
 }
 
 .cardCarrito-img {
-    width: 200px;
-    height: auto;
-    margin: 10px;
-    overflow: hidden;
+    width: 100px;
+    /* height: 100px; */
+    /* margin: 10px; */
+    /* overflow: hidden; */
 }
 
 /************************
@@ -316,6 +329,7 @@ hr {
     flex: 2 1 auto;
     background-image: url(imagenes/banner.jpg);
     background-size: 100%;
+    background-repeat: no-repeat;
     width: 100vw;
 }
 

@@ -344,8 +344,10 @@ const crearCardProducto = (producto) => {
     const card = `
 
     <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad= "${producto.dataset.cantidad}">
+
+    <div class="contenedor-imagen-producto-carrito">
         <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
-      
+      </div>
         <div class="contenedor-detalles-producto">
             <div>
                 <p class = "offscreen">nombre del producto:</p>
@@ -629,6 +631,12 @@ overlay.onclick = () => {
     if (!modal.classList.contains("mostrar-modal")) {
         cerrarCarrito();
     }
+
+    if (menuFiltro.classList.contains("mostrar-filtro")) {
+        cerrarFiltro();
+    }
+
+
 }
 
 
