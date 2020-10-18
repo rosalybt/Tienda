@@ -636,8 +636,8 @@
         </header>
 
         <section class="contenido-carrito">
-
         </section>
+
         <h3 id="subtotal-carrito"></h3>
 
         <section class="acciones-carrito hidden">
@@ -735,14 +735,27 @@
     </section>
 
     <!-- Modal advertencia -->
-    <section class="modal-advertencia hidden">
-        <img src="" alt="">
+    <section  id="advertencia" class="modal-notice">
+        <img src="https://media0.giphy.com/media/Xg4Lc2tzOXXdNCU4Qc/giphy.gif" alt="simbolo de advertencia"
+            aria-hidden="true">
         <div class="contenido-popup">
-            <h2>Está a punto de vaciar el carrito, ¿está seguro?</h2>
+            <h2>¿Está seguro?</h2>
             <div>
-                <button> SI</button>
-                <button> NO</button>
+                <button id="boton-danger-si" class="btn-modal-style negrita"> SI</button>
+                <button id="boton-danger-no" class="btn-modal-style negrita"> NO</button>
             </div>
+        </div>
+    </section>
+
+    <!-- Modal success -->
+    <section id="success" class="modal-notice">
+        <img src="https://viacapo.com/wp-content/themes/GoDoCommerceTheme/img/successgif.gif"
+            alt="simbolo de advertencia" aria-hidden="true">
+        <div class="contenido-popup">
+
+            <p>Su compra fue procesada con exito</p>
+            <button id="boton-success-ok" class="boton-principal btn-modal-style negrita" > OK </button>
+
         </div>
     </section>
 

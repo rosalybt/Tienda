@@ -21,6 +21,9 @@ const botonRealizarCompra = document.getElementById('realizar-compra')
 const botonSeguirComprando = document.getElementById('seguir-comprando')
 const botonFinalizarCompra = document.getElementById('finalizar-compra')
 const botonVaciarCarrito = document.getElementById('vaciar-carrito')
+const botonSuccessOk = document.getElementById('boton-success-ok')
+const botonDangerSi = document.getElementById('boton-danger-si')
+const botonDangerNo = document.getElementById('boton-danger-no')
 const modal = document.querySelector('.modal-container')
 const body = document.body
 
@@ -62,6 +65,8 @@ const accionesCarrito = document.querySelector('.acciones-carrito')
 const productosAgregados = document.getElementsByClassName('producto-agregado')
 const subtotalCarrito = document.getElementById('subtotal-carrito')
 
+const modalDanger = document.getElementById('advertencia')
+const modalSuccess = document.getElementById('success')
 
 
 
@@ -69,37 +74,6 @@ const subtotalCarrito = document.getElementById('subtotal-carrito')
 // //          FUNCIONES
 // // ============================
 
-const limpiarCarrito = () => {
-    contenidoDelCarrito.innerHTML = "No tienes productos en el carrito, ¡agrega algunos!"
-    contenidoDelCarrito.classList.remove('scroll')
-    hide(accionesCarrito)
-    cantidadItemsCarrito.textContent = `Carrito (0 items)`
-    subtotalCarrito.textContent = ""
-}
-
-const cantidadItems = () => {
-    let total = 0
-    for (let producto of productosAgregados) {
-        total += Number( producto.dataset.cantidad)
-    }
-    return total
-}
-
-
-// agregando clase 'producto agregado'
-for (let boton of btnAgregarAlCarrito) {
-    // let items = 0
-    boton.onclick = (e) => {
-        let card
-        let botonclicked = e.target
-        card = botonclicked.parentElement.parentElement
-        card.classList.add('producto-agregado')
-        card.dataset.cantidad = Number(card.dataset.cantidad) + 1
-        // items = items + card.dataset.cantidad
-        cantidadItemsCarrito.textContent = `Carrito (${cantidadItems()} items)`
-
-    }
-}
 
 
 const hide = (element) => {
@@ -120,6 +94,49 @@ const removeAClassAnElement = (ListElements, clase) => {
         element.classList.remove(clase)
     }
 }
+
+const limpiarCarrito = () => {
+
+    for(let producto of cards){
+        producto.dataset.cantidad ="0"
+        producto.classList.remove('producto-agregado')
+    }
+
+
+ 
+    // removeAClassAnElement(productosAgregados, "producto-agregado")
+    contenidoDelCarrito.innerHTML = "No tienes productos en el carrito, ¡agrega algunos!"
+    contenidoDelCarrito.classList.remove('scroll')
+    hide(accionesCarrito)
+    cantidadItemsCarrito.textContent = `Carrito (0 items)`
+    subtotalCarrito.textContent = ""
+
+
+}
+
+const cantidadItems = () => {
+    let total = 0
+    for (let producto of productosAgregados) {
+        total += Number(producto.dataset.cantidad)
+    }
+    return total
+}
+
+
+// agregando clase 'producto agregado'
+for (let boton of btnAgregarAlCarrito) {
+    boton.onclick = (e) => {
+        let card
+        let botonclicked = e.target
+        card = botonclicked.parentElement.parentElement
+        card.classList.add('producto-agregado')
+        card.dataset.cantidad = Number(card.dataset.cantidad) + 1
+        cantidadItemsCarrito.textContent = `Carrito (${cantidadItems()} items)`
+
+    }
+}
+
+
 
 
 const caracteristicaTarjeta = (checkbox, card) => {
@@ -253,7 +270,6 @@ const abrirModal = () => {
     overlay.style.zIndex = "3";
     body.classList.add('no-scroll')
     modal.classList.add('mostrar-modal')
-    show(modal)
 
 }
 
@@ -262,6 +278,7 @@ const cerrarModal = () => {
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
 }
+
 let totalItems = 0
 const calcularSubtotalCarrito = () => {
     let subtotalCheckOut = document.getElementById('monto-subtotal')
@@ -547,9 +564,6 @@ botonCerrarCarrito.onclick = () => {
     cerrarCarrito();
 };
 
-botonVaciarCarrito.onclick = () => {
-    limpiarCarrito();
-}
 
 botonRealizarCompra.onclick = () => {
     abrirModal();
@@ -561,17 +575,63 @@ botonSeguirComprando.onclick = () => {
     cerrarCarrito();
 };
 
-botonFinalizarCompra.onclick = () => {
+botonSuccessOk.onclick = () => {
+    limpiarCarrito()
+    modalSuccess.classList.remove('mostrar-modal-notice')
+    overlay.style.zIndex = "1"
+    hide(overlay)
+    body.classList.remove('no-scroll')
 
+
+}
+
+botonVaciarCarrito.onclick = () => {
+    modalDanger.classList.add('mostrar-modal-notice')
+    overlay.style.zIndex = "4"
+    show(overlay)
+    body.classList.remove('no-scroll')
+}
+
+botonDangerNo.onclick = () => {
+    overlay.style.zIndex = "1"
+    modalDanger.classList.remove('mostrar-modal-notice')
+}
+
+botonDangerSi.onclick = () => {
+    // modalSuccess.classList.add('mostrar-modal-notice')
+    limpiarCarrito()
+    modalDanger.classList.remove('mostrar-modal-notice')
+    overlay.style.zIndex = "1"
+    hide(overlay)
+    body.classList.remove('no-scroll')
+    // cerrarCarrito()
+
+
+
+}
+
+const finalizarCompra = () => {
     if (validarTextboxs()) {
-        cerrarModal();
-    }
 
+        cerrarModal();
+        cerrarCarrito();
+        overlay.style.zIndex = "4"
+        show(overlay)
+        body.classList.add('no-scroll')
+        modalSuccess.classList.add('mostrar-modal-notice')
+
+    }
+}
+
+botonFinalizarCompra.onclick = () => {
+    finalizarCompra();
 };
 
-
 overlay.onclick = () => {
-    cerrarCarrito();
+
+    if (!modal.classList.contains("mostrar-modal")) {
+        cerrarCarrito();
+    }
 }
 
 
