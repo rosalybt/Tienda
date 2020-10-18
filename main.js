@@ -102,9 +102,6 @@ const limpiarCarrito = () => {
         producto.classList.remove('producto-agregado')
     }
 
-
- 
-    // removeAClassAnElement(productosAgregados, "producto-agregado")
     contenidoDelCarrito.innerHTML = "No tienes productos en el carrito, ¡agrega algunos!"
     contenidoDelCarrito.classList.remove('scroll')
     hide(accionesCarrito)
