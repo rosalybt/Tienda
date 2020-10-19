@@ -1,4 +1,4 @@
-# Tienda🛒 (en construcción 🛠️👩‍💻)
+# Tienda🛒 
 Segundo TP de la cursada en ADA, el cual es una tienda de artículos electrónicos aplicando las tecnologías  👇👇👇
 
 ## Pila de tecnologías
@@ -14,7 +14,7 @@ Segundo TP de la cursada en ADA, el cual es una tienda de artículos electrónic
 ---
 ---
 
-# STORE🛒 (under construction 🛠️👩‍💻)
+# STORE🛒 
 
 Second TP (practical work) of the course in ADA, it is an electronics store applying the technologies 👇👇👇
 
