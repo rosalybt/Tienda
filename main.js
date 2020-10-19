@@ -19,17 +19,14 @@ const menuFiltro = document.querySelector('.filtros-busquedas')
 const overlay = document.getElementById('overlay')
 const botonRealizarCompra = document.getElementById('realizar-compra')
 const botonSeguirComprando = document.getElementById('seguir-comprando')
-const botonFinalizarCompra = document.getElementById('finalizar-compra')
+const form = document.getElementById('form-procesoPago')
+
 const botonVaciarCarrito = document.getElementById('vaciar-carrito')
 const botonSuccessOk = document.getElementById('boton-success-ok')
-const botonDangerSi = document.getElementById('boton-danger-si')
-const botonDangerNo = document.getElementById('boton-danger-no')
+const botonWarningSi = document.getElementById('boton-danger-si')
+const botonWarningNo = document.getElementById('boton-danger-no')
 const modal = document.querySelector('.modal-container')
 const body = document.body
-
-
-// const renglonSubtotal = document.querySelector(".renglon-subtotal")
-// const subtotal = Number(document.getElementById("monto-subtotal").textContent.replace('$', ''))
 
 const renglonDescuento = document.querySelector(".renglon-descuento")
 let descuento = document.getElementById("monto-descuento")
@@ -50,7 +47,6 @@ const credito = document.querySelector("#credito")
 const envioOpcion = document.querySelector("#envio")
 const tarjetaDescuento = document.querySelector("#descuento")
 
-
 const textosCards = document.querySelectorAll('.texto')
 const descripcionesProductos = document.querySelectorAll('.descripcion')
 const contenidoProductos = document.querySelectorAll('.contenido-producto')
@@ -60,21 +56,19 @@ const cantidadItemsCarrito = document.getElementById('cantidad-items-carrito')
 const productoEnCarrito = document.querySelectorAll('.btn-add-to-cart')
 let contenidoDelCarrito = document.querySelector('.contenido-carrito')
 
-
 const accionesCarrito = document.querySelector('.acciones-carrito')
 const productosAgregados = document.getElementsByClassName('producto-agregado')
 const subtotalCarrito = document.getElementById('subtotal-carrito')
 
-const modalDanger = document.getElementById('advertencia')
+const modalWarning = document.getElementById('advertencia')
 const modalSuccess = document.getElementById('success')
-
-
 
 // // =============================
 // //          FUNCIONES
 // // ============================
 
 
+//====GENERALES=====
 
 const hide = (element) => {
     return element.classList.add("hidden")
@@ -95,10 +89,11 @@ const removeAClassAnElement = (ListElements, clase) => {
     }
 }
 
+//=======Carrito========
 const limpiarCarrito = () => {
 
-    for(let producto of cards){
-        producto.dataset.cantidad ="0"
+    for (let producto of cards) {
+        producto.dataset.cantidad = "0"
         producto.classList.remove('producto-agregado')
     }
 
@@ -107,7 +102,7 @@ const limpiarCarrito = () => {
     hide(accionesCarrito)
     cantidadItemsCarrito.textContent = `Carrito (0 items)`
     subtotalCarrito.textContent = ""
-
+    hide(subtotalCarrito)
 
 }
 
@@ -118,7 +113,6 @@ const cantidadItems = () => {
     }
     return total
 }
-
 
 // agregando clase 'producto agregado'
 for (let boton of btnAgregarAlCarrito) {
@@ -133,9 +127,7 @@ for (let boton of btnAgregarAlCarrito) {
     }
 }
 
-
-
-
+//devuelve la puntuacion o la categoria de la tarjeta
 const caracteristicaTarjeta = (checkbox, card) => {
 
     if (checkbox.name === "puntuacion") {
@@ -153,6 +145,7 @@ const hayAlgunCheckBoxChequeado = (filtro) => {
     }
     return false
 }
+
 const hayAlgoEscritoEnElInput = () => {
     if (filtroNombre.value) {
         return true
@@ -160,8 +153,6 @@ const hayAlgoEscritoEnElInput = () => {
         return false
     }
 }
-
-
 
 const compararInputConTarjeta = (card) => {
     if (card.dataset.nombre.includes(filtroNombre.value.toLowerCase())) {
@@ -173,7 +164,6 @@ const compararInputConTarjeta = (card) => {
 
 const compararCheckboxConTarjeta = (card, filtro) => {
 
-
     for (let checkbox of filtro) {
         caracteristica = caracteristicaTarjeta(checkbox, card)
         if (checkbox.checked) {
@@ -183,8 +173,7 @@ const compararCheckboxConTarjeta = (card, filtro) => {
         }
     }
     return false
-};
-
+}
 
 
 const validarInput = (card) => {
@@ -227,7 +216,6 @@ const contarProductos = (cantidad) => {
 }
 
 const validarchecks = (card, filtro) => {
-
     if (hayAlgunCheckBoxChequeado(filtro)) {
         if (compararCheckboxConTarjeta(card, filtro)) {
             return true
@@ -239,8 +227,8 @@ const validarchecks = (card, filtro) => {
     };
 
 }
-const pasaFiltros = (card) => {
 
+const pasaFiltros = (card) => {
     if (validarchecks(card, listaCheckBoxCategoria) && validarchecks(card, listaCheckBoxPuntaje) && validarInput(card)) {
         return true
     } else {
@@ -261,32 +249,40 @@ const filtrarTarjetas = () => {
     contarProductos(productosOcultos.length);
 }
 
-
+//===modal
 const abrirModal = () => {
-
+    modal.setAttribute("aria-hidden", "false")
+    show(modal)
+    modal.tabIndex = 0
+    modal.focus();
+    modal.classList.add('mostrar-modal')
+    show(overlay)
     overlay.style.zIndex = "3";
     body.classList.add('no-scroll')
-    modal.classList.add('mostrar-modal')
 
 }
 
 const cerrarModal = () => {
+    modal.setAttribute("aria-hidden", "true")
+    modal.tabIndex = 1
     modal.classList.remove('mostrar-modal')
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
 }
 
+//====tarejtas en carrito
 let totalItems = 0
 const calcularSubtotalCarrito = () => {
     let subtotalCheckOut = document.getElementById('monto-subtotal')
     let subtotal = 0
     const cardCarrito = document.getElementsByClassName('card-carrito')
+
     for (let card of cardCarrito) {
-
         subtotal += (Number(card.dataset.precio) * Number(card.dataset.cantidad))
-
     }
+
     subtotalCheckOut.textContent = `$${subtotal}`
+    show(subtotalCarrito)
     subtotalCarrito.textContent = `Subtotal $${subtotal}`
 }
 
@@ -310,8 +306,6 @@ const showItemsInCart = () => {
     }
 }
 
-
-
 const borrarCardProducto = (button, productoId) => {
     button.parentNode.parentNode.parentNode.remove();
 
@@ -326,9 +320,9 @@ const borrarCardProducto = (button, productoId) => {
 }
 
 const actualizarCantidadesProductos = (input, productoId) => {
-
     let card = input.parentNode.parentNode.parentNode.parentNode
     card.dataset.cantidad = Number(input.value);
+
     calcularSubtotalCarrito()
     for (let item of productosAgregados) {
         if (item.dataset.id == productoId) {
@@ -338,12 +332,11 @@ const actualizarCantidadesProductos = (input, productoId) => {
 
 }
 
-
 const crearCardProducto = (producto) => {
     console.log(producto.dataset.cantidad)
     const card = `
 
-    <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad= "${producto.dataset.cantidad}">
+    <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad = "${producto.dataset.cantidad}" aria-label= "">
 
     <div class="contenedor-imagen-producto-carrito">
         <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
@@ -358,7 +351,7 @@ const crearCardProducto = (producto) => {
             </div>
 
             <div>
-                <label for="cantidad-items">
+                <label for="cantidad-items" aria-label = "cantidad de ${producto.dataset.nombre}: ${producto.dataset.cantidad}">
                     <input type="number" name="" id="cantidad-items" min="1" step="1" value="${producto.dataset.cantidad}" onchange="actualizarCantidadesProductos(this,${producto.dataset.id})";> unidades
                 </label>
                 <p>x $ ${producto.dataset.precio}</p>
@@ -429,7 +422,6 @@ for (let opcion of opcionesDePago) {
 }
 
 let resultadoRecargo
-
 const recargoTarjeta = () => {
 
     if (credito.checked) {
@@ -446,7 +438,6 @@ const recargoTarjeta = () => {
 
 
 let resultadoDescuento
-
 const aplicarDescuento = () => {
 
     if (tarjetaDescuento.checked) {
@@ -461,9 +452,7 @@ const aplicarDescuento = () => {
     return resultadoDescuento
 }
 
-
 let resultadoEnvio
-
 const recargoEnvio = () => {
     if (envioOpcion.checked) {
         resultadoEnvio = 50
@@ -478,15 +467,24 @@ const recargoEnvio = () => {
     return resultadoEnvio
 }
 
-
 const calcularTotal = () => {
-
     let totalReal = subtotal()
     totalReal = subtotal() + recargoEnvio() + aplicarDescuento() + recargoTarjeta()
     total.textContent = "$" + totalReal
     return totalReal
-}
 
+}
+const finalizarCompra = () => {
+    if (validarTextboxs()) {
+        cerrarModal()
+        cerrarCarrito()
+        overlay.style.zIndex = "4"
+        show(overlay)
+        body.classList.add('no-scroll')
+        modalSuccess.classList.add('mostrar-modal-notice')
+        modalSuccess.setAttribute("aria-hidden", "false")
+    }
+}
 
 
 
@@ -494,24 +492,24 @@ const calcularTotal = () => {
 //          Eventos
 //============================
 
-// filtrar busqueda por textbox
+
 filtroNombre.oninput = () => {
     filtrarTarjetas()
-};
+}
 
 for (let checkbox of listaCheckBoxCategoria) {
     checkbox.oninput = () => {
         filtrarTarjetas()
     }
 
-};
+}
 
 for (let checkbox of listaCheckBoxPuntaje) {
     checkbox.oninput = () => {
         filtrarTarjetas()
     }
 
-};
+}
 
 botonLimpiar.onclick = () => {
     filtroNombre.value = ""
@@ -526,17 +524,17 @@ botonLimpiar.onclick = () => {
         show(card)
     }
     contarProductos(productosOcultos.length);
-};
+}
 
 
-//  ver como lista o grilla
+//====  ver como lista o grilla
 botonVerComoLista.onclick = () => {
     contenedorTarjetas.classList.add('list-view')
     AddAClassAnElement(cards, "list-view");
     AddAClassAnElement(textosCards, "grid-view")
     AddAClassAnElement(contenidoProductos, "grid-view")
     removeAClassAnElement(descripcionesProductos, "hidden")
-};
+}
 
 botonVerComoGrid.onclick = () => {
     contenedorTarjetas.classList.remove('list-view')
@@ -544,9 +542,9 @@ botonVerComoGrid.onclick = () => {
     removeAClassAnElement(textosCards, "grid-view")
     removeAClassAnElement(contenidoProductos, "grid-view")
     AddAClassAnElement(descripcionesProductos, "hidden")
-};
+}
 
-
+//==filtro
 botonAbrirFiltro.onclick = () => {
     abrirFiltro();
 }
@@ -555,79 +553,70 @@ botonCerrarFiltro.onclick = () => {
     cerrarFiltro();
 }
 
+//carrito
 botonAbrirCarrito.onclick = () => {
-    abrirCarrito();
-};
+    abrirCarrito()
+}
 
 botonCerrarCarrito.onclick = () => {
-    cerrarCarrito();
-};
+    cerrarCarrito()
+}
 
-
+//==acciones modal (checkout)
 botonRealizarCompra.onclick = () => {
-    abrirModal();
-    calcularTotal();
-};
+    abrirModal()
+    calcularTotal()
+}
 
 botonSeguirComprando.onclick = () => {
-    cerrarModal();
-    cerrarCarrito();
-};
+    cerrarModal()
+    cerrarCarrito()
+}
 
 botonSuccessOk.onclick = () => {
     limpiarCarrito()
+
     modalSuccess.classList.remove('mostrar-modal-notice')
     overlay.style.zIndex = "1"
     hide(overlay)
     body.classList.remove('no-scroll')
 
-
 }
 
+//==acciones opcion vaciar carrito
 botonVaciarCarrito.onclick = () => {
-    modalDanger.classList.add('mostrar-modal-notice')
+    modalWarning.setAttribute("aria-hidden", "false")
+    modalWarning.classList.add('mostrar-modal-notice')
+    show(modalWarning)
+    modalWarning.tabIndex = 1
     overlay.style.zIndex = "4"
     show(overlay)
     body.classList.remove('no-scroll')
 }
 
-botonDangerNo.onclick = () => {
+botonWarningNo.onclick = () => {
     overlay.style.zIndex = "1"
-    modalDanger.classList.remove('mostrar-modal-notice')
+    modalWarning.classList.remove('mostrar-modal-notice')
+    modalWarning.setAttribute("aria-hidden", "true")
 }
 
-botonDangerSi.onclick = () => {
-    // modalSuccess.classList.add('mostrar-modal-notice')
+botonWarningSi.onclick = () => {
     limpiarCarrito()
-    modalDanger.classList.remove('mostrar-modal-notice')
+    modalWarning.setAttribute("aria-hidden", "false")
+    modalWarning.classList.remove('mostrar-modal-notice')
     overlay.style.zIndex = "1"
     hide(overlay)
     body.classList.remove('no-scroll')
-    // cerrarCarrito()
-
-
 
 }
 
-const finalizarCompra = () => {
-    if (validarTextboxs()) {
+form.onsubmit = (e) => {
+    e.preventDefault();
+    finalizarCompra()
 
-        cerrarModal();
-        cerrarCarrito();
-        overlay.style.zIndex = "4"
-        show(overlay)
-        body.classList.add('no-scroll')
-        modalSuccess.classList.add('mostrar-modal-notice')
-
-    }
 }
-
-botonFinalizarCompra.onclick = () => {
-    finalizarCompra();
-};
 
 overlay.onclick = () => {
-
     if (!modal.classList.contains("mostrar-modal")) {
         cerrarCarrito();
     }
@@ -635,7 +624,6 @@ overlay.onclick = () => {
     if (menuFiltro.classList.contains("mostrar-filtro")) {
         cerrarFiltro();
     }
-
 
 }
 

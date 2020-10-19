@@ -76,8 +76,8 @@
 
 
                 <fieldset class="contenedor-filtro-categoria">
-                    <legend>
-                        <p class="nombre-filtro negrita">CATEGORÍA</p>
+                    <legend class="nombre-filtro negrita">
+                        CATEGORÍA
                     </legend>
 
                     <label for="consola">
@@ -105,8 +105,8 @@
 
 
                 <fieldset class="contenedor-filtro-puntaje">
-                    <legend>
-                        <h4 class="nombre-filtro negrita">PUNTAJE</h4>
+                    <legend class="nombre-filtro negrita">
+                        PUNTAJE
                     </legend>
                     <label for="cinco-estrellas">
                         <input type="checkbox" name="puntuacion" value="5" id="cinco-estrellas"
@@ -638,7 +638,7 @@
         <section class="contenido-carrito">
         </section>
 
-        <h3 id="subtotal-carrito"></h3>
+        <h3 id="subtotal-carrito" aria-live="polite" class="hidden"></h3>
 
         <section class="acciones-carrito hidden">
             <button id="realizar-compra" class="boton-principal negrita"> COMPRAR</button>
@@ -648,19 +648,19 @@
     </section>
 
     <!-- Modal check out -->
-    <section class="modal-container scroll">
+    <section class="modal-container hidden scroll" aria-role="dialog" aria-modal="true" aria-label="pantalla para checkout"
+        aria-hidden="true">
         <header class="header-modal">
             <h2 class="tituloPrincipal-modal">Checkout</h2>
         </header>
         <section class="seccion-principal">
-            <form action="" method=" get" id="form-procesoPago">
+            <form id="form-procesoPago">
                 <div class="informacion">
 
                     <h3>Datos personales</h3>
                     <label for="nombreApellido">Nombres y apellidos*
                         <input type="text" name="datos" id="nombreApellido" placeholder="p.ej.:Ada Lovelace"
                             class="textbox-style">
-
                     </label>
 
                     <div class="notice-field fieldNombre hidden">
@@ -682,9 +682,10 @@
                 </div>
 
                 <div class="opciones-de-pago">
-                    <h3>Opciones de pago</h3>
 
                     <fieldset>
+                        <legend>Opciones de pago</legend>
+
                         <label for="efectivoDebito">
                             <input type="radio" name="opcionPago" id="efectivoDebito" value="efectivoDebito">
                             Efectivo/Débito</label>
@@ -727,7 +728,8 @@
                 SEGUIR COMPRANDO
             </button>
 
-            <button id="finalizar-compra" class="boton-principal btn-modal-style negrita">
+            <button type="submit" id="finalizar-compra" form="form-procesoPago"
+                class="boton-principal btn-modal-style negrita">
                 FINALIZAR
             </button>
         </section>
@@ -735,7 +737,7 @@
     </section>
 
     <!-- Modal advertencia -->
-    <section  id="advertencia" class="modal-notice">
+    <section id="advertencia" class="modal-notice hidden" aria-hidden="true">
         <img src="https://media0.giphy.com/media/Xg4Lc2tzOXXdNCU4Qc/giphy.gif" alt="simbolo de advertencia"
             aria-hidden="true">
         <div class="contenido-popup">
@@ -748,13 +750,13 @@
     </section>
 
     <!-- Modal success -->
-    <section id="success" class="modal-notice">
+    <section id="success" class="modal-notice hidden" aria-hidden="true">
         <img src="https://viacapo.com/wp-content/themes/GoDoCommerceTheme/img/successgif.gif"
             alt="simbolo de advertencia" aria-hidden="true">
         <div class="contenido-popup">
 
-            <p>Su compra fue procesada con exito</p>
-            <button id="boton-success-ok" class="boton-principal btn-modal-style negrita" > OK </button>
+            <p>Su compra fue procesada con éxito</p>
+            <button id="boton-success-ok" class="boton-principal btn-modal-style negrita"> OK </button>
 
         </div>
     </section>
