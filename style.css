@@ -115,6 +115,8 @@ img.logo {
 }
 
 #cerrar-carrito {
+    height: -webkit-min-content;
+    height: -moz-min-content;
     height: min-content;
 }
 
@@ -557,7 +559,8 @@ footer {
 }
 
 .offscreen {
-    clip-path: inset(100%);
+    -webkit-clip-path: inset(100%);
+            clip-path: inset(100%);
     clip: rect(1px 1px 1px 1px);
     clip: rect(1px, 1px, 1px, 1px);
     height: 1px;

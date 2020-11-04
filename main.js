@@ -253,21 +253,22 @@ const filtrarTarjetas = () => {
 const abrirModal = () => {
     modal.setAttribute("aria-hidden", "false")
     show(modal)
-    modal.tabIndex = 0
+  
     modal.focus();
     modal.classList.add('mostrar-modal')
     show(overlay)
     overlay.style.zIndex = "3";
     body.classList.add('no-scroll')
-
+    modal.tabIndex = 0
 }
 
 const cerrarModal = () => {
     modal.setAttribute("aria-hidden", "true")
-    modal.tabIndex = 1
+    // modal.tabIndex = 1
     modal.classList.remove('mostrar-modal')
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
+    modal.tabIndex = 1
 }
 
 //====tarejtas en carrito
