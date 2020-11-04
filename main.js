@@ -77,13 +77,13 @@ const show = (element) => {
     return element.classList.remove("hidden")
 }
 
-const AddAClassAnElement = (ListElements, clase) => {
+const addAClassToAListElements = (ListElements, clase) => {
     for (let element of ListElements) {
         element.classList.add(clase)
     }
 }
 
-const removeAClassAnElement = (ListElements, clase) => {
+const removeAClassToAListElements = (ListElements, clase) => {
     for (let element of ListElements) {
         element.classList.remove(clase)
     }
@@ -481,6 +481,7 @@ const finalizarCompra = () => {
         overlay.style.zIndex = "4"
         show(overlay)
         body.classList.add('no-scroll')
+        show(modalSuccess)
         modalSuccess.classList.add('mostrar-modal-notice')
         modalSuccess.setAttribute("aria-hidden", "false")
     }
@@ -530,18 +531,18 @@ botonLimpiar.onclick = () => {
 //====  ver como lista o grilla
 botonVerComoLista.onclick = () => {
     contenedorTarjetas.classList.add('list-view')
-    AddAClassAnElement(cards, "list-view");
-    AddAClassAnElement(textosCards, "grid-view")
-    AddAClassAnElement(contenidoProductos, "grid-view")
-    removeAClassAnElement(descripcionesProductos, "hidden")
+    addAClassToAListElements(cards, "list-view");
+    addAClassToAListElements(textosCards, "grid-view")
+    addAClassToAListElements(contenidoProductos, "grid-view")
+    addAClassToAListElements(descripcionesProductos, "hidden")
 }
 
 botonVerComoGrid.onclick = () => {
     contenedorTarjetas.classList.remove('list-view')
-    removeAClassAnElement(cards, "list-view");
-    removeAClassAnElement(textosCards, "grid-view")
-    removeAClassAnElement(contenidoProductos, "grid-view")
-    AddAClassAnElement(descripcionesProductos, "hidden")
+    removeAClassToAListElements(cards, "list-view");
+    removeAClassToAListElements(textosCards, "grid-view")
+    removeAClassToAListElements(contenidoProductos, "grid-view")
+    addAClassToAListElements(descripcionesProductos, "hidden")
 }
 
 //==filtro
