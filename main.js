@@ -253,8 +253,6 @@ const filtrarTarjetas = () => {
 const abrirModal = () => {
     modal.setAttribute("aria-hidden", "false")
     show(modal)
-  
-    modal.focus();
     modal.classList.add('mostrar-modal')
     show(overlay)
     overlay.style.zIndex = "3";
@@ -264,11 +262,10 @@ const abrirModal = () => {
 
 const cerrarModal = () => {
     modal.setAttribute("aria-hidden", "true")
-    // modal.tabIndex = 1
     modal.classList.remove('mostrar-modal')
     overlay.style.zIndex = "1"
     body.classList.remove('no-scroll')
-    modal.tabIndex = 1
+
 }
 
 //====tarejtas en carrito
@@ -334,7 +331,7 @@ const actualizarCantidadesProductos = (input, productoId) => {
 }
 
 const crearCardProducto = (producto) => {
-    console.log(producto.dataset.cantidad)
+
     const card = `
 
     <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad = "${producto.dataset.cantidad}" aria-label= "">
