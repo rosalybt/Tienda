@@ -112,9 +112,9 @@ const limpiarCarrito = () => {
     "No tienes productos en el carrito, ¡agrega algunos!";
   contenidoDelCarrito.classList.remove("scroll");
   hide(accionesCarrito);
+  hide(subtotalCarrito);
   cantidadItemsCarrito.textContent = `Carrito (0 items)`;
   subtotalCarrito.textContent = "";
-  hide(subtotalCarrito);
 };
 
 const cantidadItems = () => {
