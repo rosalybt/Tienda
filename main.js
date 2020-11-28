@@ -255,7 +255,6 @@ const filtrarTarjetas = () => {
 const abrirModal = () => {
   modal.setAttribute("aria-hidden", "false");
   show(modal);
-  modal.tabIndex = 0;
   modal.focus();
   modal.classList.add("mostrar-modal");
   show(overlay);
@@ -265,7 +264,6 @@ const abrirModal = () => {
 
 const cerrarModal = () => {
   modal.setAttribute("aria-hidden", "true");
-  modal.tabIndex = 1;
   modal.classList.remove("mostrar-modal");
   overlay.style.zIndex = "1";
   body.classList.remove("no-scroll");
@@ -363,11 +361,9 @@ const crearCardProducto = (producto) => {
 const abrirCarrito = () => {
   show(menuCarrito);
   show(overlay);
-  botonAbrirCarrito.tabIndex = -1;
   body.classList.add("no-scroll");
   menuCarrito.setAttribute("aria-hidden", "false");
   botonAbrirCarrito.setAttribute("aria-expanded", "true");
-  menuCarrito.tabIndex = 0;
   menuCarrito.focus();
   menuCarrito.classList.add("mostrar-carrito");
 
@@ -377,9 +373,7 @@ const abrirCarrito = () => {
 const abrirFiltro = () => {
   show(menuFiltro);
   show(overlay);
-  botonAbrirFiltro.tabIndex = -1;
   body.classList.add("no-scroll");
-  menuFiltro.tabIndex = 0;
   menuFiltro.classList.add("mostrar-filtro");
 };
 
@@ -392,7 +386,6 @@ const cerrarFiltro = () => {
 
 const cerrarCarrito = () => {
   hide(overlay);
-  botonAbrirCarrito.tabIndex = 0;
   botonAbrirCarrito.setAttribute("aria-expanded", "false");
   menuCarrito.classList.remove("mostrar-carrito");
   body.classList.remove("no-scroll");
@@ -561,7 +554,6 @@ botonVaciarCarrito.onclick = () => {
   modalWarning.setAttribute("aria-hidden", "false");
   modalWarning.classList.add("mostrar-modal-notice");
   show(modalWarning);
-  modalWarning.tabIndex = 1;
   overlay.style.zIndex = "4";
   show(overlay);
   body.classList.remove("no-scroll");
