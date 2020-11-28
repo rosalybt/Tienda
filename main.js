@@ -325,10 +325,11 @@ const actualizarCantidadesProductos = (input, productoId) => {
       item.dataset.cantidad = Number(input.value);
     }
   }
+  cantidadItemsCarrito.textContent = `Carrito (${cantidadItems()} items)`;
+  showItemsInCart()
 };
 
 const crearCardProducto = (producto) => {
-  console.log(producto.dataset.cantidad);
   const card = `
 
   <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad = "${producto.dataset.cantidad}" aria-label= "">
@@ -347,7 +348,7 @@ const crearCardProducto = (producto) => {
 
           <div>
               <label for="cantidad-items" aria-label = "cantidad de ${producto.dataset.nombre}: ${producto.dataset.cantidad}">
-                  <input type="number" name="" id="cantidad-items" min="1" step="1" value="${producto.dataset.cantidad}" onchange="actualizarCantidadesProductos(this,${producto.dataset.id})";> unidades
+                  <input type="number" name="cantidadUnidades" id="cantidad-items" min="1" step="1" value="${producto.dataset.cantidad}" onchange="actualizarCantidadesProductos(this,${producto.dataset.id})";> unidades
               </label>
               <p>x $ ${producto.dataset.precio}</p>
 
@@ -445,7 +446,7 @@ const recargoEnvio = () => {
 
 const calcularTotal = () => {
   let totalReal = 0
-  console.log(subtotal(), recargoEnvio(), aplicarDescuento(), recargoTarjeta())
+
   totalReal = subtotal() + recargoEnvio() + aplicarDescuento() + Number(recargoTarjeta());
   total.textContent = "$" + totalReal;
   return totalReal;
@@ -500,7 +501,7 @@ botonVerComoLista.onclick = () => {
   addAClassToAListElements(cards, "list-view");
   addAClassToAListElements(textosCards, "grid-view")
   addAClassToAListElements(contenidoProductos, "grid-view")
-  addAClassToAListElements(descripcionesProductos, "hidden")
+  removeAClassToAListElements(descripcionesProductos, "hidden")
 }
 
 botonVerComoGrid.onclick = () => {
@@ -573,6 +574,8 @@ botonWarningSi.onclick = () => {
   hide(overlay);
   body.classList.remove("no-scroll");
 };
+
+
 
 form.onsubmit = (e) => {
   e.preventDefault();
