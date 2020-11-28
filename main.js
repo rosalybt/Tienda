@@ -330,12 +330,13 @@ const actualizarCantidadesProductos = (input, productoId) => {
 };
 
 const crearCardProducto = (producto) => {
+  console.log(`${producto.dataset.imagen}`)
   const card = `
 
   <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad = "${producto.dataset.cantidad}" aria-label= "">
 
   <div class="contenedor-imagen-producto-carrito">
-      <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
+      <img src="${producto.dataset.imagen}"  class="cardCarrito-img">
     </div>
       <div class="contenedor-detalles-producto">
           <div>
