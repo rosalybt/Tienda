@@ -282,9 +282,9 @@ const calcularSubtotalCarrito = () => {
     subtotal += Number(card.dataset.precio) * Number(card.dataset.cantidad);
   }
 
-  subtotalCheckOut.textContent = `$${subtotal}`;
+  subtotalCheckOut.textContent = `$${subtotal.toFixed(2)}`;
   show(subtotalCarrito);
-  subtotalCarrito.textContent = `Subtotal $${subtotal}`;
+  subtotalCarrito.textContent = `Subtotal $${subtotal.toFixed(2)}`;
 };
 
 const showItemsInCart = () => {
@@ -333,29 +333,29 @@ const crearCardProducto = (producto) => {
   console.log(producto.dataset.cantidad);
   const card = `
 
-    < article class="card-carrito" data - precio= "${producto.dataset.precio}" data - cantidad = "${producto.dataset.cantidad}" aria - label= "" >
+  <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad = "${producto.dataset.cantidad}" aria-label= "">
 
-      <div class="contenedor-imagen-producto-carrito">
-        <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
-      </div>
-        <div class="contenedor-detalles-producto">
+  <div class="contenedor-imagen-producto-carrito">
+      <img src="${producto.dataset.imagen}" alt="mouse gamer negro - detalles multicolor" class="cardCarrito-img">
+    </div>
+      <div class="contenedor-detalles-producto">
           <div>
-            <p class="offscreen">nombre del producto:</p>
-            <h4> ${producto.dataset.nombre} </h4>
-            <button id="boton-eliminar" onclick="borrarCardProducto(this,${producto.dataset.id})";>
-                    <i class="far fa-trash-alt icono-size"></i>
-                </button>
-        </div>
+              <p class = "offscreen">nombre del producto:</p>
+              <h4> ${producto.dataset.nombre} </h4>
+              <button id="boton-eliminar" onclick="borrarCardProducto(this,${producto.dataset.id})";>
+                  <i class="far fa-trash-alt icono-size"></i>
+              </button>
+          </div>
 
-        <div>
-          <label for="cantidad-items" aria-label="cantidad de ${producto.dataset.nombre}: ${producto.dataset.cantidad}">
-            <input type="number" name="" id="cantidad-items" min="1" step="1" value="${producto.dataset.cantidad}" onchange="actualizarCantidadesProductos(this,${producto.dataset.id})";> unidades
-                </label>
-          <p>x $ ${producto.dataset.precio}</p>
+          <div>
+              <label for="cantidad-items" aria-label = "cantidad de ${producto.dataset.nombre}: ${producto.dataset.cantidad}">
+                  <input type="number" name="" id="cantidad-items" min="1" step="1" value="${producto.dataset.cantidad}" onchange="actualizarCantidadesProductos(this,${producto.dataset.id})";> unidades
+              </label>
+              <p>x $ ${producto.dataset.precio}</p>
 
-        </div>
+          </div>
       </div>
-    </article > `;
+  </article>`
 
   return card;
 };
@@ -411,10 +411,10 @@ for (let opcion of opcionesDePago) {
   };
 }
 
-let resultadoRecargo;
+let resultadoRecargo = 0;
 const recargoTarjeta = () => {
   if (credito.checked) {
-    resultadoRecargo = subtotal() * 0.1;
+    resultadoRecargo = Number(subtotal() * 0.1).toFixed(2);
     recargo.textContent = "$" + resultadoRecargo;
     renglonRecargo.classList.remove("hidden");
   } else {
@@ -427,7 +427,7 @@ const recargoTarjeta = () => {
 let resultadoDescuento;
 const aplicarDescuento = () => {
   if (tarjetaDescuento.checked) {
-    resultadoDescuento = -subtotal() * 0.1;
+    resultadoDescuento = (subtotal() * 0.1).toFixed(2) * -1;
     descuento.textContent = "$" + resultadoDescuento;
     renglonDescuento.classList.remove("hidden");
   } else {
@@ -451,12 +451,13 @@ const recargoEnvio = () => {
 };
 
 const calcularTotal = () => {
-  let totalReal = subtotal();
-  totalReal =
-    subtotal() + recargoEnvio() + aplicarDescuento() + recargoTarjeta();
+  let totalReal = 0
+  console.log(subtotal(), recargoEnvio(), aplicarDescuento(), recargoTarjeta())
+  totalReal = subtotal() + recargoEnvio() + aplicarDescuento() + Number(recargoTarjeta());
   total.textContent = "$" + totalReal;
   return totalReal;
 };
+
 const finalizarCompra = () => {
   if (validarTextboxs()) {
     cerrarModal();
