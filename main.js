@@ -330,7 +330,6 @@ const actualizarCantidadesProductos = (input, productoId) => {
 };
 
 const crearCardProducto = (producto) => {
-  console.log(`${producto.dataset.imagen}`)
   const card = `
 
   <article class="card-carrito" data-precio= "${producto.dataset.precio}" data-cantidad = "${producto.dataset.cantidad}" aria-label= "">
@@ -457,8 +456,9 @@ const finalizarCompra = () => {
   if (validarTextboxs()) {
     cerrarModal();
     cerrarCarrito();
-    overlay.style.zIndex = "4";
     show(overlay);
+    show(modalSuccess)
+    overlay.style.zIndex = "4";
     body.classList.add("no-scroll");
     modalSuccess.classList.add("mostrar-modal-notice");
     modalSuccess.setAttribute("aria-hidden", "false");
